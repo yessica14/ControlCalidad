@@ -10,5 +10,6 @@ namespace ControlCalidad.Servidor.Dominio
     {
         public int Numero { get; set; }
         public string Descripcion { get; set; }
+        public TipoDefecto TipoDeDefecto { get; set; }
     }
 }

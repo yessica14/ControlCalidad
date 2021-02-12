@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace ControlCalidad.Servidor.Dominio
 {
-    class Usuario
+    public class Usuario
     {
         public string Nombre { get; set; }
         public string  Contraseña { get; set; }
+        public Empleado UsuarioDeEmpleado { get; set; }
+        public TipoUsuario TipoDeUsuario { get; set; }
     }
 }

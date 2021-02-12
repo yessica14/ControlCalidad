@@ -15,19 +15,19 @@ namespace ControlCalidad.Servidor.Datos
             {
                 new Horario
                 {
-                    Codigo=1,
+                    Id=1,
                     HoraInicio=new TimeSpan(6,20,00),
                     HoraFin=new TimeSpan(18,30,00)
                 },
                 new Horario
                 {
-                    Codigo=2,
+                    Id=2,
                     HoraInicio=new TimeSpan(11,5,0),
                     HoraFin=new TimeSpan(1,30,00)
                 },
                  new Horario
                 {
-                    Codigo=3,
+                    Id=3,
                     HoraInicio=new TimeSpan(6,20,00),
                     HoraFin=new TimeSpan(18,30,00)
                 }

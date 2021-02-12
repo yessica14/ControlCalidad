@@ -8,9 +8,11 @@ namespace ControlCalidad.Servidor.Dominio
 {
     public class Horario
     {
-        public int Codigo { get; set; }
-        public int fecha { get; set; }
+        public int Id { get; set; }
+        public DateTime Fecha { get; set; }
         public TimeSpan HoraInicio { get; set; }
         public TimeSpan HoraFin { get; set; }
+        public Turno TurnoHorario { get; set; }
+        public List<Hallazgo> ListaDeHallazgos { get; set; }
     }
 }
