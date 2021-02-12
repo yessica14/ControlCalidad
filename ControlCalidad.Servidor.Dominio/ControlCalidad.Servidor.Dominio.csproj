@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Color.cs" />
+    <Compile Include="ControlCalidad.cs" />
     <Compile Include="Defecto.cs" />
     <Compile Include="Empleado.cs" />
     <Compile Include="EstadoOp.cs" />
