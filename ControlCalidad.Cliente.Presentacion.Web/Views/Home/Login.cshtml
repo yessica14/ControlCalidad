@@ -1,0 +1,73 @@
+﻿@using ControlCalidad.Cliente.Presentacion.Web.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginSitie.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-7 col-sm-offset-3 text">
+        <h1>Logueate en el sistema de <strong>ControlDeCalidad.com</strong></h1>
+        <div class="description">
+            <p>
+                Sistema Web para el Control de Calidad de Calzados.
+            </p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-7 col-sm-offset-3 form-box">
+        <div class="form-top">
+            <div class="form-top-left">
+                <h3>Inicia sesión en nuestro sitio</h3>
+                <p>Ingresa tu Nick y contraseña para iniciar sesión:</p>
+            </div>
+            <div class="form-top-right">
+                <i class="fa fa-lock"></i>
+            </div>
+        </div>
+        <div class="form-bottom">
+            @using (Html.BeginForm("Login", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>Utilice una cuenta local para iniciar sesión.</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Nick, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Nick, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Nick, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @value = "" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="remember"> Remember Me
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn">Ingresar!</button>
+                </div>
+
+                <div class="form-group bg-danger text-white">
+                    <span class="field-validation-error text-danger" data-valmsg-for="" data-valmsg-replace="true">@Model.ErrorLogin</span>
+                </div>
+
+                <div class="form-group">
+                    <a class="btn btn-link" href="#">Olvidaste tu contraseña?</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+

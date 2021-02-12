@@ -1,0 +1,77 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cliente", "Cliente", "{7A912E0E-BB2F-4121-9EAF-0F9099990686}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Servidor", "Servidor", "{26EE3838-5C53-4904-830F-8ADB91CB7030}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlCalidad.Servidor.Servicio", "ControlCalidad.Servidor.Servicio\ControlCalidad.Servidor.Servicio.csproj", "{EAF34EEE-AA6C-4001-BA16-1F6F1A3592C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlCalidad.Servidor.Dominio", "ControlCalidad.Servidor.Dominio\ControlCalidad.Servidor.Dominio.csproj", "{D45387C7-C33D-42E6-B1A3-5B82E747D475}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlCalidad.Servidor.Datos", "ControlCalidad.Servidor.Datos\ControlCalidad.Servidor.Datos.csproj", "{82179F1B-779F-49F1-BE9E-4B8750707F90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlCalidad.Servidor.Host", "ControlCalidad.Servidor.Host\ControlCalidad.Servidor.Host.csproj", "{C527AD42-4318-4551-BF5C-8E0305B6DE74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlCalidad.Cliente.Presentacion", "ControlCalidad.Cliente.Presentacion\ControlCalidad.Cliente.Presentacion.csproj", "{A5DBFD8D-454B-46ED-A692-1E9768B005CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlCalidad.Cliente.AccesoExterno", "ControlCalidad.Cliente.AccesoExterno\ControlCalidad.Cliente.AccesoExterno.csproj", "{398ED89C-E179-45F7-AA18-42B3F5DE7CE9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EAF34EEE-AA6C-4001-BA16-1F6F1A3592C9} = {EAF34EEE-AA6C-4001-BA16-1F6F1A3592C9}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlCalidad.Cliente.Presentacion.Web", "ControlCalidad.Cliente.Presentacion.Web\ControlCalidad.Cliente.Presentacion.Web.csproj", "{5B225148-3E3C-4F1F-8D58-F743FDFCF003}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAF34EEE-AA6C-4001-BA16-1F6F1A3592C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAF34EEE-AA6C-4001-BA16-1F6F1A3592C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAF34EEE-AA6C-4001-BA16-1F6F1A3592C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAF34EEE-AA6C-4001-BA16-1F6F1A3592C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D45387C7-C33D-42E6-B1A3-5B82E747D475}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D45387C7-C33D-42E6-B1A3-5B82E747D475}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D45387C7-C33D-42E6-B1A3-5B82E747D475}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D45387C7-C33D-42E6-B1A3-5B82E747D475}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82179F1B-779F-49F1-BE9E-4B8750707F90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82179F1B-779F-49F1-BE9E-4B8750707F90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82179F1B-779F-49F1-BE9E-4B8750707F90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82179F1B-779F-49F1-BE9E-4B8750707F90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C527AD42-4318-4551-BF5C-8E0305B6DE74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C527AD42-4318-4551-BF5C-8E0305B6DE74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C527AD42-4318-4551-BF5C-8E0305B6DE74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C527AD42-4318-4551-BF5C-8E0305B6DE74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5DBFD8D-454B-46ED-A692-1E9768B005CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5DBFD8D-454B-46ED-A692-1E9768B005CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5DBFD8D-454B-46ED-A692-1E9768B005CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5DBFD8D-454B-46ED-A692-1E9768B005CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{398ED89C-E179-45F7-AA18-42B3F5DE7CE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{398ED89C-E179-45F7-AA18-42B3F5DE7CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{398ED89C-E179-45F7-AA18-42B3F5DE7CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{398ED89C-E179-45F7-AA18-42B3F5DE7CE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B225148-3E3C-4F1F-8D58-F743FDFCF003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B225148-3E3C-4F1F-8D58-F743FDFCF003}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B225148-3E3C-4F1F-8D58-F743FDFCF003}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B225148-3E3C-4F1F-8D58-F743FDFCF003}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EAF34EEE-AA6C-4001-BA16-1F6F1A3592C9} = {26EE3838-5C53-4904-830F-8ADB91CB7030}
+		{D45387C7-C33D-42E6-B1A3-5B82E747D475} = {26EE3838-5C53-4904-830F-8ADB91CB7030}
+		{82179F1B-779F-49F1-BE9E-4B8750707F90} = {26EE3838-5C53-4904-830F-8ADB91CB7030}
+		{C527AD42-4318-4551-BF5C-8E0305B6DE74} = {26EE3838-5C53-4904-830F-8ADB91CB7030}
+		{A5DBFD8D-454B-46ED-A692-1E9768B005CC} = {7A912E0E-BB2F-4121-9EAF-0F9099990686}
+		{398ED89C-E179-45F7-AA18-42B3F5DE7CE9} = {7A912E0E-BB2F-4121-9EAF-0F9099990686}
+		{5B225148-3E3C-4F1F-8D58-F743FDFCF003} = {7A912E0E-BB2F-4121-9EAF-0F9099990686}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A3D10376-1EE1-4868-8119-DDA92FCD3C99}
+	EndGlobalSection
+EndGlobal
