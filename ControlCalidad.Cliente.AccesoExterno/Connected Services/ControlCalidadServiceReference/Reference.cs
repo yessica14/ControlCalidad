@@ -15,7 +15,8 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="LineaDto", Namespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LineaDto", Namespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidade" +
+        "s")]
     [System.SerializableAttribute()]
     public partial class LineaDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -199,6 +200,162 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ColorDto", Namespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidade" +
+        "s")]
+    [System.SerializableAttribute()]
+    public partial class ColorDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CodigoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescripcionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Codigo {
+            get {
+                return this.CodigoField;
+            }
+            set {
+                if ((this.CodigoField.Equals(value) != true)) {
+                    this.CodigoField = value;
+                    this.RaisePropertyChanged("Codigo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Descripcion {
+            get {
+                return this.DescripcionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescripcionField, value) != true)) {
+                    this.DescripcionField = value;
+                    this.RaisePropertyChanged("Descripcion");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ModeloDto", Namespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidade" +
+        "s")]
+    [System.SerializableAttribute()]
+    public partial class ModeloDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto ColorModeloField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DenominacionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ObjetivoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SkuField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto ColorModelo {
+            get {
+                return this.ColorModeloField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ColorModeloField, value) != true)) {
+                    this.ColorModeloField = value;
+                    this.RaisePropertyChanged("ColorModelo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Denominacion {
+            get {
+                return this.DenominacionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DenominacionField, value) != true)) {
+                    this.DenominacionField = value;
+                    this.RaisePropertyChanged("Denominacion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Objetivo {
+            get {
+                return this.ObjetivoField;
+            }
+            set {
+                if ((this.ObjetivoField.Equals(value) != true)) {
+                    this.ObjetivoField = value;
+                    this.RaisePropertyChanged("Objetivo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Sku {
+            get {
+                return this.SkuField;
+            }
+            set {
+                if ((this.SkuField.Equals(value) != true)) {
+                    this.SkuField = value;
+                    this.RaisePropertyChanged("Sku");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ControlCalidadServiceReference.IControlCalidadServicio")]
     public interface IControlCalidadServicio {
@@ -214,6 +371,54 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerLineasSinEmpleado", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerLineasSinEmpleadoResponse")]
         System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.LineaDto[]> ObtenerLineasSinEmpleadoAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerColores", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerColoresResponse")]
+        ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto[] ObtenerColores();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerColores", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerColoresResponse")]
+        System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto[]> ObtenerColoresAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerColorPorId", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerColorPorIdResponse")]
+        ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto ObtenerColorPorId(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerColorPorId", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerColorPorIdResponse")]
+        System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto> ObtenerColorPorIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerTodosLosModelos", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerTodosLosModelosResponse")]
+        ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ModeloDto[] ObtenerTodosLosModelos();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerTodosLosModelos", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerTodosLosModelosResponse")]
+        System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ModeloDto[]> ObtenerTodosLosModelosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerModeloPorSku", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerModeloPorSkuResponse")]
+        ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ModeloDto ObtenerModeloPorSku(int sku);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerModeloPorSku", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerModeloPorSkuResponse")]
+        System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ModeloDto> ObtenerModeloPorSkuAsync(int sku);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoSku", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoSkuResponse")]
+        int ObtenerUltimoSku();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoSku", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoSkuResponse")]
+        System.Threading.Tasks.Task<int> ObtenerUltimoSkuAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/GuardarModelo", ReplyAction="http://tempuri.org/IControlCalidadServicio/GuardarModeloResponse")]
+        bool GuardarModelo(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ModeloDto modelo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/GuardarModelo", ReplyAction="http://tempuri.org/IControlCalidadServicio/GuardarModeloResponse")]
+        System.Threading.Tasks.Task<bool> GuardarModeloAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ModeloDto modelo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ModificarModelo", ReplyAction="http://tempuri.org/IControlCalidadServicio/ModificarModeloResponse")]
+        bool ModificarModelo(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ModeloDto modelo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ModificarModelo", ReplyAction="http://tempuri.org/IControlCalidadServicio/ModificarModeloResponse")]
+        System.Threading.Tasks.Task<bool> ModificarModeloAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ModeloDto modelo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/EliminarModelo", ReplyAction="http://tempuri.org/IControlCalidadServicio/EliminarModeloResponse")]
+        bool EliminarModelo(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ModeloDto modelo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/EliminarModelo", ReplyAction="http://tempuri.org/IControlCalidadServicio/EliminarModeloResponse")]
+        System.Threading.Tasks.Task<bool> EliminarModeloAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ModeloDto modelo);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -257,6 +462,70 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         
         public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.LineaDto[]> ObtenerLineasSinEmpleadoAsync() {
             return base.Channel.ObtenerLineasSinEmpleadoAsync();
+        }
+        
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto[] ObtenerColores() {
+            return base.Channel.ObtenerColores();
+        }
+        
+        public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto[]> ObtenerColoresAsync() {
+            return base.Channel.ObtenerColoresAsync();
+        }
+        
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto ObtenerColorPorId(int id) {
+            return base.Channel.ObtenerColorPorId(id);
+        }
+        
+        public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto> ObtenerColorPorIdAsync(int id) {
+            return base.Channel.ObtenerColorPorIdAsync(id);
+        }
+        
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ModeloDto[] ObtenerTodosLosModelos() {
+            return base.Channel.ObtenerTodosLosModelos();
+        }
+        
+        public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ModeloDto[]> ObtenerTodosLosModelosAsync() {
+            return base.Channel.ObtenerTodosLosModelosAsync();
+        }
+        
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ModeloDto ObtenerModeloPorSku(int sku) {
+            return base.Channel.ObtenerModeloPorSku(sku);
+        }
+        
+        public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ModeloDto> ObtenerModeloPorSkuAsync(int sku) {
+            return base.Channel.ObtenerModeloPorSkuAsync(sku);
+        }
+        
+        public int ObtenerUltimoSku() {
+            return base.Channel.ObtenerUltimoSku();
+        }
+        
+        public System.Threading.Tasks.Task<int> ObtenerUltimoSkuAsync() {
+            return base.Channel.ObtenerUltimoSkuAsync();
+        }
+        
+        public bool GuardarModelo(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ModeloDto modelo) {
+            return base.Channel.GuardarModelo(modelo);
+        }
+        
+        public System.Threading.Tasks.Task<bool> GuardarModeloAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ModeloDto modelo) {
+            return base.Channel.GuardarModeloAsync(modelo);
+        }
+        
+        public bool ModificarModelo(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ModeloDto modelo) {
+            return base.Channel.ModificarModelo(modelo);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ModificarModeloAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ModeloDto modelo) {
+            return base.Channel.ModificarModeloAsync(modelo);
+        }
+        
+        public bool EliminarModelo(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ModeloDto modelo) {
+            return base.Channel.EliminarModelo(modelo);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EliminarModeloAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ModeloDto modelo) {
+            return base.Channel.EliminarModeloAsync(modelo);
         }
     }
 }

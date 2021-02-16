@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ControlCalidad.Servidor.Servicio.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -7,19 +8,55 @@ using System.Text;
 
 namespace ControlCalidad.Servidor.Servicio
 {
-    // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de interfaz "IService1" en el código y en el archivo de configuración a la vez.
     [ServiceContract]
     public interface IControlCalidadServicio
     {
+        #region LINEA
+
         [OperationContract]
         LineaDto[] ObtenerLineas();
 
         [OperationContract]
         LineaDto[] ObtenerLineasSinEmpleado();
 
-        //[OperationContract]
-        //bool CrearOP(OpDto op);
+        #endregion
 
 
+        #region COLOR
+
+        [OperationContract]
+        ColorDto[] ObtenerColores();
+        
+        [OperationContract]
+        ColorDto ObtenerColorPorId(int id);
+
+        #endregion
+
+
+        #region MODELO
+
+        [OperationContract]
+        ModeloDto[] ObtenerTodosLosModelos();
+
+        [OperationContract]
+        ModeloDto ObtenerModeloPorSku(int sku);
+
+        [OperationContract]
+        int ObtenerUltimoSku();
+
+        [OperationContract]
+        bool GuardarModelo(ModeloDto modelo);
+
+        [OperationContract]
+        bool ModificarModelo(ModeloDto modelo);
+
+        [OperationContract]
+        bool EliminarModelo(ModeloDto modelo);
+
+
+        #endregion
     }
+
+
+
 }

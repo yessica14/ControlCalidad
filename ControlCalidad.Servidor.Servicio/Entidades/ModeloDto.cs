@@ -1,22 +1,23 @@
-﻿using ControlCalidad.Servidor.Dominio;
-using ControlCalidad.Servidor.Servicio.Entidades;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using ControlCalidad.Servidor.Dominio;
 
 namespace ControlCalidad.Servidor.Servicio.Entidades
-{   
+{
     [DataContract]
-    public class LineaDto
+    public class ModeloDto
     {
         [DataMember]
-        public int Numero { get; set; }
+        public int Sku { get; set; }
         [DataMember]
-        public string Descripcion { get; set; }
+        public string Denominacion { get; set; }
         [DataMember]
-        public Empleado SupervisorLinea { get; set; }
+        public int Objetivo { get; set; }
+        [DataMember]
+        public ColorDto ColorModelo { get; set; }
     }
 }

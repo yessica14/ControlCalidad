@@ -11,14 +11,17 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
     public class ControlDeCalidadRepositorio
     {
         private ControlDeCalidad empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
-
         private EmpleadoRepositorio empleadoServicio = new EmpleadoRepositorio();
         private LineaRepositorio lineaServicio = new LineaRepositorio();
+        private ColorRepositorio colorServicio = new ColorRepositorio();
+        private ModeloRepositorio modeloServicio = new ModeloRepositorio();
 
         public void GenerarDatosAutomaticamente()
         {
             empleadoServicio.CargarEmpleados();
             lineaServicio.CargarLineas();
+            colorServicio.CargarColores();
+            modeloServicio.CargarModelos();
         }
     }
 }

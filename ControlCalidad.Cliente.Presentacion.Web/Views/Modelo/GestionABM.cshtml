@@ -1,0 +1,64 @@
+﻿@using ControlCalidad.Cliente.Presentacion.Web.Models.Modelo
+@model GestionABMViewModel
+@{
+    ViewBag.Title = "GestionarModelo";
+    Layout = "~/Views/Shared/_PrincipalSitie.cshtml";
+}
+
+<style media="screen">
+    #uploadForm,
+    #imagePreview {
+        width: 720px;
+        margin: 0 auto;
+    }
+
+    img {
+        max-width: 250px;
+        height: auto;
+    }
+</style>
+
+<div class="row">
+    <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
+        @{var txtAccion = Model.TipoGestion == "ALTA" ? "Nuevo Modelo" : "Modificar Modelo";}
+        <h3>@txtAccion - SKU: @Model.Modelo.Sku.ToString()</h3>
+
+        @using (Html.BeginForm("GestionABM", "Modelo", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.TxtDenominacion, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.TxtDenominacion, new { @class = "form-control", @placeholder = "Denominacion..." })
+                @Html.ValidationMessageFor(m => m.TxtDenominacion, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.TxtObjetivo, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.TxtObjetivo, new { @class = "form-control", @placeholder = "Objetivo..." })
+                @Html.ValidationMessageFor(m => m.TxtObjetivo, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="Color"></label>
+                <select name="nSelectColor" id="idSelectColor" class="form-control">
+                    @foreach (var item in Model.Colores)
+                    {
+                        var txtSelected = Model.Modelo.ColorModelo != null && item.Codigo == Model.Modelo.ColorModelo.Codigo ? "selected" : "";
+                        <option value="@item.Codigo" @txtSelected>@item.Descripcion</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input type="hidden" name="nHiddenTipoGestion" value="@Model.TipoGestion" />
+                <input type="hidden" name="nHiddenSku" value="@Model.Modelo.Sku" />
+                <button class="btn btn-primary" type="submit">@txtAccion</button>
+                <a class="btn btn-secondary" href="/Modelo/Index">Cancelar</a>
+            </div>
+
+        }
+    </div>
+</div>

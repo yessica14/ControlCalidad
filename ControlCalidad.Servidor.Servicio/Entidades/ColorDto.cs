@@ -1,6 +1,4 @@
-﻿using ControlCalidad.Servidor.Dominio;
-using ControlCalidad.Servidor.Servicio.Entidades;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -8,15 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ControlCalidad.Servidor.Servicio.Entidades
-{   
+{
     [DataContract]
-    public class LineaDto
+    public class ColorDto
     {
         [DataMember]
-        public int Numero { get; set; }
+        public int Codigo { get; set; }
         [DataMember]
         public string Descripcion { get; set; }
-        [DataMember]
-        public Empleado SupervisorLinea { get; set; }
     }
 }
