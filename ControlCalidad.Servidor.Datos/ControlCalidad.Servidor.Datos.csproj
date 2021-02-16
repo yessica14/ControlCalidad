@@ -47,8 +47,12 @@
     <Compile Include="HorarioDatos.cs" />
     <Compile Include="ModeloDatos.cs" />
     <Compile Include="OrdenProduccionDatos.cs" />
+    <Compile Include="Persistencia\Singleton.cs" />
     <Compile Include="Repositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\ControlDeCalidadRepositorio.cs" />
+    <Compile Include="Repositorios\EmpleadoRepositorio.cs" />
+    <Compile Include="Repositorios\LineaRepositorio.cs" />
     <Compile Include="TurnoDatos.cs" />
   </ItemGroup>
   <ItemGroup>

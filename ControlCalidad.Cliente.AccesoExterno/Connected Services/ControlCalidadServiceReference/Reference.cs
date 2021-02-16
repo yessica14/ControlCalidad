@@ -28,6 +28,9 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int NumeroField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.Empleado SupervisorLineaField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -64,6 +67,128 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.Empleado SupervisorLinea {
+            get {
+                return this.SupervisorLineaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupervisorLineaField, value) != true)) {
+                    this.SupervisorLineaField = value;
+                    this.RaisePropertyChanged("SupervisorLinea");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Empleado", Namespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Dominio")]
+    [System.SerializableAttribute()]
+    public partial class Empleado : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ApellidoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CorreoElectronicoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DocumentoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Apellido {
+            get {
+                return this.ApellidoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ApellidoField, value) != true)) {
+                    this.ApellidoField = value;
+                    this.RaisePropertyChanged("Apellido");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CorreoElectronico {
+            get {
+                return this.CorreoElectronicoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CorreoElectronicoField, value) != true)) {
+                    this.CorreoElectronicoField = value;
+                    this.RaisePropertyChanged("CorreoElectronico");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Documento {
+            get {
+                return this.DocumentoField;
+            }
+            set {
+                if ((this.DocumentoField.Equals(value) != true)) {
+                    this.DocumentoField = value;
+                    this.RaisePropertyChanged("Documento");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nombre {
+            get {
+                return this.NombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
+                    this.NombreField = value;
+                    this.RaisePropertyChanged("Nombre");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -78,11 +203,17 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ControlCalidadServiceReference.IControlCalidadServicio")]
     public interface IControlCalidadServicio {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/GetLineas", ReplyAction="http://tempuri.org/IControlCalidadServicio/GetLineasResponse")]
-        ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.LineaDto[] GetLineas();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerLineas", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerLineasResponse")]
+        ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.LineaDto[] ObtenerLineas();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/GetLineas", ReplyAction="http://tempuri.org/IControlCalidadServicio/GetLineasResponse")]
-        System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.LineaDto[]> GetLineasAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerLineas", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerLineasResponse")]
+        System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.LineaDto[]> ObtenerLineasAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerLineasSinEmpleado", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerLineasSinEmpleadoResponse")]
+        ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.LineaDto[] ObtenerLineasSinEmpleado();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerLineasSinEmpleado", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerLineasSinEmpleadoResponse")]
+        System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.LineaDto[]> ObtenerLineasSinEmpleadoAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -112,12 +243,20 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.LineaDto[] GetLineas() {
-            return base.Channel.GetLineas();
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.LineaDto[] ObtenerLineas() {
+            return base.Channel.ObtenerLineas();
         }
         
-        public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.LineaDto[]> GetLineasAsync() {
-            return base.Channel.GetLineasAsync();
+        public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.LineaDto[]> ObtenerLineasAsync() {
+            return base.Channel.ObtenerLineasAsync();
+        }
+        
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.LineaDto[] ObtenerLineasSinEmpleado() {
+            return base.Channel.ObtenerLineasSinEmpleado();
+        }
+        
+        public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.LineaDto[]> ObtenerLineasSinEmpleadoAsync() {
+            return base.Channel.ObtenerLineasSinEmpleadoAsync();
         }
     }
 }

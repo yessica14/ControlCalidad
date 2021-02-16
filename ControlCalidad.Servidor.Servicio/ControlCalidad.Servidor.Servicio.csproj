@@ -44,6 +44,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entidades\EmpleadoDto.cs" />
     <Compile Include="Entidades\LineaDto.cs" />
     <Compile Include="Entidades\OrdenProduccionDto.cs" />
     <Compile Include="IControlCalidadServicio.cs" />

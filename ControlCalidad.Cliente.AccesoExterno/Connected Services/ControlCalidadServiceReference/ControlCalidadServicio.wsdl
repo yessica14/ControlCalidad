@@ -5,24 +5,44 @@
       <xsd:import schemaLocation="http://localhost:8733/ControlCalidad.Servidor.Servicio/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8733/ControlCalidad.Servidor.Servicio/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8733/ControlCalidad.Servidor.Servicio/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio" />
+      <xsd:import schemaLocation="http://localhost:8733/ControlCalidad.Servidor.Servicio/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Dominio" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IControlCalidadServicio_GetLineas_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetLineas" />
+  <wsdl:message name="IControlCalidadServicio_ObtenerLineas_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerLineas" />
   </wsdl:message>
-  <wsdl:message name="IControlCalidadServicio_GetLineas_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetLineasResponse" />
+  <wsdl:message name="IControlCalidadServicio_ObtenerLineas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerLineasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerLineasSinEmpleado_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerLineasSinEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerLineasSinEmpleado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerLineasSinEmpleadoResponse" />
   </wsdl:message>
   <wsdl:portType name="IControlCalidadServicio">
-    <wsdl:operation name="GetLineas">
-      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/GetLineas" message="tns:IControlCalidadServicio_GetLineas_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/GetLineasResponse" message="tns:IControlCalidadServicio_GetLineas_OutputMessage" />
+    <wsdl:operation name="ObtenerLineas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerLineas" message="tns:IControlCalidadServicio_ObtenerLineas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerLineasResponse" message="tns:IControlCalidadServicio_ObtenerLineas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLineasSinEmpleado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerLineasSinEmpleado" message="tns:IControlCalidadServicio_ObtenerLineasSinEmpleado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerLineasSinEmpleadoResponse" message="tns:IControlCalidadServicio_ObtenerLineasSinEmpleado_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IControlCalidadServicio" type="tns:IControlCalidadServicio">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetLineas">
-      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/GetLineas" style="document" />
+    <wsdl:operation name="ObtenerLineas">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ObtenerLineas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLineasSinEmpleado">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ObtenerLineasSinEmpleado" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -12,7 +12,10 @@ namespace ControlCalidad.Servidor.Servicio
     public interface IControlCalidadServicio
     {
         [OperationContract]
-        LineaDto[] GetLineas();
+        LineaDto[] ObtenerLineas();
+
+        [OperationContract]
+        LineaDto[] ObtenerLineasSinEmpleado();
 
         //[OperationContract]
         //bool CrearOP(OpDto op);

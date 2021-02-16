@@ -120,12 +120,14 @@
     <Compile Include="Controllers\ColorController.cs" />
     <Compile Include="Controllers\ControlCalidadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LineaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Color\EditarColoresViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\Color\ListaColoresViewModel.cs" />
+    <Compile Include="Models\Linea\IndexViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2071,6 +2073,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Shared\_PrincipalSitie.cshtml" />
     <Content Include="Views\ControlCalidad\Index.cshtml" />
+    <Content Include="Views\Linea\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
