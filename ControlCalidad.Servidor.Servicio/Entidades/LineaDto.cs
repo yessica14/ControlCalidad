@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ControlCalidad.Servidor.Dominio;
+using ControlCalidad.Servidor.Servicio.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -13,5 +15,7 @@ namespace ControlCalidad.Servidor.Servicio
         public int Numero { get; set; }
         [DataMember]
         public string Descripcion { get; set; }
+        [DataMember]
+        public Empleado SupervisorLinea { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ControlCalidad.Servidor.Dominio
 {
-    public class ControlCalidad
+    public class ControlDeCalidad
     {
         public string Cuit { get; set; }
         public string RazonSocial { get; set; }
@@ -18,7 +18,7 @@ namespace ControlCalidad.Servidor.Dominio
         /*genericos*/
         public List<Color> ListaDeColores = new List<Color>();
         public List<Modelo> ListaDeModelos = new List<Modelo>();
-        public List<Linea> ListaDeLineasDeTrabajo = new List<Linea>();
+        public List<Linea> ListaDeLineas = new List<Linea>();
         public List<OrdenProduccion> ListaDeOrdenesDeProduccion = new List<OrdenProduccion>();
         public List<Defecto> ListaDeDefectos = new List<Defecto>();
         public List<Turno> ListaDeTurnos = new List<Turno>();

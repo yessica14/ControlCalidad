@@ -13,23 +13,15 @@ namespace ControlCalidad.Cliente.AccesoExterno
         { 
             using(var servicio = new ControlCalidadServiceReference.ControlCalidadServicioClient())
             {
-                return servicio.GetLineas();
-            }      
-        }
-        /*
-        public static void SetLineas(int id, string nobre)
-        {
-            using (var servicio = new ControlCalidadServiceReference.ControlCalidadServicioClient())
-            {
-                servicio.SetLineas();
+                return servicio.ObtenerLineas();
             }
         }
-        */
-        public static LineaDto[] obtenerLineasDeTrabajosinempleaod()
+
+        public static LineaDto[] ObtenerLineasSinEmpleado()
         {
             using (var servicio = new ControlCalidadServiceReference.ControlCalidadServicioClient())
             {
-                return servicio.GetLineas();
+                return servicio.ObtenerLineasSinEmpleado();
             }
         }
 
