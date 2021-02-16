@@ -121,6 +121,8 @@
     <Compile Include="Controllers\ControlCalidadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LineaController.cs" />
+    <Compile Include="Controllers\ModeloController.cs" />
+    <Compile Include="Extenciones\TipoDeGestion.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -128,6 +130,8 @@
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\Color\ListaColoresViewModel.cs" />
     <Compile Include="Models\Linea\IndexViewModel.cs" />
+    <Compile Include="Models\Modelo\GestionABMViewModel.cs" />
+    <Compile Include="Models\Modelo\IndexViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2074,6 +2078,9 @@
     <Content Include="Views\Shared\_PrincipalSitie.cshtml" />
     <Content Include="Views\ControlCalidad\Index.cshtml" />
     <Content Include="Views\Linea\Index.cshtml" />
+    <Content Include="Views\Modelo\Index.cshtml" />
+    <Content Include="Views\Modelo\GestionABM.cshtml" />
+    <Content Include="Views\Modelo\asdasd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

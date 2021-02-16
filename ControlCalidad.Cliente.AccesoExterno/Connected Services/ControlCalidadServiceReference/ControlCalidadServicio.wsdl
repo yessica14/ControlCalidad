@@ -4,7 +4,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8733/ControlCalidad.Servidor.Servicio/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8733/ControlCalidad.Servidor.Servicio/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:8733/ControlCalidad.Servidor.Servicio/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio" />
+      <xsd:import schemaLocation="http://localhost:8733/ControlCalidad.Servidor.Servicio/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" />
       <xsd:import schemaLocation="http://localhost:8733/ControlCalidad.Servidor.Servicio/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Dominio" />
     </xsd:schema>
   </wsdl:types>
@@ -20,6 +20,54 @@
   <wsdl:message name="IControlCalidadServicio_ObtenerLineasSinEmpleado_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerLineasSinEmpleadoResponse" />
   </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerColores_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerColores" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerColores_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerColoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerColorPorId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerColorPorId" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerColorPorId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerColorPorIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerTodosLosModelos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerTodosLosModelos" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerTodosLosModelos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerTodosLosModelosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerModeloPorSku_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerModeloPorSku" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerModeloPorSku_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerModeloPorSkuResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerUltimoSku_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerUltimoSku" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerUltimoSku_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerUltimoSkuResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_GuardarModelo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarModelo" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_GuardarModelo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarModeloResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ModificarModelo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarModelo" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ModificarModelo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarModeloResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_EliminarModelo_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarModelo" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_EliminarModelo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarModeloResponse" />
+  </wsdl:message>
   <wsdl:portType name="IControlCalidadServicio">
     <wsdl:operation name="ObtenerLineas">
       <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerLineas" message="tns:IControlCalidadServicio_ObtenerLineas_InputMessage" />
@@ -28,6 +76,38 @@
     <wsdl:operation name="ObtenerLineasSinEmpleado">
       <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerLineasSinEmpleado" message="tns:IControlCalidadServicio_ObtenerLineasSinEmpleado_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerLineasSinEmpleadoResponse" message="tns:IControlCalidadServicio_ObtenerLineasSinEmpleado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerColores">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerColores" message="tns:IControlCalidadServicio_ObtenerColores_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerColoresResponse" message="tns:IControlCalidadServicio_ObtenerColores_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerColorPorId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerColorPorId" message="tns:IControlCalidadServicio_ObtenerColorPorId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerColorPorIdResponse" message="tns:IControlCalidadServicio_ObtenerColorPorId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerTodosLosModelos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerTodosLosModelos" message="tns:IControlCalidadServicio_ObtenerTodosLosModelos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerTodosLosModelosResponse" message="tns:IControlCalidadServicio_ObtenerTodosLosModelos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerModeloPorSku">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerModeloPorSku" message="tns:IControlCalidadServicio_ObtenerModeloPorSku_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerModeloPorSkuResponse" message="tns:IControlCalidadServicio_ObtenerModeloPorSku_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUltimoSku">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoSku" message="tns:IControlCalidadServicio_ObtenerUltimoSku_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoSkuResponse" message="tns:IControlCalidadServicio_ObtenerUltimoSku_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GuardarModelo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/GuardarModelo" message="tns:IControlCalidadServicio_GuardarModelo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/GuardarModeloResponse" message="tns:IControlCalidadServicio_GuardarModelo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarModelo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ModificarModelo" message="tns:IControlCalidadServicio_ModificarModelo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ModificarModeloResponse" message="tns:IControlCalidadServicio_ModificarModelo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarModelo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/EliminarModelo" message="tns:IControlCalidadServicio_EliminarModelo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/EliminarModeloResponse" message="tns:IControlCalidadServicio_EliminarModelo_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IControlCalidadServicio" type="tns:IControlCalidadServicio">
@@ -43,6 +123,78 @@
     </wsdl:operation>
     <wsdl:operation name="ObtenerLineasSinEmpleado">
       <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ObtenerLineasSinEmpleado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerColores">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ObtenerColores" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerColorPorId">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ObtenerColorPorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerTodosLosModelos">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ObtenerTodosLosModelos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerModeloPorSku">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ObtenerModeloPorSku" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUltimoSku">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoSku" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GuardarModelo">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/GuardarModelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarModelo">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ModificarModelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarModelo">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/EliminarModelo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
