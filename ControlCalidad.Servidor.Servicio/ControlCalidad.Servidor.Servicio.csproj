@@ -45,12 +45,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entidades\ColorDto.cs" />
+    <Compile Include="Entidades\ControlDeCalidadDto.cs" />
+    <Compile Include="Entidades\DefectoDto.cs" />
     <Compile Include="Entidades\EmpleadoDto.cs" />
     <Compile Include="Entidades\EstadoOPDto.cs" />
+    <Compile Include="Entidades\HallazgoDto.cs" />
+    <Compile Include="Entidades\HorarioDto.cs" />
     <Compile Include="Entidades\LineaDto.cs" />
     <Compile Include="Entidades\ModeloDto.cs" />
     <Compile Include="Entidades\OrdenProduccionDto.cs" />
+    <Compile Include="Entidades\PieDto.cs" />
+    <Compile Include="Entidades\PrimeraDto.cs" />
+    <Compile Include="Entidades\TipoDefectoDto.cs" />
     <Compile Include="Entidades\TipoUsuarioDto.cs" />
+    <Compile Include="Entidades\TurnoDto.cs" />
     <Compile Include="Entidades\UsuarioDto.cs" />
     <Compile Include="IControlCalidadServicio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
