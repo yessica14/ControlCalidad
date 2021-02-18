@@ -10,7 +10,6 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
 {
     public class LineaRepositorio
     {
-        private EmpleadoRepositorio empleadoServicio = new EmpleadoRepositorio();
         public void CargarLineas()
         {
             var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
@@ -20,7 +19,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 {
                     Numero = 100,
                     Descripcion = "Linea Trabajo 100",
-                    SupervisorLinea = empleadoServicio.BuscarEmpleadoPorId(1)
+                    SupervisorLinea = EmpleadoRepositorio.BuscarEmpleadoPorId(1)
                 }
             );
             empresa.ListaDeLineas.Add
@@ -54,7 +53,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 {
                     Numero = 104,
                     Descripcion = "Linea Trabajo 104",
-                    SupervisorLinea = empleadoServicio.BuscarEmpleadoPorId(4)
+                    SupervisorLinea = EmpleadoRepositorio.BuscarEmpleadoPorId(4)
                 }
             );
             empresa.ListaDeLineas.Add
@@ -63,7 +62,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 {
                     Numero = 105,
                     Descripcion = "Linea Trabajo 105",
-                    SupervisorLinea = empleadoServicio.BuscarEmpleadoPorId(4)
+                    SupervisorLinea = EmpleadoRepositorio.BuscarEmpleadoPorId(4)
                 }
             );
             Singleton.getInstancia().AsignarDatosAEmpresa(empresa);

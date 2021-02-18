@@ -52,6 +52,7 @@
     <Compile Include="Repositorios\ModeloRepositorio.cs" />
     <Compile Include="Repositorios\OrdenProduccionRepositorio.cs" />
     <Compile Include="Repositorios\TurnoRepositorio.cs" />
+    <Compile Include="Repositorios\UsuarioRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ControlCalidad.Servidor.Dominio\ControlCalidad.Servidor.Dominio.csproj">

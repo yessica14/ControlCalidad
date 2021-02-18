@@ -92,6 +92,18 @@
   <wsdl:message name="IControlCalidadServicio_EliminarModelo_OutputMessage">
     <wsdl:part name="parameters" element="tns:EliminarModeloResponse" />
   </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ComprobarLogueo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobarLogueo" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ComprobarLogueo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobarLogueoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerUsuarioPorId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerUsuarioPorId" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerUsuarioPorId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerUsuarioPorIdResponse" />
+  </wsdl:message>
   <wsdl:portType name="IControlCalidadServicio">
     <wsdl:operation name="ObtenerLineas">
       <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerLineas" message="tns:IControlCalidadServicio_ObtenerLineas_InputMessage" />
@@ -148,6 +160,14 @@
     <wsdl:operation name="EliminarModelo">
       <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/EliminarModelo" message="tns:IControlCalidadServicio_EliminarModelo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/EliminarModeloResponse" message="tns:IControlCalidadServicio_EliminarModelo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ComprobarLogueo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ComprobarLogueo" message="tns:IControlCalidadServicio_ComprobarLogueo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ComprobarLogueoResponse" message="tns:IControlCalidadServicio_ComprobarLogueo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUsuarioPorId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerUsuarioPorId" message="tns:IControlCalidadServicio_ObtenerUsuarioPorId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerUsuarioPorIdResponse" message="tns:IControlCalidadServicio_ObtenerUsuarioPorId_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IControlCalidadServicio" type="tns:IControlCalidadServicio">
@@ -271,6 +291,24 @@
     </wsdl:operation>
     <wsdl:operation name="EliminarModelo">
       <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/EliminarModelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComprobarLogueo">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ComprobarLogueo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUsuarioPorId">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ObtenerUsuarioPorId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

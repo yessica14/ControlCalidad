@@ -50,6 +50,8 @@
     <Compile Include="Entidades\LineaDto.cs" />
     <Compile Include="Entidades\ModeloDto.cs" />
     <Compile Include="Entidades\OrdenProduccionDto.cs" />
+    <Compile Include="Entidades\TipoUsuarioDto.cs" />
+    <Compile Include="Entidades\UsuarioDto.cs" />
     <Compile Include="IControlCalidadServicio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ControlCalidadServicio.cs" />
