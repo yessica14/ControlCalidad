@@ -21,7 +21,6 @@ namespace ControlCalidad.Servidor.Servicio
 
         #endregion
 
-
         #region COLOR
 
         [OperationContract]
@@ -45,7 +44,6 @@ namespace ControlCalidad.Servidor.Servicio
 
         #endregion
 
-
         #region MODELO
 
         [OperationContract]
@@ -66,6 +64,16 @@ namespace ControlCalidad.Servidor.Servicio
         [OperationContract]
         bool EliminarModelo(ModeloDto modelo);
 
+
+        #endregion
+
+        #region USUARIO
+
+        [OperationContract]
+        UsuarioDto ComprobarLogueo(string nombre, string contraseña);
+
+        [OperationContract]
+        UsuarioDto ObtenerUsuarioPorId(int id);
 
         #endregion
     }

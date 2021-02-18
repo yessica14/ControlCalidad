@@ -43,4 +43,33 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ModeloDto" nillable="true" type="tns:ModeloDto" />
+  <xs:complexType name="UsuarioDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Contraseña" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoDeUsuario" type="tns:TipoUsuarioDto" />
+      <xs:element minOccurs="0" name="UsuarioDeEmpleado" nillable="true" type="tns:EmpleadoDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UsuarioDto" nillable="true" type="tns:UsuarioDto" />
+  <xs:simpleType name="TipoUsuarioDto">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Administrador" />
+      <xs:enumeration value="SupervisorLinea" />
+      <xs:enumeration value="SupervisorCalidad" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TipoUsuarioDto" nillable="true" type="tns:TipoUsuarioDto" />
+  <xs:complexType name="EmpleadoDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Apellido" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CorreoElectronico" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Documento" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="tns:UsuarioDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmpleadoDto" nillable="true" type="tns:EmpleadoDto" />
 </xs:schema>

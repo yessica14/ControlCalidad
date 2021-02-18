@@ -56,7 +56,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
             Singleton.getInstancia().AsignarDatosAEmpresa(empresa);
         }
 
-        public Empleado BuscarEmpleadoPorId(int id)
+        public static Empleado BuscarEmpleadoPorId(int id)
         {
             var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
 

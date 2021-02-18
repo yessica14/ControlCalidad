@@ -1,5 +1,7 @@
-﻿
+﻿@using ControlCalidad.Cliente.AccesoExterno
+
 @{
+    var usuario = Adaptador.ObtenerUsuarioPorId(int.Parse(Session["Session_Usuario_Id"].ToString()));
 }
 <!DOCTYPE html>
 
@@ -102,19 +104,14 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-laptop"></i>
-                    <span>Ver Articulos</span>
+                    <span>Modulos</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/Articulo/Index/"><i class="fas fa-globe-americas mr-2"></i>Todos</a>
-                        <a class="collapse-item" href="/Articulo/Index/?idTipoArticulo=1"><i class="fa fa-newspaper mr-2"></i>Actualidad</a>
-                        <a class="collapse-item" href="/Articulo/Index/?idTipoArticulo=2"><i class="fas fa-film mr-2"></i>Espectaculo</a>
-                        <a class="collapse-item" href="/Articulo/Index/?idTipoArticulo=3"><i class="fas fa-users mr-2"></i>Sociales</a>
-                        <a class="collapse-item" href="/Articulo/Index/?idTipoArticulo=4"><i class="far fa-futbol mr-2"></i>Deportes</a>
+                        <a class="collapse-item" href="/Articulo/ListaArticulos"><i class="fas fa-cloud-upload-alt mr-2"></i>Registrar Defectos</a>
                     </div>
                 </div>
             </li>
-
 
             <!-- Nav Item - Utilities Collapse Menu -->
 
@@ -125,14 +122,9 @@
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-
-                        <a class="collapse-item" href="/Articulo/ListaArticulos"><i class="fa fa-newspaper mr-2"></i>Mis Articulos</a>
-
-                        <a class="collapse-item" href="/Usuario/VerPerfil/"><i class="fas fa-male mr-3"></i>Mi Perfil</a>
-
-                        <a class="collapse-item" href="/Usuario/ListaUsuarios/"><i class="fas fa-users-cog mr-2"></i>Usuarios</a>
-
-
+                        <a class="collapse-item" href="/Color/Index/"><i class="fas fa-palette mr-2"></i>Colores</a>
+                        <a class="collapse-item" href="/Modelo/Index/"><i class="fas fa-socks mr-2"></i>Modelos</a>
+                        <a class="collapse-item" href="/OrdenProduccion/Index/"><i class="fas fa-file-signature mr-2"></i>Orden Produccion</a>
                     </div>
                 </div>
             </li>
@@ -196,15 +188,15 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-light-900 small"><b>usuario.NickName</b></span>
+                                <span class="mr-2 d-none d-lg-inline text-light-900 small"><b>@usuario.Nombre (@usuario.TipoDeUsuario)</b></span>
                                 <img class="img-profile rounded-circle"
-                                     src="~/Resource/imagenes/Usuarios/usuario.Imagen">
+                                     src="~/Resource/imagenes/Usuarios/default.png">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                  aria-labelledby="userDropdown">
 
-                                <a class="dropdown-item" href="/Usuario/VerPerfil">
+                                <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Mi Perfil
                                 </a>
