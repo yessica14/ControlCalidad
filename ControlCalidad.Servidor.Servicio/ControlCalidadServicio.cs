@@ -222,7 +222,7 @@ namespace ControlCalidad.Servidor.Servicio
                 return false;
             }
         }
-
+        
         #endregion
 
         #region USUARIO
@@ -311,6 +311,53 @@ namespace ControlCalidad.Servidor.Servicio
         }
 
         #endregion
+
+        #region ORDENPRODUCCION
+
+        public OrdenProduccionDto[] ObtenerTodasLasOrdenProduccion()
+        {
+            var listaDom = OrdenProduccionRepositorio.ObtenerTodasLasOrdenProduccion();
+
+            var listaDto = new List<OrdenProduccionDto>();
+
+            foreach (var item in listaDom)
+            {
+                var ordenProduccionDto = new OrdenProduccionDto();
+               
+                object estadoOPDto;
+
+                switch (item.EstadoDeOP)
+                {
+                    case EstadoOP.Iniciado:
+                    default:
+                        estadoOPDto = EstadoOPDto.Iniciado;
+                        break;
+                    case EstadoOP.Pausado:
+                        estadoOPDto = EstadoOPDto.Pausado;
+                        break;
+                    case EstadoOP.Continuado:
+                        estadoOPDto = EstadoOPDto.Continuado;
+                        break;
+                    case EstadoOP.Finalizado:
+                        estadoOPDto = EstadoOPDto.Finalizado;
+                        break;
+                }
+                ordenProduccionDto.EstadoDeOP = (EstadoOPDto)estadoOPDto;
+
+                ordenProduccionDto.Numero = item.Numero;
+
+                var lineaDto = new LineaDto();
+                lineaDto.Descripcion = item.LineaTrabajo.Descripcion;
+                ordenProduccionDto.LineaTrabajo = lineaDto;
+
+                listaDto.Add(ordenProduccionDto);
+            }
+
+            return listaDto.ToArray();
+
+        }
+        #endregion
+
 
     }
 

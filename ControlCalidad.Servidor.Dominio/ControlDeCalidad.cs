@@ -22,6 +22,7 @@ namespace ControlCalidad.Servidor.Dominio
         public List<OrdenProduccion> ListaDeOrdenesDeProduccion = new List<OrdenProduccion>();
         public List<Defecto> ListaDeDefectos = new List<Defecto>();
         public List<Turno> ListaDeTurnos = new List<Turno>();
+        public List<Hallazgo> ListaDeHallazgos = new List<Hallazgo>();
 
 
 

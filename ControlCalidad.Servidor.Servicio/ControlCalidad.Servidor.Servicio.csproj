@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Entidades\ColorDto.cs" />
     <Compile Include="Entidades\EmpleadoDto.cs" />
+    <Compile Include="Entidades\EstadoOPDto.cs" />
     <Compile Include="Entidades\LineaDto.cs" />
     <Compile Include="Entidades\ModeloDto.cs" />
     <Compile Include="Entidades\OrdenProduccionDto.cs" />
