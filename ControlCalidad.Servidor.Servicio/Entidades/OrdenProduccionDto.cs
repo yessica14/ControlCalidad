@@ -25,6 +25,8 @@ namespace ControlCalidad.Servidor.Servicio.Entidades
         [DataMember]
         public LineaDto LineaTrabajo { get; set; }
         [DataMember]
+        public List<HorarioDto> ListaDeHorario { get; set; }
+        [DataMember]
         public EmpleadoDto SupervisorCalidad { get; set; }
 
     }

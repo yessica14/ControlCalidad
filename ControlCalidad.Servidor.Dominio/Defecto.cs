@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ControlCalidad.Servidor.Dominio
 {
+
     public class Defecto
     {
         public int Numero { get; set; }

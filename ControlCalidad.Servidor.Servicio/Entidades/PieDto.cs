@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ControlCalidad.Servidor.Dominio
+namespace ControlCalidad.Servidor.Servicio.Entidades
 {
-    public enum Pie
+    public enum PieDto
     {
         Izquierdo,
         Derecho
