@@ -12,6 +12,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
     {
         private ControlDeCalidad empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
         private EmpleadoRepositorio empleadoServicio = new EmpleadoRepositorio();
+        private UsuarioRepositorio usuarioServicio = new UsuarioRepositorio();
         private LineaRepositorio lineaServicio = new LineaRepositorio();
         private ColorRepositorio colorServicio = new ColorRepositorio();
         private ModeloRepositorio modeloServicio = new ModeloRepositorio();
@@ -19,6 +20,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
         public void GenerarDatosAutomaticamente()
         {
             empleadoServicio.CargarEmpleados();
+            usuarioServicio.CargarUsuarios();
             lineaServicio.CargarLineas();
             colorServicio.CargarColores();
             modeloServicio.CargarModelos();

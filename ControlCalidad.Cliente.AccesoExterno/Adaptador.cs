@@ -77,8 +77,6 @@ namespace ControlCalidad.Cliente.AccesoExterno
             }
         }
 
-
-
         #endregion
 
         #region MODELO
@@ -128,6 +126,26 @@ namespace ControlCalidad.Cliente.AccesoExterno
             using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
             {
                 return servidor.EliminarModelo(modelo);
+            }
+        }
+
+        #endregion
+
+        #region USUARIO
+
+        public static UsuarioDto ComprobarLogueo(string nombre, string contraseña)
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.ComprobarLogueo(nombre, contraseña);
+            }
+        }
+
+        public static UsuarioDto ObtenerUsuarioPorId(int id)
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.ObtenerUsuarioPorId(id);
             }
         }
 

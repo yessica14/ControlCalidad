@@ -23,15 +23,16 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
-            string mensaje = "error intencial!!";
-            //var usuario = _blogArticuloServicio.ObtenerUsuarioPorNickYPass(model.Nick, model.Password, ref mensaje);
-
-            if (!string.IsNullOrEmpty(mensaje))
+            var usuarioDto = Adaptador.ComprobarLogueo(model.Nick, model.Password);
+            
+            if (usuarioDto == null)
             {
-                model.ErrorLogin = mensaje;
+                model.ErrorLogin = "El nombre y/o la contraseña no son correctos o el usuario no existe";
                 return View(model);
             }
-            Session["Session_Usuario_Id"] = 0;
+
+            Session["Session_Usuario_Id"] = usuarioDto.Id;
+            
             return RedirectToAction("Index", "ControlCalidad");
         }
     }

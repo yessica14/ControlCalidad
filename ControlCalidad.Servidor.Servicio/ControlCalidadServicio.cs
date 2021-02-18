@@ -223,7 +223,93 @@ namespace ControlCalidad.Servidor.Servicio
             }
         }
 
-       
+        #endregion
+
+        #region USUARIO
+
+        public UsuarioDto ComprobarLogueo(string nombre, string contraseña)
+        {
+            var usuarioDom = UsuarioRepositorio.ComprobarLogueo(nombre, contraseña);
+
+            if (usuarioDom == null)
+                return null;
+
+            object tipoUsuarioDto;
+            switch (usuarioDom.TipoDeUsuario)
+            {
+                case TipoUsuario.Administrador:
+                    tipoUsuarioDto = TipoUsuarioDto.Administrador;
+                    break;
+                case TipoUsuario.SupervisorLinea:
+                    tipoUsuarioDto = TipoUsuarioDto.SupervisorLinea;
+                    break;
+                case TipoUsuario.SupervisorCalidad:
+                    tipoUsuarioDto = TipoUsuarioDto.SupervisorCalidad;
+                    break;
+                default:
+                    tipoUsuarioDto = TipoUsuarioDto.Administrador;
+                    break;
+            }
+
+            var usuarioDto = new UsuarioDto()
+            {
+                Id = usuarioDom.Id,
+                Nombre = usuarioDom.Nombre,
+                Contraseña = usuarioDom.Contraseña,
+                TipoDeUsuario = (TipoUsuarioDto)tipoUsuarioDto,
+                UsuarioDeEmpleado = new EmpleadoDto()
+                {
+                    Id = usuarioDom.UsuarioDeEmpleado.Id,
+                    Documento = usuarioDom.UsuarioDeEmpleado.Documento,
+                    Nombre = usuarioDom.UsuarioDeEmpleado.Nombre,
+                    Apellido = usuarioDom.UsuarioDeEmpleado.Apellido,
+                    CorreoElectronico = usuarioDom.UsuarioDeEmpleado.CorreoElectronico,
+                }
+            };
+
+            return (usuarioDto);
+        }
+
+        public UsuarioDto ObtenerUsuarioPorId(int id)
+        {
+            var usuarioDom = UsuarioRepositorio.ObtenerUsuarioPorId(id);
+
+            object tipoUsuarioDto;
+            switch (usuarioDom.TipoDeUsuario)
+            {
+                case TipoUsuario.Administrador:
+                    tipoUsuarioDto = TipoUsuarioDto.Administrador;
+                    break;
+                case TipoUsuario.SupervisorLinea:
+                    tipoUsuarioDto = TipoUsuarioDto.SupervisorLinea;
+                    break;
+                case TipoUsuario.SupervisorCalidad:
+                    tipoUsuarioDto = TipoUsuarioDto.SupervisorCalidad;
+                    break;
+                default:
+                    tipoUsuarioDto = TipoUsuarioDto.Administrador;
+                    break;
+            }
+
+            var usuarioDto = new UsuarioDto()
+            {
+                Id = usuarioDom.Id,
+                Nombre = usuarioDom.Nombre,
+                Contraseña = usuarioDom.Contraseña,
+                TipoDeUsuario = (TipoUsuarioDto)tipoUsuarioDto,
+                UsuarioDeEmpleado = new EmpleadoDto()
+                {
+                    Id = usuarioDom.UsuarioDeEmpleado.Id,
+                    Documento = usuarioDom.UsuarioDeEmpleado.Documento,
+                    Nombre = usuarioDom.UsuarioDeEmpleado.Nombre,
+                    Apellido = usuarioDom.UsuarioDeEmpleado.Apellido,
+                    CorreoElectronico = usuarioDom.UsuarioDeEmpleado.CorreoElectronico,
+                }
+            };
+
+            return (usuarioDto);
+        }
+
         #endregion
 
     }

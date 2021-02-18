@@ -7,7 +7,26 @@
       <xs:element minOccurs="0" name="Documento" type="xs:int" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UsuarioEmpleado" nillable="true" type="tns:Usuario" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Empleado" nillable="true" type="tns:Empleado" />
+  <xs:complexType name="Usuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Contraseña" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoDeUsuario" type="tns:TipoUsuario" />
+      <xs:element minOccurs="0" name="UsuarioDeEmpleado" nillable="true" type="tns:Empleado" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Usuario" nillable="true" type="tns:Usuario" />
+  <xs:simpleType name="TipoUsuario">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Administrador" />
+      <xs:enumeration value="SupervisorLinea" />
+      <xs:enumeration value="SupervisorCalidad" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TipoUsuario" nillable="true" type="tns:TipoUsuario" />
 </xs:schema>
