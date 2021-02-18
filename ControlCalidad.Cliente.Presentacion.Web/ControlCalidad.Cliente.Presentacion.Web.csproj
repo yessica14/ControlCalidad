@@ -126,9 +126,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Color\EditarColoresViewModel.cs" />
+    <Compile Include="Models\Color\GestionAbmViewModel.cs" />
+    <Compile Include="Models\Color\IndexViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
-    <Compile Include="Models\Color\ListaColoresViewModel.cs" />
     <Compile Include="Models\Linea\IndexViewModel.cs" />
     <Compile Include="Models\Modelo\GestionABMViewModel.cs" />
     <Compile Include="Models\Modelo\IndexViewModel.cs" />
@@ -2070,9 +2070,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Color\Index.cshtml" />
-    <Content Include="Views\Color\ListaColores.cshtml" />
-    <Content Include="Views\Color\EditarColores.cshtml" />
     <Content Include="Views\Shared\_LoginSitie.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Shared\_PrincipalSitie.cshtml" />
@@ -2080,7 +2077,8 @@
     <Content Include="Views\Linea\Index.cshtml" />
     <Content Include="Views\Modelo\Index.cshtml" />
     <Content Include="Views\Modelo\GestionABM.cshtml" />
-    <Content Include="Views\Modelo\asdasd.cshtml" />
+    <Content Include="Views\Color\Index.cshtml" />
+    <Content Include="Views\Color\GestionABM.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

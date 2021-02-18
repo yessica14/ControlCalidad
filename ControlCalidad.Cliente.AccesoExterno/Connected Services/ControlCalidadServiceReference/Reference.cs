@@ -384,6 +384,30 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerColorPorId", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerColorPorIdResponse")]
         System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto> ObtenerColorPorIdAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/AgregarColor", ReplyAction="http://tempuri.org/IControlCalidadServicio/AgregarColorResponse")]
+        bool AgregarColor(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto color);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/AgregarColor", ReplyAction="http://tempuri.org/IControlCalidadServicio/AgregarColorResponse")]
+        System.Threading.Tasks.Task<bool> AgregarColorAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto color);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ModificarColor", ReplyAction="http://tempuri.org/IControlCalidadServicio/ModificarColorResponse")]
+        bool ModificarColor(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto color);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ModificarColor", ReplyAction="http://tempuri.org/IControlCalidadServicio/ModificarColorResponse")]
+        System.Threading.Tasks.Task<bool> ModificarColorAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto color);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/EliminarColor", ReplyAction="http://tempuri.org/IControlCalidadServicio/EliminarColorResponse")]
+        bool EliminarColor(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto color);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/EliminarColor", ReplyAction="http://tempuri.org/IControlCalidadServicio/EliminarColorResponse")]
+        System.Threading.Tasks.Task<bool> EliminarColorAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto color);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoIdColor", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoIdColorResponse")]
+        int ObtenerUltimoIdColor();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoIdColor", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoIdColorResponse")]
+        System.Threading.Tasks.Task<int> ObtenerUltimoIdColorAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerTodosLosModelos", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerTodosLosModelosResponse")]
         ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ModeloDto[] ObtenerTodosLosModelos();
         
@@ -478,6 +502,38 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         
         public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto> ObtenerColorPorIdAsync(int id) {
             return base.Channel.ObtenerColorPorIdAsync(id);
+        }
+        
+        public bool AgregarColor(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto color) {
+            return base.Channel.AgregarColor(color);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AgregarColorAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto color) {
+            return base.Channel.AgregarColorAsync(color);
+        }
+        
+        public bool ModificarColor(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto color) {
+            return base.Channel.ModificarColor(color);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ModificarColorAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto color) {
+            return base.Channel.ModificarColorAsync(color);
+        }
+        
+        public bool EliminarColor(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto color) {
+            return base.Channel.EliminarColor(color);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EliminarColorAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto color) {
+            return base.Channel.EliminarColorAsync(color);
+        }
+        
+        public int ObtenerUltimoIdColor() {
+            return base.Channel.ObtenerUltimoIdColor();
+        }
+        
+        public System.Threading.Tasks.Task<int> ObtenerUltimoIdColorAsync() {
+            return base.Channel.ObtenerUltimoIdColorAsync();
         }
         
         public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ModeloDto[] ObtenerTodosLosModelos() {

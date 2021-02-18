@@ -45,6 +45,39 @@ namespace ControlCalidad.Cliente.AccesoExterno
                 return servidor.ObtenerColorPorId(id);
             }
         }
+        public static bool AgregarColor(ColorDto color)
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.AgregarColor(color);
+            }
+        }
+
+        public static bool ModificarColor(ColorDto color)
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.ModificarColor(color);
+            }
+        }
+
+        public static bool EliminarColor(ColorDto color)
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.EliminarColor(color);
+            }
+        }
+
+        public static int ObtenerUltimoId()
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.ObtenerUltimoIdColor();
+            }
+        }
+
+
 
         #endregion
 

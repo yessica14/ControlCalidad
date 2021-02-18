@@ -41,12 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ColorDatos.cs" />
-    <Compile Include="DefectoDatos.cs" />
-    <Compile Include="EmpleadoDatos.cs" />
-    <Compile Include="HorarioDatos.cs" />
-    <Compile Include="ModeloDatos.cs" />
-    <Compile Include="OrdenProduccionDatos.cs" />
     <Compile Include="Persistencia\Singleton.cs" />
     <Compile Include="Repositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -55,7 +49,6 @@
     <Compile Include="Repositorios\EmpleadoRepositorio.cs" />
     <Compile Include="Repositorios\LineaRepositorio.cs" />
     <Compile Include="Repositorios\ModeloRepositorio.cs" />
-    <Compile Include="TurnoDatos.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ControlCalidad.Servidor.Dominio\ControlCalidad.Servidor.Dominio.csproj">

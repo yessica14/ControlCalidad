@@ -51,6 +51,60 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="AgregarColor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="color" nillable="true" type="q5:ColorDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarColorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AgregarColorResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarColor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="color" nillable="true" type="q6:ColorDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarColorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ModificarColorResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarColor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="color" nillable="true" type="q7:ColorDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarColorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EliminarColorResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerUltimoIdColor">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerUltimoIdColorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ObtenerUltimoIdColorResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ObtenerTodosLosModelos">
     <xs:complexType>
       <xs:sequence />
@@ -59,7 +113,7 @@
   <xs:element name="ObtenerTodosLosModelosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="ObtenerTodosLosModelosResult" nillable="true" type="q5:ArrayOfModeloDto" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="ObtenerTodosLosModelosResult" nillable="true" type="q8:ArrayOfModeloDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -73,7 +127,7 @@
   <xs:element name="ObtenerModeloPorSkuResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="ObtenerModeloPorSkuResult" nillable="true" type="q6:ModeloDto" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="ObtenerModeloPorSkuResult" nillable="true" type="q9:ModeloDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -92,7 +146,7 @@
   <xs:element name="GuardarModelo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="modelo" nillable="true" type="q7:ModeloDto" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="modelo" nillable="true" type="q10:ModeloDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -106,7 +160,7 @@
   <xs:element name="ModificarModelo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="modelo" nillable="true" type="q8:ModeloDto" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="modelo" nillable="true" type="q11:ModeloDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -120,7 +174,7 @@
   <xs:element name="EliminarModelo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="modelo" nillable="true" type="q9:ModeloDto" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="modelo" nillable="true" type="q12:ModeloDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

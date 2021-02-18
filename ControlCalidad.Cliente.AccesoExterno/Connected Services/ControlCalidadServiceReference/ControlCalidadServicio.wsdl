@@ -32,6 +32,30 @@
   <wsdl:message name="IControlCalidadServicio_ObtenerColorPorId_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerColorPorIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_AgregarColor_InputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarColor" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_AgregarColor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarColorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ModificarColor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarColor" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ModificarColor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarColorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_EliminarColor_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarColor" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_EliminarColor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarColorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerUltimoIdColor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerUltimoIdColor" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerUltimoIdColor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerUltimoIdColorResponse" />
+  </wsdl:message>
   <wsdl:message name="IControlCalidadServicio_ObtenerTodosLosModelos_InputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerTodosLosModelos" />
   </wsdl:message>
@@ -84,6 +108,22 @@
     <wsdl:operation name="ObtenerColorPorId">
       <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerColorPorId" message="tns:IControlCalidadServicio_ObtenerColorPorId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerColorPorIdResponse" message="tns:IControlCalidadServicio_ObtenerColorPorId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AgregarColor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/AgregarColor" message="tns:IControlCalidadServicio_AgregarColor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/AgregarColorResponse" message="tns:IControlCalidadServicio_AgregarColor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarColor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ModificarColor" message="tns:IControlCalidadServicio_ModificarColor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ModificarColorResponse" message="tns:IControlCalidadServicio_ModificarColor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarColor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/EliminarColor" message="tns:IControlCalidadServicio_EliminarColor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/EliminarColorResponse" message="tns:IControlCalidadServicio_EliminarColor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUltimoIdColor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoIdColor" message="tns:IControlCalidadServicio_ObtenerUltimoIdColor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoIdColorResponse" message="tns:IControlCalidadServicio_ObtenerUltimoIdColor_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ObtenerTodosLosModelos">
       <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerTodosLosModelos" message="tns:IControlCalidadServicio_ObtenerTodosLosModelos_InputMessage" />
@@ -141,6 +181,42 @@
     </wsdl:operation>
     <wsdl:operation name="ObtenerColorPorId">
       <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ObtenerColorPorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarColor">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/AgregarColor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarColor">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ModificarColor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarColor">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/EliminarColor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUltimoIdColor">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoIdColor" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

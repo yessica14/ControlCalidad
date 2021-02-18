@@ -1,4 +1,6 @@
-﻿using ControlCalidad.Cliente.Presentacion.Web.Models.Color;
+﻿using ControlCalidad.Cliente.AccesoExterno;
+using ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference;
+using ControlCalidad.Cliente.Presentacion.Web.Models.Color;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,19 +14,106 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
         // GET: Color
         public ActionResult Index()
         {
-
-            return View();
+            var model = new IndexViewModel();
+            model.ListaColores = Adaptador.ObtenerColores().ToList();
+            return View(model);
         }
-        public ActionResult ListaColores()
+        
+        [HttpPost]
+        public ActionResult EliminarColor(FormCollection collection)
         {
-            var model = new ListaColoresViewModel();
+            var colorDto = new ColorDto();
+            colorDto.Codigo = int.Parse(collection["nHiddenEliminar"].ToString());
+            var respuestaServer = Adaptador.EliminarColor(colorDto);
+
+            return RedirectToAction("Index", "Color");
+        }
+
+        [HttpGet]
+        public ActionResult GestionABM(string tipoGestion, string txtCodigo = "")
+        {
+            var model = new GestionAbmViewModel();
+            model.TipoGestion = tipoGestion;
+
+            switch (tipoGestion)
+            {
+                case "ALTA":
+                    var colorDto = new ColorDto();
+                    colorDto.Codigo = Adaptador.ObtenerUltimoId();
+
+                    model.Color = colorDto;
+
+                    break;
+
+                case "MODIFICACION":
+
+                    var colorDtoServer = Adaptador.ObtenerColorPorId(int.Parse(txtCodigo));
+                    model.Color = colorDtoServer;
+                    model.ValDescripcion = colorDtoServer.Descripcion;
+                    break;
+
+                default:
+                    RedirectToAction("Login", "Home");
+                    break;
+            }
+          
             return View(model);
         }
 
-        public ActionResult EditarColor()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult GestionABM(GestionAbmViewModel model, FormCollection collection)
         {
-            var model = new EditarColoresViewModel(); 
-            return View(model);
+            model.TipoGestion = collection["nHiddenTipoGestion"].ToString();
+
+            switch (model.TipoGestion)
+            {
+                case "ALTA":
+                    var colorDto = new ColorDto();
+                    colorDto.Codigo = Adaptador.ObtenerUltimoId();
+
+                    model.Color = colorDto;
+
+                    break;
+
+                case "MODIFICACION":
+
+                    var colorDtoServer = Adaptador.ObtenerColorPorId(int.Parse(collection["nHiddenCodigo"].ToString()));
+                    model.Color = colorDtoServer;
+                    //model.ValDescripcion = colorDtoServer.Descripcion;
+                    break;
+
+                default:
+                    RedirectToAction("Login", "Home");
+                    break;
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            model.Color.Descripcion = model.ValDescripcion;
+
+            switch (model.TipoGestion)
+            {
+                case "ALTA":
+                    Adaptador.AgregarColor(model.Color);
+                    break;
+
+                case "MODIFICACION":
+                    Adaptador.ModificarColor(model.Color);
+                    break;
+
+                default:
+                    RedirectToAction("Login", "Home");
+                    break;
+            }
+
+
+            return RedirectToAction("Index", "Color");
         }
+
     }
+
 }

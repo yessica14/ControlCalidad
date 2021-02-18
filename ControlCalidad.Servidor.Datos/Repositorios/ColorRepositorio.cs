@@ -41,10 +41,10 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
             Singleton.getInstancia().AsignarDatosAEmpresa(empresa);
         }
 
-        public int ObtenerUltimoId()
+        public static int ObtenerUltimoId()
         {
 
-            return Singleton.getInstancia().ObtenerDatosDeEmpresa().ListaDeColores.OrderBy(x => x.Codigo).FirstOrDefault().Codigo + 1;
+            return Singleton.getInstancia().ObtenerDatosDeEmpresa().ListaDeColores.OrderByDescending(x => x.Codigo).FirstOrDefault().Codigo + 1;
         }
 
         public static Color ObtenerColorPorId(int id)
@@ -58,18 +58,18 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
             return empresa.ListaDeColores.OrderBy(x => x.Descripcion).ToList();
         }
 
-        public void AgregarColor(Color color)
+        public static void AgregarColor(Color color)
         {
             Singleton.getInstancia().ObtenerDatosDeEmpresa().ListaDeColores.Add(color);
         }
 
-        public void ModificarColor(Color color)
+        public static void ModificarColor(Color color)
         {
             EliminarColor(color);
             AgregarColor(color);
         }
 
-        public void EliminarColor(Color color)
+        public static void EliminarColor(Color color)
         {
             Singleton.getInstancia().ObtenerDatosDeEmpresa().ListaDeColores.RemoveAll(_color => _color.Codigo == color.Codigo);
         }
