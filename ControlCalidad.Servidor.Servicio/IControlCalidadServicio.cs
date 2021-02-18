@@ -30,6 +30,19 @@ namespace ControlCalidad.Servidor.Servicio
         [OperationContract]
         ColorDto ObtenerColorPorId(int id);
 
+        [OperationContract]
+        bool AgregarColor(ColorDto color);
+
+        [OperationContract]
+        bool ModificarColor(ColorDto color);
+
+        [OperationContract]
+        bool EliminarColor(ColorDto color);
+
+        [OperationContract]
+        int ObtenerUltimoIdColor();
+
+
         #endregion
 
 

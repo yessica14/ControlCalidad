@@ -46,13 +46,21 @@ namespace ControlCalidad.Servidor.Servicio
 
         public ColorDto[] ObtenerColores()
         {
-            return ColorRepositorio
-                .ObtenerTodosLosColores().Select(c => new ColorDto
-                {
-                    Codigo = c.Codigo,
-                    Descripcion = c.Descripcion
-                })
-                .ToArray();
+            var listaDom = ColorRepositorio.ObtenerTodosLosColores();
+            var listaDto = new List<ColorDto>();
+
+            foreach (var item in listaDom)
+            {
+                var colorDto = new ColorDto();
+
+                colorDto.Codigo = item.Codigo;
+                colorDto.Descripcion = item.Descripcion;
+              
+                listaDto.Add(colorDto);
+            }
+
+            return listaDto.ToArray();
+
         }
 
         public ColorDto ObtenerColorPorId(int id)
@@ -65,6 +73,49 @@ namespace ControlCalidad.Servidor.Servicio
             };
         }
 
+        public bool AgregarColor(ColorDto colorDto)
+        {
+            var colorDom = new Color();
+            colorDom.Codigo = colorDto.Codigo;
+            colorDom.Descripcion = colorDto.Descripcion;
+
+            ColorRepositorio.AgregarColor(colorDom);
+
+            return true;
+
+        }
+
+        public bool ModificarColor(ColorDto colorDto)
+        {
+            var colorDom = new Color();
+            colorDom.Codigo = colorDto.Codigo;
+            colorDom.Descripcion = colorDto.Descripcion;
+
+            ColorRepositorio.ModificarColor(colorDom);
+
+            return true;
+        }
+
+        public bool EliminarColor(ColorDto _color)
+        {
+            try
+            {
+                var color = ColorRepositorio.ObtenerColorPorId(_color.Codigo);
+                ColorRepositorio.EliminarColor(color);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public int ObtenerUltimoIdColor()
+        {
+            return ColorRepositorio.ObtenerUltimoId();
+        }
+
+
         #endregion
 
 
@@ -72,19 +123,29 @@ namespace ControlCalidad.Servidor.Servicio
 
         public ModeloDto[] ObtenerTodosLosModelos()
         {
-            return ModeloRepositorio
-                .ObtenerTodosLosModelos().Select(m => new ModeloDto
-                {
-                    Sku = m.Sku,
-                    Denominacion = m.Denominacion,
-                    Objetivo = m.Objetivo,
-                    ColorModelo = new ColorDto()
-                    {
-                        Codigo = m.ColorModelo.Codigo,
-                        Descripcion = m.ColorModelo.Descripcion
-                    }
-                })
-                .ToArray();
+            var listaDom = ModeloRepositorio.ObtenerTodosLosModelos();
+
+            var listaDto = new List<ModeloDto>();
+
+            foreach (var item in listaDom)
+            {
+                var modeloDto = new ModeloDto();
+
+                modeloDto.Sku = item.Sku;
+                modeloDto.Denominacion = item.Denominacion;
+                modeloDto.Objetivo = item.Objetivo;
+
+                var colorDto = new ColorDto();
+                colorDto.Codigo = item.ColorModelo.Codigo;
+                colorDto.Descripcion = item.ColorModelo.Descripcion;
+
+                modeloDto.ColorModelo = colorDto;
+
+                listaDto.Add(modeloDto);
+            }
+
+            return listaDto.ToArray();
+
         }
 
         public ModeloDto ObtenerModeloPorSku(int sku)
@@ -162,6 +223,7 @@ namespace ControlCalidad.Servidor.Servicio
             }
         }
 
+       
         #endregion
 
     }

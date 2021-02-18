@@ -1,0 +1,47 @@
+﻿@using ControlCalidad.Cliente.Presentacion.Web.Models.Color
+@model GestionAbmViewModel
+@{
+    ViewBag.Title = "GestionABM";
+    Layout = "~/Views/Shared/_PrincipalSitie.cshtml";
+}
+
+<style media="screen">
+    #uploadForm,
+    #imagePreview {
+        width: 720px;
+        margin: 0 auto;
+    }
+
+    img {
+        max-width: 250px;
+        height: auto;
+    }
+</style>
+
+<div class="row">
+    <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
+        
+        <h3>@Model.TipoGestion de Color - Codigo: @Model.Color.Codigo.ToString()</h3>
+
+        @using (Html.BeginForm("GestionABM", "Color", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ValDescripcion, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.ValDescripcion, new { @class = "form-control", @placeholder = "....." })
+                @Html.ValidationMessageFor(m => m.ValDescripcion, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <input type="hidden" name="nHiddenTipoGestion" value="@Model.TipoGestion">
+                <input type="hidden" name="nHiddenCodigo" value="@Model.Color.Codigo">
+                <button class="btn btn-primary" type="submit">@Model.TipoGestion Color</button>
+                <a class="btn btn-secondary" href="/Color/Index">Cancelar</a>
+            </div>
+
+        }
+    </div>
+</div>
