@@ -14,6 +14,9 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
         // GET: Modelo
         public ActionResult Index()
         {
+            if (Session["Session_Usuario_Id"] == null)
+                return RedirectToAction("Login", "Home");
+
             var model = new IndexViewModel()
             {
                 Modelos = Adaptador.ObtenerModelos().ToList()
@@ -23,8 +26,8 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
 
         public ActionResult GestionABM(string tipoGestion, string txtSku = "")
         {
-            //if (Session["Session_Usuario_Id"] == null)
-            //return RedirectToAction("Login", "Home");
+            if (Session["Session_Usuario_Id"] == null)
+                return RedirectToAction("Login", "Home");
 
             if (!int.TryParse(txtSku, out int sku))
                 RedirectToAction("Login", "Home");
@@ -61,6 +64,9 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult GestionABM(GestionABMViewModel model, FormCollection collection)
         {
+            if (Session["Session_Usuario_Id"] == null)
+                return RedirectToAction("Login", "Home");
+
             var tipoGestion = collection["nHiddenTipoGestion"].ToString();
             var sku = int.Parse(collection["nHiddenSku"].ToString());
 
@@ -108,8 +114,8 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
         [HttpPost]
         public ActionResult EliminarModelo(FormCollection collection)
         {
-            //if (Session["Session_Usuario_Id"] == null)
-                //return RedirectToAction("Login", "Home");
+            if (Session["Session_Usuario_Id"] == null)
+                return RedirectToAction("Login", "Home");
 
             var sku = int.Parse(collection["nHiddenEliminar"].ToString());
             var modelo = Adaptador.ObtenerModeloPorSku(sku);

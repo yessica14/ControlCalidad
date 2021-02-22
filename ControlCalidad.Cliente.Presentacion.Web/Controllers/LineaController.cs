@@ -13,6 +13,9 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
         // GET: Linea
         public ActionResult Index()
         {
+            if (Session["Session_Usuario_Id"] == null)
+                return RedirectToAction("Login", "Home");
+
             var model = new IndexViewModel()
             {
                 Lineas = Adaptador.GetLineas().ToList()

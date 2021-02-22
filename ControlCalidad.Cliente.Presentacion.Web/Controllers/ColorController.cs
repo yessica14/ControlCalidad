@@ -14,6 +14,9 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
         // GET: Color
         public ActionResult Index()
         {
+            if (Session["Session_Usuario_Id"] == null)
+                return RedirectToAction("Login", "Home");
+
             var model = new IndexViewModel();
             model.ListaColores = Adaptador.ObtenerColores().ToList();
             return View(model);
@@ -22,6 +25,9 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
         [HttpPost]
         public ActionResult EliminarColor(FormCollection collection)
         {
+            if (Session["Session_Usuario_Id"] == null)
+                return RedirectToAction("Login", "Home");
+
             var colorDto = new ColorDto();
             colorDto.Codigo = int.Parse(collection["nHiddenEliminar"].ToString());
             var respuestaServer = Adaptador.EliminarColor(colorDto);
@@ -32,6 +38,9 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
         [HttpGet]
         public ActionResult GestionABM(string tipoGestion, string txtCodigo = "")
         {
+            if (Session["Session_Usuario_Id"] == null)
+                return RedirectToAction("Login", "Home");
+
             var model = new GestionAbmViewModel();
             model.TipoGestion = tipoGestion;
 
@@ -39,7 +48,7 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
             {
                 case "ALTA":
                     var colorDto = new ColorDto();
-                    colorDto.Codigo = Adaptador.ObtenerUltimoId();
+                    colorDto.Codigo = Adaptador.ObtenerUltimoIdColor();
 
                     model.Color = colorDto;
 
@@ -64,13 +73,16 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult GestionABM(GestionAbmViewModel model, FormCollection collection)
         {
+            if (Session["Session_Usuario_Id"] == null)
+                return RedirectToAction("Login", "Home");
+
             model.TipoGestion = collection["nHiddenTipoGestion"].ToString();
 
             switch (model.TipoGestion)
             {
                 case "ALTA":
                     var colorDto = new ColorDto();
-                    colorDto.Codigo = Adaptador.ObtenerUltimoId();
+                    colorDto.Codigo = Adaptador.ObtenerUltimoIdColor();
 
                     model.Color = colorDto;
 

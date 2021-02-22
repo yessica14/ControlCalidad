@@ -68,7 +68,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
             Singleton.getInstancia().AsignarDatosAEmpresa(empresa);
         }
 
-        public Linea ObtenerLineaPorId(int numero)
+        public static Linea ObtenerLineaPorId(int numero)
         {
             var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
             return empresa.ListaDeLineas.Where(x => x.Numero == numero).FirstOrDefault();

@@ -1,0 +1,76 @@
+﻿@using ControlCalidad.Cliente.Presentacion.Web.Models.OP
+@model IndexViewModel
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_PrincipalSitie.cshtml";
+}
+
+<style>
+    .image-sin-padding {
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+    }
+</style>
+<div class="row">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+        <h3>Listado de Orden de Produccion</h3>
+    </div>
+</div>
+
+@using (Html.BeginForm("BuscarUsuariosPorFiltro", "Usuario", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="searchText" placeholder="Buscar..." value="">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="row">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+        <div class="form-group">
+            <a href="/OP/Alta/"><button class="btn btn-success">Nuevo Orden de Produccion</button></a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-condensed table-hover">
+                <thead>
+                <th scope="col">#NUMERO</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Estado de Orden Produccion</th>
+                <th scope="col">Linea</th>
+                <th scope="col">Supervisor de Calidad</th>
+                </thead>
+
+                @foreach (var item in Model.ordenProduccionDto)
+                {
+            <tr>
+                <td>@item.Numero</td>
+                <td>@item.ModeloOP.Denominacion</td>
+                <td>@item.EstadoDeOP</td>
+                <td>@item.LineaTrabajo.Descripcion</td>
+                <td>@item.SupervisorCalidad.Apellido, @item.SupervisorCalidad.Nombre</td>
+                
+            </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
