@@ -23,7 +23,7 @@ namespace ControlCalidad.Servidor.Servicio
                 {
                     Numero = l.Numero,
                     Descripcion = l.Descripcion,
-                    SupervisorLinea = l.SupervisorLinea
+                    SupervisorLinea = Empleado_DeDomADto(l.SupervisorLinea)
                 })
                 .ToArray();
         }
@@ -40,7 +40,6 @@ namespace ControlCalidad.Servidor.Servicio
         }
 
         #endregion
-
 
         #region COLOR
 
@@ -117,7 +116,6 @@ namespace ControlCalidad.Servidor.Servicio
 
 
         #endregion
-
 
         #region MODELO
 
@@ -312,7 +310,7 @@ namespace ControlCalidad.Servidor.Servicio
 
         #endregion
 
-        #region ORDENPRODUCCION
+        #region ORDEN_PRODUCCION
 
         public OrdenProduccionDto[] ObtenerTodasLasOrdenProduccion()
         {
@@ -323,9 +321,10 @@ namespace ControlCalidad.Servidor.Servicio
             foreach (var item in listaDom)
             {
                 var ordenProduccionDto = new OrdenProduccionDto();
-
+                ordenProduccionDto.Numero = item.Numero;
+                ordenProduccionDto.ParesPrimeraParHermanado = item.ParesPrimeraParHermanado;
+                ordenProduccionDto.ParesSegundaPorHermanado = item.ParesSegundaPorHermanado;
                 object estadoOPDto;
-
                 switch (item.EstadoDeOP)
                 {
                     case EstadoOP.Iniciado:
@@ -343,30 +342,11 @@ namespace ControlCalidad.Servidor.Servicio
                         break;
                 }
                 ordenProduccionDto.EstadoDeOP = (EstadoOPDto)estadoOPDto;
-
-                ordenProduccionDto.Numero = item.Numero;
-
-                var lineaDto = new LineaDto();
-
-                lineaDto.Descripcion = item.LineaTrabajo.Descripcion;
-                ordenProduccionDto.LineaTrabajo = lineaDto;
-
-                var modeloDto = new ModeloDto();
-                modeloDto.Denominacion = item.ModeloOP.Denominacion;
-
-                ordenProduccionDto.ModeloOP = modeloDto;
-
-
-                var supervisorCalidadDto = new EmpleadoDto();
-
-                supervisorCalidadDto.Nombre = item.SupervisorCalidad.Nombre;
-                supervisorCalidadDto.Apellido = item.SupervisorCalidad.Apellido;
-
-                ordenProduccionDto.SupervisorCalidad = supervisorCalidadDto;
-
-
-
-
+                ordenProduccionDto.ModeloOP = Modelo_DeDomADto(item.ModeloOP);
+                ordenProduccionDto.ColorCalzado = Color_DeDomADto(item.ColorCalzado);
+                ordenProduccionDto.LineaTrabajo = Linea_DeDomADto(item.LineaTrabajo);
+                ordenProduccionDto.ListaDeHorario = null; // falta implementarrr
+                ordenProduccionDto.SupervisorCalidad = Empleado_DeDomADto(item.SupervisorCalidad);
 
                 listaDto.Add(ordenProduccionDto);
             }
@@ -397,7 +377,133 @@ namespace ControlCalidad.Servidor.Servicio
         }
         #endregion
 
+        #region De_Domino_A_Dto
 
+        private EmpleadoDto Empleado_DeDomADto(Empleado empleadoDom)
+        {
+            if (empleadoDom == null)
+                return null;
+
+            var empleadoDto = new EmpleadoDto();
+            empleadoDto.Id = empleadoDom.Id;
+            empleadoDto.Documento = empleadoDom.Documento;
+            empleadoDto.Nombre = empleadoDom.Nombre;
+            empleadoDto.Apellido = empleadoDom.Apellido;
+            empleadoDto.CorreoElectronico = empleadoDom.CorreoElectronico;
+            empleadoDto.Usuario = Usuario_DeDomADto(empleadoDom.UsuarioEmpleado);
+            
+            return (empleadoDto);
+        }
+
+        private UsuarioDto Usuario_DeDomADto(Usuario usuarioDom)
+        {
+            if (usuarioDom == null)
+                return null;
+
+            var usuarioDto = new UsuarioDto();
+            usuarioDto.Id = usuarioDom.Id;
+            usuarioDto.Nombre = usuarioDom.Nombre;
+            usuarioDto.Contraseña = usuarioDom.Contraseña;
+            if (usuarioDom.UsuarioDeEmpleado != null)
+            {
+                usuarioDto.UsuarioDeEmpleado = Empleado_DeDomADto(usuarioDom.UsuarioDeEmpleado);
+            }
+            else
+                usuarioDto.UsuarioDeEmpleado = null;
+
+            switch (usuarioDom.TipoDeUsuario)
+            {
+                case TipoUsuario.Administrador:
+                    usuarioDto.TipoDeUsuario = TipoUsuarioDto.Administrador;
+                    break;
+                case TipoUsuario.SupervisorLinea:
+                    usuarioDto.TipoDeUsuario = TipoUsuarioDto.SupervisorLinea;
+                    break;
+                case TipoUsuario.SupervisorCalidad:
+                    usuarioDto.TipoDeUsuario = TipoUsuarioDto.SupervisorCalidad;
+                    break;
+                default:
+                    usuarioDto.TipoDeUsuario = TipoUsuarioDto.Administrador;
+                    break;
+            }
+
+            return (usuarioDto);
+        }
+
+        private ModeloDto Modelo_DeDomADto(Modelo modeloDom)
+        {
+            if (modeloDom == null)
+                return null;
+
+            var modeloDto = new ModeloDto();
+            modeloDto.Sku = modeloDom.Sku;
+            modeloDto.Denominacion = modeloDom.Denominacion;
+            modeloDto.Objetivo = modeloDom.Objetivo;
+            modeloDto.ColorModelo = Color_DeDomADto(modeloDom.ColorModelo);
+            
+            return (modeloDto);
+        }
+
+        private ColorDto Color_DeDomADto(Color colorDom)
+        {
+            if (colorDom == null)
+                return null;
+
+            var colorDto = new ColorDto();
+            colorDto.Codigo = colorDom.Codigo;
+            colorDto.Descripcion = colorDom.Descripcion;
+            return (colorDto);
+        }
+
+        private LineaDto Linea_DeDomADto(Linea lineaDom)
+        {
+            if (lineaDom == null)
+                return null;
+
+            var lineaDto = new LineaDto();
+            lineaDto.Numero = lineaDom.Numero;
+            lineaDto.Descripcion = lineaDom.Descripcion;
+            lineaDto.SupervisorLinea = Empleado_DeDomADto(lineaDom.SupervisorLinea);
+
+            return (lineaDto);
+        }
+
+        private OrdenProduccionDto OrdenProduccion_DeDomADto(OrdenProduccion opDom)
+        {
+            if (opDom == null)
+                return null;
+
+            var opDto = new OrdenProduccionDto();
+            opDto.Numero = opDom.Numero;
+            opDto.ParesPrimeraParHermanado = opDom.ParesPrimeraParHermanado;
+            opDto.ParesSegundaPorHermanado = opDom.ParesSegundaPorHermanado;
+            switch (opDom.EstadoDeOP)
+            {
+                case EstadoOP.Iniciado:
+                    opDto.EstadoDeOP = EstadoOPDto.Iniciado;
+                    break;
+                case EstadoOP.Pausado:
+                    opDto.EstadoDeOP = EstadoOPDto.Pausado;
+                    break;
+                case EstadoOP.Continuado:
+                    opDto.EstadoDeOP = EstadoOPDto.Continuado;
+                    break;
+                case EstadoOP.Finalizado:
+                    opDto.EstadoDeOP = EstadoOPDto.Finalizado;
+                    break;
+                default:
+                    opDto.EstadoDeOP = EstadoOPDto.Iniciado;
+                    break;
+            }
+            opDto.ModeloOP = Modelo_DeDomADto(opDom.ModeloOP);
+            opDto.ColorCalzado = Color_DeDomADto(opDom.ColorCalzado);
+            opDto.LineaTrabajo = Linea_DeDomADto(opDom.LineaTrabajo);
+            opDto.ListaDeHorario = null; // falta implementar!
+            opDto.SupervisorCalidad = Empleado_DeDomADto(opDom.SupervisorCalidad);
+
+            return (opDto);
+        }
     }
-
+    
+    #endregion
 }

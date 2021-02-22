@@ -1,4 +1,6 @@
 ﻿@using ControlCalidad.Cliente.Presentacion.Web.Models.OP
+@using ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference;
+
 @model IndexViewModel
 @{
     ViewBag.Title = "index";
@@ -38,7 +40,14 @@
 <div class="row">
     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
         <div class="form-group">
-            <a href="/OP/Alta/"><button class="btn btn-success">Nuevo Orden de Produccion</button></a>
+            @if (Model.BotonNuevaOp)
+            {
+                <a href="/OP/Alta/"><button class="btn btn-success">Nuevo Orden de Produccion</button></a>
+            }
+            else
+            {
+                <a href="#"><button disabled class="btn btn-success"><strike>Nuevo Orden de Produccion</strike></button></a>
+            }
         </div>
     </div>
 </div>
@@ -48,29 +57,166 @@
         <div class="table-responsive">
             <table class="table table-striped table-bordered table-condensed table-hover">
                 <thead>
-                <th scope="col">#NUMERO</th>
-                <th scope="col">Modelo</th>
-                <th scope="col">Estado de Orden Produccion</th>
-                <th scope="col">Linea</th>
-                <th scope="col">Supervisor de Calidad</th>
+                    <th scope="col">#NUMERO</th>
+                    <th scope="col">Sup. Linea</th>
+                    <th scope="col">Linea</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Estado OP</th>
+                    <th scope="col">Sup. Calidad</th>
+                    <th scope="col">Acciones</th>
                 </thead>
 
-                @foreach (var item in Model.ordenProduccionDto)
-                {
-            <tr>
-                <td>@item.Numero</td>
-                <td>@item.ModeloOP.Denominacion</td>
-                <td>@item.EstadoDeOP</td>
-                <td>@item.LineaTrabajo.Descripcion</td>
-                <td>@item.SupervisorCalidad.Apellido, @item.SupervisorCalidad.Nombre</td>
-                
-            </tr>
-                }
+                <tbody>
+                    @foreach (var item in Model.OrdenProduccionDto)
+                    {
+                        <tr>
+                            <td>@item.Numero</td>
+
+                            <td>@item.LineaTrabajo.SupervisorLinea.Apellido, @item.LineaTrabajo.SupervisorLinea.Nombre</td>
+
+                            <td>@item.LineaTrabajo.Descripcion</td>
+                            <td>@item.ModeloOP.Denominacion</td>
+                            <td>@item.EstadoDeOP</td>
+
+                            @if (item.SupervisorCalidad != null)
+                            {
+                                <td>@item.SupervisorCalidad.Apellido, @item.SupervisorCalidad.Nombre</td>
+                            }
+                            else
+                            {
+                                <td>-ninguno-</td>
+                            }
+                            <td style="width: 120px;">
+                                @if (Model.BotonModificarOp && item.EstadoDeOP != EstadoOPDto.Finalizado)
+                                {
+                                    <a class="btn btn-info" href="#" title="Modificar OP" onclick="return LanzarModalModifcarOP(@item.Numero)">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                }
+
+                                @if (Model.BotonTrabarEnOp && item.EstadoDeOP != EstadoOPDto.Finalizado)
+                                {
+                                    <a class="btn btn-success" href="#" title="Trabajar" onclick="return LanzarModalTrabajarOP(@item.Numero)">
+                                        <i class="fas fa-chalkboard-teacher"></i>
+                                    </a>
+                                }
+
+                                @if (Model.BotonAbandonarOp)
+                                {
+                                    <a class="btn btn-danger" href="#" title="Abandonar OP" onclick="return LanzarModalAbandonarOP(@item.Numero)">
+                                        <i class="fas fa-door-open"></i>
+                                    </a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
             </table>
         </div>
     </div>
 </div>
 
+<div id="divMisModales">
+    <div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1" id="modal-modificar">
+        @using (Html.BeginForm("ModificarOP", "OP", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h4 class="modal-title">Modificar OP?</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Confirme si desea Modificar la OP</p>
+                        <p id="idPEliminar"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="nHiddenModificar" id="idHiddenModificar" value="" />
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Modificar</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 
+    <div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1" id="modal-trabajar">
+        @using (Html.BeginForm("TrabajarOP", "OP", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h4 class="modal-title">Trabajar en OP?</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Confirme si desea Trabajar en la OP</p>
+                        <p id="idPEliminar"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="nHiddenTrabajar" id="idHiddenTrabajar" value="" />
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Trabajar</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 
+    <div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1" id="modal-abandonar">
+        @using (Html.BeginForm("AbandonarOP", "OP", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h4 class="modal-title">Abandonar la OP?</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Confirme si desea Abandonar la OP</p>
+                        <p id="idPEliminar"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="nHiddenAbandonar" id="idHiddenAbandonar" value="" />
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-danger">Abandonar</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
 
+<script type="text/javascript">
+
+    var LanzarModalModifcarOP = function (id) {
+        $("#idHiddenEliminar").val(id);
+        $("#idPEliminar").html("<b>Id: " + id + "</b>");
+        $("#modal-modificar").modal("show");
+        return false;
+    };
+
+    var LanzarModalTrabajarOP = function (id) {
+        $("#idHiddenEliminar").val(id);
+        $("#idPEliminar").html("<b>Id: " + id + "</b>");
+        $("#modal-trabajar").modal("show");
+        return false;
+    };
+
+    var LanzarModalAbandonarOP = function (id) {
+        $("#idHiddenEliminar").val(id);
+        $("#idPEliminar").html("<b>Id: " + id + "</b>");
+        $("#modal-abandonar").modal("show");
+        return false;
+    };
+      
+    $(document).ready(function () {
+        //$("#divMisModales").load('Modelo/Modal_ABM.html');
+    });
+</script>

@@ -17,6 +17,6 @@ namespace ControlCalidad.Servidor.Servicio.Entidades
         [DataMember]
         public string Descripcion { get; set; }
         [DataMember]
-        public Empleado SupervisorLinea { get; set; }
+        public EmpleadoDto SupervisorLinea { get; set; }
     }
 }

@@ -30,7 +30,7 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         private int NumeroField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.Empleado SupervisorLineaField;
+        private ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto SupervisorLineaField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -69,7 +69,7 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.Empleado SupervisorLinea {
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto SupervisorLinea {
             get {
                 return this.SupervisorLineaField;
             }
@@ -93,9 +93,10 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Empleado", Namespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Dominio")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EmpleadoDto", Namespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidade" +
+        "s")]
     [System.SerializableAttribute()]
-    public partial class Empleado : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class EmpleadoDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -116,7 +117,7 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         private string NombreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.Usuario UsuarioEmpleadoField;
+        private ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.UsuarioDto UsuarioField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -194,14 +195,14 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.Usuario UsuarioEmpleado {
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.UsuarioDto Usuario {
             get {
-                return this.UsuarioEmpleadoField;
+                return this.UsuarioField;
             }
             set {
-                if ((object.ReferenceEquals(this.UsuarioEmpleadoField, value) != true)) {
-                    this.UsuarioEmpleadoField = value;
-                    this.RaisePropertyChanged("UsuarioEmpleado");
+                if ((object.ReferenceEquals(this.UsuarioField, value) != true)) {
+                    this.UsuarioField = value;
+                    this.RaisePropertyChanged("Usuario");
                 }
             }
         }
@@ -218,9 +219,10 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Usuario", Namespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Dominio")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UsuarioDto", Namespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidade" +
+        "s")]
     [System.SerializableAttribute()]
-    public partial class Usuario : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class UsuarioDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -235,10 +237,10 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         private string NombreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.TipoUsuario TipoDeUsuarioField;
+        private ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.TipoUsuarioDto TipoDeUsuarioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.Empleado UsuarioDeEmpleadoField;
+        private ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto UsuarioDeEmpleadoField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -290,7 +292,7 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.TipoUsuario TipoDeUsuario {
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.TipoUsuarioDto TipoDeUsuario {
             get {
                 return this.TipoDeUsuarioField;
             }
@@ -303,7 +305,7 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.Empleado UsuarioDeEmpleado {
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto UsuarioDeEmpleado {
             get {
                 return this.UsuarioDeEmpleadoField;
             }
@@ -326,8 +328,9 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TipoUsuario", Namespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Dominio")]
-    public enum TipoUsuario : int {
+    [System.Runtime.Serialization.DataContractAttribute(Name="TipoUsuarioDto", Namespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidade" +
+        "s")]
+    public enum TipoUsuarioDto : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         Administrador = 0,
@@ -493,257 +496,6 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UsuarioDto", Namespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidade" +
-        "s")]
-    [System.SerializableAttribute()]
-    public partial class UsuarioDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ContraseñaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NombreField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.TipoUsuarioDto TipoDeUsuarioField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto UsuarioDeEmpleadoField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Contraseña {
-            get {
-                return this.ContraseñaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ContraseñaField, value) != true)) {
-                    this.ContraseñaField = value;
-                    this.RaisePropertyChanged("Contraseña");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Nombre {
-            get {
-                return this.NombreField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
-                    this.NombreField = value;
-                    this.RaisePropertyChanged("Nombre");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.TipoUsuarioDto TipoDeUsuario {
-            get {
-                return this.TipoDeUsuarioField;
-            }
-            set {
-                if ((this.TipoDeUsuarioField.Equals(value) != true)) {
-                    this.TipoDeUsuarioField = value;
-                    this.RaisePropertyChanged("TipoDeUsuario");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto UsuarioDeEmpleado {
-            get {
-                return this.UsuarioDeEmpleadoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UsuarioDeEmpleadoField, value) != true)) {
-                    this.UsuarioDeEmpleadoField = value;
-                    this.RaisePropertyChanged("UsuarioDeEmpleado");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EmpleadoDto", Namespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidade" +
-        "s")]
-    [System.SerializableAttribute()]
-    public partial class EmpleadoDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ApellidoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CorreoElectronicoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int DocumentoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NombreField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.UsuarioDto UsuarioField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Apellido {
-            get {
-                return this.ApellidoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ApellidoField, value) != true)) {
-                    this.ApellidoField = value;
-                    this.RaisePropertyChanged("Apellido");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CorreoElectronico {
-            get {
-                return this.CorreoElectronicoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CorreoElectronicoField, value) != true)) {
-                    this.CorreoElectronicoField = value;
-                    this.RaisePropertyChanged("CorreoElectronico");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Documento {
-            get {
-                return this.DocumentoField;
-            }
-            set {
-                if ((this.DocumentoField.Equals(value) != true)) {
-                    this.DocumentoField = value;
-                    this.RaisePropertyChanged("Documento");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Nombre {
-            get {
-                return this.NombreField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
-                    this.NombreField = value;
-                    this.RaisePropertyChanged("Nombre");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.UsuarioDto Usuario {
-            get {
-                return this.UsuarioField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UsuarioField, value) != true)) {
-                    this.UsuarioField = value;
-                    this.RaisePropertyChanged("Usuario");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TipoUsuarioDto", Namespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidade" +
-        "s")]
-    public enum TipoUsuarioDto : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Administrador = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        SupervisorLinea = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        SupervisorCalidad = 2,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
