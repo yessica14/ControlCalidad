@@ -18,25 +18,31 @@ namespace ControlCalidad.Servidor.Servicio
 
         public LineaDto[] ObtenerLineas()
         {
-            return LineaRepositorio
-                .ObtenerLineas().Select(l => new LineaDto
-                {
-                    Numero = l.Numero,
-                    Descripcion = l.Descripcion,
-                    SupervisorLinea = Empleado_DeDomADto(l.SupervisorLinea)
-                })
-                .ToArray();
+            var lineasDom = LineaRepositorio.ObtenerLineas();
+            var lineasDto = new List<LineaDto>();
+
+            foreach (var item in lineasDom)
+            {
+                var lineaDto = new LineaDto();
+                lineaDto = Linea_DeDomADto(item);
+                lineasDto.Add(lineaDto);
+            }
+            return lineasDto.ToArray();
         }
 
         public LineaDto[] ObtenerLineasSinEmpleado()
         {
-            return LineaRepositorio
-                .ObtenerLineasSinEmpleado().Select(l => new LineaDto
-                {
-                    Numero = l.Numero,
-                    Descripcion = l.Descripcion
-                })
-                .ToArray();
+            var lineasDom = LineaRepositorio.ObtenerLineasSinEmpleado();
+            var lineasDto = new List<LineaDto>();
+            foreach (var item in lineasDom)
+            {
+                var lineaDto = new LineaDto();
+                lineaDto = Linea_DeDomADto(item);
+                lineasDto.Add(lineaDto);
+            }
+            return lineasDto.ToArray();
+
+
         }
 
         public LineaDto ObtenerLineaPorId(int numero)
@@ -59,13 +65,9 @@ namespace ControlCalidad.Servidor.Servicio
             foreach (var item in listaDom)
             {
                 var colorDto = new ColorDto();
-
-                colorDto.Codigo = item.Codigo;
-                colorDto.Descripcion = item.Descripcion;
-
+                colorDto = Color_DeDomADto(item);
                 listaDto.Add(colorDto);
             }
-
             return listaDto.ToArray();
 
         }
@@ -73,11 +75,8 @@ namespace ControlCalidad.Servidor.Servicio
         public ColorDto ObtenerColorPorId(int id)
         {
             var color = ColorRepositorio.ObtenerColorPorId(id);
-            return new ColorDto()
-            {
-                Codigo = color.Codigo,
-                Descripcion = color.Descripcion
-            };
+            var colorDto = new ColorDto();
+            return Color_DeDomADto(color);
         }
 
         public bool AgregarColor(ColorDto colorDto)
@@ -136,14 +135,10 @@ namespace ControlCalidad.Servidor.Servicio
             foreach (var item in listaDom)
             {
                 var modeloDto = new ModeloDto();
-
-                modeloDto.Sku = item.Sku;
-                modeloDto.Denominacion = item.Denominacion;
-                modeloDto.Objetivo = item.Objetivo;
+                modeloDto = Modelo_DeDomADto(item);
 
                 var colorDto = new ColorDto();
-                colorDto.Codigo = item.ColorModelo.Codigo;
-                colorDto.Descripcion = item.ColorModelo.Descripcion;
+                colorDto = Color_DeDomADto(item.ColorModelo);
 
                 modeloDto.ColorModelo = colorDto;
 
@@ -157,18 +152,9 @@ namespace ControlCalidad.Servidor.Servicio
         public ModeloDto ObtenerModeloPorSku(int sku)
         {
             var _modelo = ModeloRepositorio.ObtenerModeloPorSku(sku);
-
-            return new ModeloDto
-            {
-                Sku = _modelo.Sku,
-                Denominacion = _modelo.Denominacion,
-                Objetivo = _modelo.Objetivo,
-                ColorModelo = new ColorDto()
-                {
-                    Codigo = _modelo.ColorModelo.Codigo,
-                    Descripcion = _modelo.ColorModelo.Descripcion
-                }
-            };
+            var modeloDto = new ModeloDto();
+            return modeloDto = Modelo_DeDomADto(_modelo);
+           
         }
 
         public int ObtenerUltimoSku()
@@ -237,42 +223,7 @@ namespace ControlCalidad.Servidor.Servicio
         public UsuarioDto ComprobarLogueo(string nombre, string contraseña)
         {
             var usuarioDom = UsuarioRepositorio.ComprobarLogueo(nombre, contraseña);
-
-            if (usuarioDom == null)
-                return null;
-
-            object tipoUsuarioDto;
-            switch (usuarioDom.TipoDeUsuario)
-            {
-                case TipoUsuario.Administrador:
-                    tipoUsuarioDto = TipoUsuarioDto.Administrador;
-                    break;
-                case TipoUsuario.SupervisorLinea:
-                    tipoUsuarioDto = TipoUsuarioDto.SupervisorLinea;
-                    break;
-                case TipoUsuario.SupervisorCalidad:
-                    tipoUsuarioDto = TipoUsuarioDto.SupervisorCalidad;
-                    break;
-                default:
-                    tipoUsuarioDto = TipoUsuarioDto.Administrador;
-                    break;
-            }
-
-            var usuarioDto = new UsuarioDto()
-            {
-                Id = usuarioDom.Id,
-                Nombre = usuarioDom.Nombre,
-                Contraseña = usuarioDom.Contraseña,
-                TipoDeUsuario = (TipoUsuarioDto)tipoUsuarioDto,
-                UsuarioDeEmpleado = new EmpleadoDto()
-                {
-                    Id = usuarioDom.UsuarioDeEmpleado.Id,
-                    Documento = usuarioDom.UsuarioDeEmpleado.Documento,
-                    Nombre = usuarioDom.UsuarioDeEmpleado.Nombre,
-                    Apellido = usuarioDom.UsuarioDeEmpleado.Apellido,
-                    CorreoElectronico = usuarioDom.UsuarioDeEmpleado.CorreoElectronico,
-                }
-            };
+            var usuarioDto = Usuario_DeDomADto(usuarioDom);
 
             return (usuarioDto);
         }
@@ -281,38 +232,7 @@ namespace ControlCalidad.Servidor.Servicio
         {
             var usuarioDom = UsuarioRepositorio.ObtenerUsuarioPorId(id);
 
-            object tipoUsuarioDto;
-            switch (usuarioDom.TipoDeUsuario)
-            {
-                case TipoUsuario.Administrador:
-                    tipoUsuarioDto = TipoUsuarioDto.Administrador;
-                    break;
-                case TipoUsuario.SupervisorLinea:
-                    tipoUsuarioDto = TipoUsuarioDto.SupervisorLinea;
-                    break;
-                case TipoUsuario.SupervisorCalidad:
-                    tipoUsuarioDto = TipoUsuarioDto.SupervisorCalidad;
-                    break;
-                default:
-                    tipoUsuarioDto = TipoUsuarioDto.Administrador;
-                    break;
-            }
-
-            var usuarioDto = new UsuarioDto()
-            {
-                Id = usuarioDom.Id,
-                Nombre = usuarioDom.Nombre,
-                Contraseña = usuarioDom.Contraseña,
-                TipoDeUsuario = (TipoUsuarioDto)tipoUsuarioDto,
-                UsuarioDeEmpleado = new EmpleadoDto()
-                {
-                    Id = usuarioDom.UsuarioDeEmpleado.Id,
-                    Documento = usuarioDom.UsuarioDeEmpleado.Documento,
-                    Nombre = usuarioDom.UsuarioDeEmpleado.Nombre,
-                    Apellido = usuarioDom.UsuarioDeEmpleado.Apellido,
-                    CorreoElectronico = usuarioDom.UsuarioDeEmpleado.CorreoElectronico,
-                }
-            };
+            var usuarioDto = Usuario_DeDomADto(usuarioDom);
 
             return (usuarioDto);
         }
@@ -329,34 +249,7 @@ namespace ControlCalidad.Servidor.Servicio
 
             foreach (var item in listaDom)
             {
-                var ordenProduccionDto = new OrdenProduccionDto();
-                ordenProduccionDto.Numero = item.Numero;
-                ordenProduccionDto.ParesPrimeraParHermanado = item.ParesPrimeraParHermanado;
-                ordenProduccionDto.ParesSegundaPorHermanado = item.ParesSegundaPorHermanado;
-                object estadoOPDto;
-                switch (item.EstadoDeOP)
-                {
-                    case EstadoOP.Iniciado:
-                    default:
-                        estadoOPDto = EstadoOPDto.Iniciado;
-                        break;
-                    case EstadoOP.Pausado:
-                        estadoOPDto = EstadoOPDto.Pausado;
-                        break;
-                    case EstadoOP.Continuado:
-                        estadoOPDto = EstadoOPDto.Continuado;
-                        break;
-                    case EstadoOP.Finalizado:
-                        estadoOPDto = EstadoOPDto.Finalizado;
-                        break;
-                }
-                ordenProduccionDto.EstadoDeOP = (EstadoOPDto)estadoOPDto;
-                ordenProduccionDto.ModeloOP = Modelo_DeDomADto(item.ModeloOP);
-                ordenProduccionDto.ColorCalzado = Color_DeDomADto(item.ColorCalzado);
-                ordenProduccionDto.LineaTrabajo = Linea_DeDomADto(item.LineaTrabajo);
-                ordenProduccionDto.ListaDeHorario = null; // falta implementarrr
-                ordenProduccionDto.SupervisorCalidad = Empleado_DeDomADto(item.SupervisorCalidad);
-
+                var ordenProduccionDto = OrdenProduccion_DeDomADto(item);
                 listaDto.Add(ordenProduccionDto);
             }
 
