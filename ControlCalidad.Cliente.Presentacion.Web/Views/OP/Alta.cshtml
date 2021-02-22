@@ -26,11 +26,9 @@
         {
             @Html.AntiForgeryToken()
 
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
             <div class="form-group">
-                <label class="col-md-2 control-label" for="LineaTrabajo">Linea de Trabajo</label>
-                <select name="nSelectColor" id="idSelectColor" class="form-control">
+                <label class="col-md-4 control-label" for="LineaTrabajo">Linea de Trabajo</label>
+                <select name="nSelectLinea" id="idSelectLinea" class="form-control">
                     @foreach (var item in Model.LineasDtos)
                     {
                         <option value="@item.Numero">@item.Descripcion</option>
@@ -40,13 +38,19 @@
 
             <div class="form-group">
                 <label class="col-md-2 control-label" for="Modelo">Modelos</label>
-                <select name="nSelectColor" id="idSelectColor" class="form-control">
+                <select name="nSelectModelo" id="idSelectModelo" class="form-control">
                     @foreach (var item in Model.ModelosDtos)
                     {
                         <option value="@item.Sku">@item.Denominacion</option>
                     }
                 </select>
             </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="Txt">Estado</label>
+                <input class="form-control"  type="text" value="INICIADO" disabled>
+            </div>
+
 
             <div class="form-group">
                 <button class="btn btn-primary" type="submit">Guardar</button>

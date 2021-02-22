@@ -20,6 +20,12 @@
   <wsdl:message name="IControlCalidadServicio_ObtenerLineasSinEmpleado_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerLineasSinEmpleadoResponse" />
   </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerLineaPorId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerLineaPorId" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerLineaPorId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerLineaPorIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IControlCalidadServicio_ObtenerColores_InputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerColores" />
   </wsdl:message>
@@ -131,6 +137,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerLineasSinEmpleado" message="tns:IControlCalidadServicio_ObtenerLineasSinEmpleado_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerLineasSinEmpleadoResponse" message="tns:IControlCalidadServicio_ObtenerLineasSinEmpleado_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ObtenerLineaPorId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerLineaPorId" message="tns:IControlCalidadServicio_ObtenerLineaPorId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerLineaPorIdResponse" message="tns:IControlCalidadServicio_ObtenerLineaPorId_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ObtenerColores">
       <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerColores" message="tns:IControlCalidadServicio_ObtenerColores_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerColoresResponse" message="tns:IControlCalidadServicio_ObtenerColores_OutputMessage" />
@@ -213,6 +223,15 @@
     </wsdl:operation>
     <wsdl:operation name="ObtenerLineasSinEmpleado">
       <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ObtenerLineasSinEmpleado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLineaPorId">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ObtenerLineaPorId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

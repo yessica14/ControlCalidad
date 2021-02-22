@@ -19,6 +19,9 @@ namespace ControlCalidad.Servidor.Servicio
         [OperationContract]
         LineaDto[] ObtenerLineasSinEmpleado();
 
+        [OperationContract]
+        LineaDto ObtenerLineaPorId(int numero);
+
         #endregion
 
         #region COLOR

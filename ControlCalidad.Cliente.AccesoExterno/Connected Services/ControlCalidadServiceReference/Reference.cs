@@ -1370,6 +1370,12 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerLineasSinEmpleado", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerLineasSinEmpleadoResponse")]
         System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.LineaDto[]> ObtenerLineasSinEmpleadoAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerLineaPorId", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerLineaPorIdResponse")]
+        ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.LineaDto ObtenerLineaPorId(int numero);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerLineaPorId", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerLineaPorIdResponse")]
+        System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.LineaDto> ObtenerLineaPorIdAsync(int numero);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerColores", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerColoresResponse")]
         ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto[] ObtenerColores();
         
@@ -1516,6 +1522,14 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         
         public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.LineaDto[]> ObtenerLineasSinEmpleadoAsync() {
             return base.Channel.ObtenerLineasSinEmpleadoAsync();
+        }
+        
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.LineaDto ObtenerLineaPorId(int numero) {
+            return base.Channel.ObtenerLineaPorId(numero);
+        }
+        
+        public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.LineaDto> ObtenerLineaPorIdAsync(int numero) {
+            return base.Channel.ObtenerLineaPorIdAsync(numero);
         }
         
         public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto[] ObtenerColores() {
