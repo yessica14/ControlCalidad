@@ -122,6 +122,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LineaController.cs" />
     <Compile Include="Controllers\ModeloController.cs" />
+    <Compile Include="Controllers\OPController.cs" />
     <Compile Include="Extenciones\TipoDeGestion.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -132,6 +133,8 @@
     <Compile Include="Models\Linea\IndexViewModel.cs" />
     <Compile Include="Models\Modelo\GestionABMViewModel.cs" />
     <Compile Include="Models\Modelo\IndexViewModel.cs" />
+    <Compile Include="Models\OP\AltaViewModel.cs" />
+    <Compile Include="Models\OP\IndexViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2079,6 +2082,8 @@
     <Content Include="Views\Modelo\GestionABM.cshtml" />
     <Content Include="Views\Color\Index.cshtml" />
     <Content Include="Views\Color\GestionABM.cshtml" />
+    <Content Include="Views\OP\Index.cshtml" />
+    <Content Include="Views\OP\Alta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

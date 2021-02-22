@@ -10,10 +10,6 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
 {
     public class OrdenProduccionRepositorio
     {
-        private ModeloRepositorio modeloRepositorio = new ModeloRepositorio();
-        private LineaRepositorio lineaRepositorio = new LineaRepositorio();
-        private EmpleadoRepositorio empleadoRepositorio = new EmpleadoRepositorio();
-        private TurnoRepositorio turnoRepositorio = new TurnoRepositorio();
 
         public void CargarOrdenesProduccionServicio()
         {
@@ -24,8 +20,9 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                {
                    Numero = 499,
                    ModeloOP = ModeloRepositorio.ObtenerModeloPorSku(1401),
-                   EstadoDeOP = EstadoOP.Finalizado,
-                   LineaTrabajo = lineaRepositorio.ObtenerLineaPorId(100),
+                   EstadoDeOP = EstadoOP.Iniciado,
+                   LineaTrabajo = LineaRepositorio.ObtenerLineaPorId(100),
+                   SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(2)
 
                }
            );
@@ -37,7 +34,8 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     Numero = 499,
                     ModeloOP = ModeloRepositorio.ObtenerModeloPorSku(1400),
                     EstadoDeOP = EstadoOP.Iniciado,
-                    LineaTrabajo = lineaRepositorio.ObtenerLineaPorId(100),
+                    LineaTrabajo = LineaRepositorio.ObtenerLineaPorId(100),
+                    SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(2)
                 }
             );
             empresa.ListaDeOrdenesDeProduccion.Add
@@ -47,7 +45,8 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     Numero = 501,
                     ModeloOP = ModeloRepositorio.ObtenerModeloPorSku(1401),
                     EstadoDeOP = EstadoOP.Pausado,
-                    LineaTrabajo = lineaRepositorio.ObtenerLineaPorId(104),
+                    LineaTrabajo = LineaRepositorio.ObtenerLineaPorId(104),
+                    SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(3)
                 }
             );
 

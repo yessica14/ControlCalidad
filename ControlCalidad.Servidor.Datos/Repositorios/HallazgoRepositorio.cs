@@ -14,6 +14,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
         {
             var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
             
+            
         }
 
     }

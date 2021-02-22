@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8733/ControlCalidad.Servidor.Servicio/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Dominio" />
+  <xs:import schemaLocation="http://localhost:8733/ControlCalidad.Servidor.Servicio/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="ArrayOfLineaDto">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="LineaDto" nillable="true" type="tns:LineaDto" />
@@ -72,4 +73,96 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="EmpleadoDto" nillable="true" type="tns:EmpleadoDto" />
+  <xs:complexType name="ArrayOfOrdenProduccionDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrdenProduccionDto" nillable="true" type="tns:OrdenProduccionDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrdenProduccionDto" nillable="true" type="tns:ArrayOfOrdenProduccionDto" />
+  <xs:complexType name="OrdenProduccionDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ColorCalzado" nillable="true" type="tns:ColorDto" />
+      <xs:element minOccurs="0" name="EstadoDeOP" type="tns:EstadoOPDto" />
+      <xs:element minOccurs="0" name="LineaTrabajo" nillable="true" type="tns:LineaDto" />
+      <xs:element minOccurs="0" name="ListaDeHorario" nillable="true" type="tns:ArrayOfHorarioDto" />
+      <xs:element minOccurs="0" name="ModeloOP" nillable="true" type="tns:ModeloDto" />
+      <xs:element minOccurs="0" name="Numero" type="xs:int" />
+      <xs:element minOccurs="0" name="ParesPrimeraParHermanado" type="xs:int" />
+      <xs:element minOccurs="0" name="ParesSegundaPorHermanado" type="xs:int" />
+      <xs:element minOccurs="0" name="SupervisorCalidad" nillable="true" type="tns:EmpleadoDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrdenProduccionDto" nillable="true" type="tns:OrdenProduccionDto" />
+  <xs:simpleType name="EstadoOPDto">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Iniciado" />
+      <xs:enumeration value="Pausado" />
+      <xs:enumeration value="Continuado" />
+      <xs:enumeration value="Finalizado" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EstadoOPDto" nillable="true" type="tns:EstadoOPDto" />
+  <xs:complexType name="ArrayOfHorarioDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="HorarioDto" nillable="true" type="tns:HorarioDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHorarioDto" nillable="true" type="tns:ArrayOfHorarioDto" />
+  <xs:complexType name="HorarioDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="HoraFin" type="ser:duration" />
+      <xs:element minOccurs="0" name="HoraInicio" type="ser:duration" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="ListaDeHallazgos" nillable="true" type="tns:ArrayOfHallazgoDto" />
+      <xs:element minOccurs="0" name="TurnoHorario" nillable="true" type="tns:TurnoDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HorarioDto" nillable="true" type="tns:HorarioDto" />
+  <xs:complexType name="ArrayOfHallazgoDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="HallazgoDto" nillable="true" type="tns:HallazgoDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHallazgoDto" nillable="true" type="tns:ArrayOfHallazgoDto" />
+  <xs:complexType name="HallazgoDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cantidad" type="xs:int" />
+      <xs:element minOccurs="0" name="DefectoHallazgo" nillable="true" type="tns:DefectoDto" />
+      <xs:element minOccurs="0" name="HoraHallazgo" type="ser:duration" />
+      <xs:element minOccurs="0" name="PieHallazgo" type="tns:PieDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HallazgoDto" nillable="true" type="tns:HallazgoDto" />
+  <xs:complexType name="DefectoDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Numero" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoDeDefecto" type="tns:TipoDefectoDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DefectoDto" nillable="true" type="tns:DefectoDto" />
+  <xs:simpleType name="TipoDefectoDto">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Reproceso" />
+      <xs:enumeration value="Observado" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TipoDefectoDto" nillable="true" type="tns:TipoDefectoDto" />
+  <xs:simpleType name="PieDto">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Izquierdo" />
+      <xs:enumeration value="Derecho" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PieDto" nillable="true" type="tns:PieDto" />
+  <xs:complexType name="TurnoDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codigo" type="xs:int" />
+      <xs:element minOccurs="0" name="HoraFin" type="ser:duration" />
+      <xs:element minOccurs="0" name="HoraInicio" type="ser:duration" />
+      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TurnoDto" nillable="true" type="tns:TurnoDto" />
 </xs:schema>

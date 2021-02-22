@@ -69,7 +69,7 @@ namespace ControlCalidad.Cliente.AccesoExterno
             }
         }
 
-        public static int ObtenerUltimoId()
+        public static int ObtenerUltimoIdColor()
         {
             using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
             {
@@ -146,6 +146,34 @@ namespace ControlCalidad.Cliente.AccesoExterno
             using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
             {
                 return servidor.ObtenerUsuarioPorId(id);
+            }
+        }
+
+        #endregion
+
+        #region ORDENPRODUCCION
+
+        public static OrdenProduccionDto[] ObtenerTodasLasOrdenProduccion()
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.ObtenerTodasLasOrdenProduccion();
+            }
+        }
+
+        public static bool AgregarOrdenProduccion(OrdenProduccionDto ordenProduccionDto)
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.AgregarOrdenProduccion(ordenProduccionDto);
+            }
+        }
+
+        public static int ObtenerUltimoIdOP()
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.ObtenerUltimoIdOP();
             }
         }
 

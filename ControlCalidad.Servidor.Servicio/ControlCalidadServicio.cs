@@ -55,7 +55,7 @@ namespace ControlCalidad.Servidor.Servicio
 
                 colorDto.Codigo = item.Codigo;
                 colorDto.Descripcion = item.Descripcion;
-              
+
                 listaDto.Add(colorDto);
             }
 
@@ -199,7 +199,7 @@ namespace ControlCalidad.Servidor.Servicio
                 modelo.Denominacion = _modelo.Denominacion;
                 modelo.Objetivo = _modelo.Objetivo;
                 modelo.ColorModelo = ColorRepositorio.ObtenerColorPorId(_modelo.ColorModelo.Codigo);
-                
+
                 ModeloRepositorio.ModificarModelo(modelo);
                 return true;
             }
@@ -222,7 +222,7 @@ namespace ControlCalidad.Servidor.Servicio
                 return false;
             }
         }
-        
+
         #endregion
 
         #region USUARIO
@@ -323,7 +323,7 @@ namespace ControlCalidad.Servidor.Servicio
             foreach (var item in listaDom)
             {
                 var ordenProduccionDto = new OrdenProduccionDto();
-               
+
                 object estadoOPDto;
 
                 switch (item.EstadoDeOP)
@@ -347,14 +347,53 @@ namespace ControlCalidad.Servidor.Servicio
                 ordenProduccionDto.Numero = item.Numero;
 
                 var lineaDto = new LineaDto();
+
                 lineaDto.Descripcion = item.LineaTrabajo.Descripcion;
                 ordenProduccionDto.LineaTrabajo = lineaDto;
+
+                var modeloDto = new ModeloDto();
+                modeloDto.Denominacion = item.ModeloOP.Denominacion;
+
+                ordenProduccionDto.ModeloOP = modeloDto;
+
+
+                var supervisorCalidadDto = new EmpleadoDto();
+
+                supervisorCalidadDto.Nombre = item.SupervisorCalidad.Nombre;
+                supervisorCalidadDto.Apellido = item.SupervisorCalidad.Apellido;
+
+                ordenProduccionDto.SupervisorCalidad = supervisorCalidadDto;
+
+
+
+
 
                 listaDto.Add(ordenProduccionDto);
             }
 
             return listaDto.ToArray();
 
+        }
+
+
+        public bool AgregarOrdenProduccion(OrdenProduccionDto ordenProduccionDto)
+        {
+            var ordenProduccionDom = new OrdenProduccion();
+
+            ordenProduccionDom.Numero = ordenProduccionDto.Numero;
+            ordenProduccionDom.EstadoDeOP = ordenProduccionDom.EstadoDeOP;
+            ordenProduccionDom.LineaTrabajo.Descripcion = ordenProduccionDto.LineaTrabajo.Descripcion;
+            ordenProduccionDom.SupervisorCalidad.Nombre = ordenProduccionDom.SupervisorCalidad.Nombre;
+            ordenProduccionDom.SupervisorCalidad.Apellido = ordenProduccionDto.SupervisorCalidad.Apellido;
+
+            OrdenProduccionRepositorio.AgregarOrdenproduccion(ordenProduccionDom);
+
+            return true;
+        }
+    
+        public int ObtenerUltimoIdOP() 
+        {
+            return OrdenProduccionRepositorio.ObtenerUltimoId();
         }
         #endregion
 

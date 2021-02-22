@@ -76,6 +76,19 @@ namespace ControlCalidad.Servidor.Servicio
         UsuarioDto ObtenerUsuarioPorId(int id);
 
         #endregion
+
+        #region ORDENPRODUCCION
+
+        [OperationContract]
+        OrdenProduccionDto[] ObtenerTodasLasOrdenProduccion();
+
+        [OperationContract]
+        bool AgregarOrdenProduccion(OrdenProduccionDto ordenProduccion);
+
+        [OperationContract]
+        int ObtenerUltimoIdOP();
+
+        #endregion
     }
 
 

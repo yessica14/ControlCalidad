@@ -11,6 +11,9 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
         // GET: ControlCalidad
         public ActionResult Index()
         {
+            if (Session["Session_Usuario_Id"] == null)
+                return RedirectToAction("Login", "Home");
+
             return View();
         }
     }
