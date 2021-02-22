@@ -20,7 +20,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                {
                    Numero = 499,
                    ModeloOP = ModeloRepositorio.ObtenerModeloPorSku(1401),
-                   EstadoDeOP = EstadoOP.Iniciado,
+                   EstadoDeOP = EstadoOP.Finalizado,
                    LineaTrabajo = LineaRepositorio.ObtenerLineaPorId(100),
                    SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(2)
 
@@ -31,11 +31,11 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
             (
                 new OrdenProduccion()
                 {
-                    Numero = 499,
+                    Numero = 500,
                     ModeloOP = ModeloRepositorio.ObtenerModeloPorSku(1400),
                     EstadoDeOP = EstadoOP.Iniciado,
                     LineaTrabajo = LineaRepositorio.ObtenerLineaPorId(100),
-                    SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(2)
+                    //SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(2)
                 }
             );
             empresa.ListaDeOrdenesDeProduccion.Add
@@ -46,7 +46,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     ModeloOP = ModeloRepositorio.ObtenerModeloPorSku(1401),
                     EstadoDeOP = EstadoOP.Pausado,
                     LineaTrabajo = LineaRepositorio.ObtenerLineaPorId(104),
-                    SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(3)
+                    //SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(3)
                 }
             );
 
@@ -54,7 +54,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
         public static List<OrdenProduccion> ObtenerTodasLasOrdenProduccion()
         {
             var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
-            return empresa.ListaDeOrdenesDeProduccion;
+            return empresa.ListaDeOrdenesDeProduccion.OrderByDescending(x => x.Numero).ToList();
         }
         public static int ObtenerUltimoId()
         {

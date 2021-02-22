@@ -18,10 +18,60 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
             if (Session["Session_Usuario_Id"] == null)
                 return RedirectToAction("Login", "Home");
 
-            var model = new IndexViewModel
+            var usuario = Adaptador.ObtenerUsuarioPorId(int.Parse(Session["Session_Usuario_Id"].ToString()));
+
+            var model = new IndexViewModel();
+            model.OrdenProduccionDto = Adaptador.ObtenerTodasLasOrdenProduccion().ToList();
+
+            switch (usuario.TipoDeUsuario)
             {
-                ordenProduccionDto= Adaptador.ObtenerTodasLasOrdenProduccion().ToList()
-            };
+                case TipoUsuarioDto.Administrador:
+                    model.BotonNuevaOp = false;
+                    model.BotonTrabarEnOp = false;
+                    model.BotonModificarOp = false;
+                    model.BotonAbandonarOp = false;
+                    break;
+
+                case TipoUsuarioDto.SupervisorLinea:
+                    if (model.OrdenProduccionDto.Any(x => x.LineaTrabajo.SupervisorLinea.Id == usuario.Id))
+                    {
+                        model.BotonNuevaOp = false;
+                        model.BotonTrabarEnOp = false;
+                        model.BotonModificarOp = true;
+                        model.BotonAbandonarOp = false;
+                        model.OrdenProduccionDto = model.OrdenProduccionDto.Where(x => x.LineaTrabajo.SupervisorLinea.Id == usuario.Id).ToList();
+                    }
+                    else
+                    {
+                        model.BotonNuevaOp = true;
+                        model.BotonTrabarEnOp = false;
+                        model.BotonModificarOp = false;
+                        model.BotonAbandonarOp = false;
+                    }
+                    break;
+
+                case TipoUsuarioDto.SupervisorCalidad:
+                    if (model.OrdenProduccionDto.Any(x => x.SupervisorCalidad != null && x.SupervisorCalidad.Id == usuario.Id && x.EstadoDeOP != EstadoOPDto.Finalizado) )
+                    {
+                        model.BotonNuevaOp = false;
+                        model.BotonTrabarEnOp = false;
+                        model.BotonModificarOp = false;
+                        model.BotonAbandonarOp = true;
+                        model.OrdenProduccionDto = model.OrdenProduccionDto.Where(x => x.SupervisorCalidad != null && x.SupervisorCalidad.Id == usuario.Id).ToList();
+                    }
+                    else
+                    {
+                        model.BotonNuevaOp = false;
+                        model.BotonTrabarEnOp = true;
+                        model.BotonModificarOp = false;
+                        model.BotonAbandonarOp = false;
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+
             return View(model);
           
         }

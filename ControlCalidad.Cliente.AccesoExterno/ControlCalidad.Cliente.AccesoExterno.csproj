@@ -95,9 +95,6 @@
     <None Include="Connected Services\ControlCalidadServiceReference\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ControlCalidadServiceReference\item3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\ControlCalidadServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
