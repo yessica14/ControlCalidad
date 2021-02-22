@@ -92,6 +92,29 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
             };
 
             return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Alta(FormCollection collection)
+        {
+            if (Session["Session_Usuario_Id"] == null)
+                return RedirectToAction("Login", "Home");
+
+            var txtLinea = collection["nSelectLinea"].ToString();
+            var txtModelo = collection["nSelectModelo"].ToString();
+
+            var ordenProduccion = new OrdenProduccionDto();
+            ordenProduccion.Numero = Adaptador.ObtenerUltimoIdOP();
+            ordenProduccion.EstadoDeOP = EstadoOPDto.Iniciado;
+
+            ordenProduccion.ModeloOP = Adaptador.ObtenerModeloPorSku(int.Parse(txtModelo));
+            ordenProduccion.LineaTrabajo = Adaptador.ObtenerLineaPorId(int.Parse(txtLinea));
+
+            Adaptador.AgregarOrdenProduccion(ordenProduccion);
+
+            return RedirectToAction("Index", "OP");
+
 
         }
     }

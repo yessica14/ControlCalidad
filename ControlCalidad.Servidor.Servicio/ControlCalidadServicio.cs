@@ -39,6 +39,18 @@ namespace ControlCalidad.Servidor.Servicio
                 .ToArray();
         }
 
+        public LineaDto ObtenerLineaPorId(int numero)
+        {
+            var linea = LineaRepositorio.ObtenerLineaPorId(numero);
+            return new LineaDto()
+            {
+                Numero = linea.Numero,
+                Descripcion = linea.Descripcion,
+                SupervisorLinea = linea.SupervisorLinea
+            };
+
+        }
+
         #endregion
 
         #region COLOR
@@ -168,18 +180,19 @@ namespace ControlCalidad.Servidor.Servicio
             return ModeloRepositorio.ObtenerUltimoSku();
         }
 
-        public bool GuardarModelo(ModeloDto _modelo)
+        public bool GuardarModelo(ModeloDto _modeloDto)
         {
             try
             {
-                var modelo = new Modelo()
+                var modeloDom = new Modelo()
                 {
-                    Sku = _modelo.Sku,
-                    Denominacion = _modelo.Denominacion,
-                    Objetivo = _modelo.Objetivo,
-                    ColorModelo = ColorRepositorio.ObtenerColorPorId(_modelo.ColorModelo.Codigo)
+                    Sku = _modeloDto.Sku,
+                    Denominacion = _modeloDto.Denominacion,
+                    Objetivo = _modeloDto.Objetivo,
+                    ColorModelo = ColorRepositorio.ObtenerColorPorId(_modeloDto.ColorModelo.Codigo)
                 };
-                ModeloRepositorio.AgregarModelo(modelo);
+
+                ModeloRepositorio.AgregarModelo(modeloDom);
                 return true;
             }
             catch
@@ -361,12 +374,32 @@ namespace ControlCalidad.Servidor.Servicio
             var ordenProduccionDom = new OrdenProduccion();
 
             ordenProduccionDom.Numero = ordenProduccionDto.Numero;
-            ordenProduccionDom.EstadoDeOP = ordenProduccionDom.EstadoDeOP;
-            ordenProduccionDom.LineaTrabajo.Descripcion = ordenProduccionDto.LineaTrabajo.Descripcion;
-            ordenProduccionDom.SupervisorCalidad.Nombre = ordenProduccionDom.SupervisorCalidad.Nombre;
-            ordenProduccionDom.SupervisorCalidad.Apellido = ordenProduccionDto.SupervisorCalidad.Apellido;
+            
+
+            switch (ordenProduccionDto.EstadoDeOP)
+            {
+                case EstadoOPDto.Iniciado:
+                    ordenProduccionDom.EstadoDeOP = EstadoOP.Iniciado;
+                    break;
+                case EstadoOPDto.Pausado:
+                    ordenProduccionDom.EstadoDeOP = EstadoOP.Pausado;
+                    break;
+                case EstadoOPDto.Continuado:
+                    break;
+                case EstadoOPDto.Finalizado:
+                    break;
+                default:
+                    break;
+            }
+
+
+            ordenProduccionDom.ModeloOP = ModeloRepositorio.ObtenerModeloPorSku(ordenProduccionDto.ModeloOP.Sku);
+            //ordenProduccionDom.ColorCalzado = ColorRepositorio.ObtenerColorPorId(ordenProduccionDto.ColorCalzado.Codigo);
+            ordenProduccionDom.LineaTrabajo = LineaRepositorio.ObtenerLineaPorId(ordenProduccionDto.LineaTrabajo.Numero);
 
             OrdenProduccionRepositorio.AgregarOrdenproduccion(ordenProduccionDom);
+
+            var ordenes = OrdenProduccionRepositorio.ObtenerTodasLasOrdenProduccion();
 
             return true;
         }
@@ -375,6 +408,10 @@ namespace ControlCalidad.Servidor.Servicio
         {
             return OrdenProduccionRepositorio.ObtenerUltimoId();
         }
+
+       
+
+
         #endregion
 
         #region De_Domino_A_Dto

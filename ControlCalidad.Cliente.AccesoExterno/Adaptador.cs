@@ -26,6 +26,14 @@ namespace ControlCalidad.Cliente.AccesoExterno
             }
         }
 
+        public static LineaDto ObtenerLineaPorId(int numero)
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.ObtenerLineaPorId(numero);
+            }
+        }
+
         #endregion
 
         #region COLOR
