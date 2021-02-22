@@ -169,11 +169,11 @@ namespace ControlCalidad.Cliente.AccesoExterno
             }
         }
 
-        public static bool AgregarOrdenProduccion(OrdenProduccionDto ordenProduccionDto)
+        public static bool AgregarOrdenProduccion(OrdenProduccionDto ordenProduccionDto, EmpleadoDto empleado)
         {
             using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
             {
-                return servidor.AgregarOrdenProduccion(ordenProduccionDto);
+                return servidor.AgregarOrdenProduccion(ordenProduccionDto, empleado);
             }
         }
 

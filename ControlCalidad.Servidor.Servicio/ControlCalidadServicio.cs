@@ -41,14 +41,10 @@ namespace ControlCalidad.Servidor.Servicio
 
         public LineaDto ObtenerLineaPorId(int numero)
         {
-            var linea = LineaRepositorio.ObtenerLineaPorId(numero);
-            return new LineaDto()
-            {
-                Numero = linea.Numero,
-                Descripcion = linea.Descripcion,
-                SupervisorLinea = linea.SupervisorLinea
-            };
+            var lineaDom = LineaRepositorio.ObtenerLineaPorId(numero);
+            var lineaDto = Linea_DeDomADto(lineaDom);
 
+            return lineaDto;
         }
 
         #endregion
@@ -369,7 +365,7 @@ namespace ControlCalidad.Servidor.Servicio
         }
 
 
-        public bool AgregarOrdenProduccion(OrdenProduccionDto ordenProduccionDto)
+        public bool AgregarOrdenProduccion(OrdenProduccionDto ordenProduccionDto, EmpleadoDto empleadoDto)
         {
             var ordenProduccionDom = new OrdenProduccion();
 
@@ -394,8 +390,11 @@ namespace ControlCalidad.Servidor.Servicio
 
 
             ordenProduccionDom.ModeloOP = ModeloRepositorio.ObtenerModeloPorSku(ordenProduccionDto.ModeloOP.Sku);
-            //ordenProduccionDom.ColorCalzado = ColorRepositorio.ObtenerColorPorId(ordenProduccionDto.ColorCalzado.Codigo);
             ordenProduccionDom.LineaTrabajo = LineaRepositorio.ObtenerLineaPorId(ordenProduccionDto.LineaTrabajo.Numero);
+
+            ordenProduccionDom.LineaTrabajo.SupervisorLinea = EmpleadoRepositorio.BuscarEmpleadoPorId(empleadoDto.Id);
+
+            LineaRepositorio.ModificarLinea(ordenProduccionDom.LineaTrabajo);
 
             OrdenProduccionRepositorio.AgregarOrdenproduccion(ordenProduccionDom);
 
