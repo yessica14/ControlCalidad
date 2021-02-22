@@ -86,7 +86,7 @@ namespace ControlCalidad.Servidor.Servicio
         OrdenProduccionDto[] ObtenerTodasLasOrdenProduccion();
 
         [OperationContract]
-        bool AgregarOrdenProduccion(OrdenProduccionDto ordenProduccion);
+        bool AgregarOrdenProduccion(OrdenProduccionDto ordenProduccion, EmpleadoDto empleado);
 
         [OperationContract]
         int ObtenerUltimoIdOP();

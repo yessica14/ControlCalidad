@@ -111,7 +111,9 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
             ordenProduccion.ModeloOP = Adaptador.ObtenerModeloPorSku(int.Parse(txtModelo));
             ordenProduccion.LineaTrabajo = Adaptador.ObtenerLineaPorId(int.Parse(txtLinea));
 
-            Adaptador.AgregarOrdenProduccion(ordenProduccion);
+            var usuarioDto = Adaptador.ObtenerUsuarioPorId(int.Parse(Session["Session_Usuario_Id"].ToString()));
+
+            Adaptador.AgregarOrdenProduccion(ordenProduccion, usuarioDto.UsuarioDeEmpleado);
 
             return RedirectToAction("Index", "OP");
 

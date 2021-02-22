@@ -90,18 +90,18 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
             //return empresa.ListaDeLineasDeTrabajo.Where(y => y.Empleado == null).OrderBy(x => x.Numero).ToList();
         }
 
-        public void AgregarLinea(Linea linea)
+        public static void AgregarLinea(Linea linea)
         {
             Singleton.getInstancia().ObtenerDatosDeEmpresa().ListaDeLineas.Add(linea);
         }
 
-        public void ModificarLinea(Linea linea)
+        public static void ModificarLinea(Linea linea)
         {
             EliminarLinea(linea);
             AgregarLinea(linea);
         }
 
-        public void EliminarLinea(Linea linea)
+        public static void EliminarLinea(Linea linea)
         {
             Singleton.getInstancia().ObtenerDatosDeEmpresa().ListaDeLineas.RemoveAll(x => x.Numero == linea.Numero);
         }

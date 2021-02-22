@@ -1221,10 +1221,10 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto[]> ObtenerTodasLasOrdenProduccionAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/AgregarOrdenProduccion", ReplyAction="http://tempuri.org/IControlCalidadServicio/AgregarOrdenProduccionResponse")]
-        bool AgregarOrdenProduccion(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion);
+        bool AgregarOrdenProduccion(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleado);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/AgregarOrdenProduccion", ReplyAction="http://tempuri.org/IControlCalidadServicio/AgregarOrdenProduccionResponse")]
-        System.Threading.Tasks.Task<bool> AgregarOrdenProduccionAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion);
+        System.Threading.Tasks.Task<bool> AgregarOrdenProduccionAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleado);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoIdOP", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoIdOPResponse")]
         int ObtenerUltimoIdOP();
@@ -1404,12 +1404,12 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
             return base.Channel.ObtenerTodasLasOrdenProduccionAsync();
         }
         
-        public bool AgregarOrdenProduccion(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion) {
-            return base.Channel.AgregarOrdenProduccion(ordenProduccion);
+        public bool AgregarOrdenProduccion(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleado) {
+            return base.Channel.AgregarOrdenProduccion(ordenProduccion, empleado);
         }
         
-        public System.Threading.Tasks.Task<bool> AgregarOrdenProduccionAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion) {
-            return base.Channel.AgregarOrdenProduccionAsync(ordenProduccion);
+        public System.Threading.Tasks.Task<bool> AgregarOrdenProduccionAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleado) {
+            return base.Channel.AgregarOrdenProduccionAsync(ordenProduccion, empleado);
         }
         
         public int ObtenerUltimoIdOP() {
