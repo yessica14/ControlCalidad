@@ -163,4 +163,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="TurnoDto" nillable="true" type="tns:TurnoDto" />
+  <xs:complexType name="ArrayOfEstadoOPDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EstadoOPDto" type="tns:EstadoOPDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEstadoOPDto" nillable="true" type="tns:ArrayOfEstadoOPDto" />
 </xs:schema>

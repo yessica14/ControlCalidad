@@ -241,6 +241,13 @@ namespace ControlCalidad.Servidor.Servicio
             return listaDto.ToArray();
         }
 
+        public OrdenProduccionDto ObtenerOpPorId(int id)
+        {
+            var opDom = OrdenProduccionRepositorio.ObtenerOrderProduccionPorId(id);
+            var opDto = OrdenProduccion_DeDomADto(opDom);
+            return (opDto);
+        }
+
         public bool AgregarOrdenProduccion(OrdenProduccionDto ordenProduccionDto, EmpleadoDto empleadoDto)
         {
             var ordenProduccionDom = new OrdenProduccion();
@@ -278,10 +285,46 @@ namespace ControlCalidad.Servidor.Servicio
 
             return true;
         }
-    
+
+        public bool ModificarOrdenProduccion_Estado(OrdenProduccionDto ordenProduccionDto, EstadoOPDto nuevoEstadoOPDto)
+        {
+            return true;
+        }
+
+        public bool ModificarOrdenProduccion_Trabajar(OrdenProduccionDto ordenProduccionDto, EmpleadoDto empleadoDto)
+        {
+            return true;
+        }
+
+        public bool ModificarOrdenProduccion_Abandonar(OrdenProduccionDto ordenProduccionDto)
+        {
+            return true;
+        }
+
         public int ObtenerUltimoIdOP() 
         {
             return OrdenProduccionRepositorio.ObtenerUltimoId();
+        }
+
+        #endregion
+
+        #region ESTADO_OP
+
+        public EstadoOPDto[] ObtenerNuevosEstadosOp(EstadoOPDto estadoOp)
+        {
+            switch (estadoOp)
+            {
+                case EstadoOPDto.Iniciado:
+                    return new EstadoOPDto[]{ EstadoOPDto.Pausado, EstadoOPDto.Finalizado};
+                case EstadoOPDto.Pausado:
+                    return new EstadoOPDto[] { EstadoOPDto.Continuado, EstadoOPDto.Finalizado };
+                case EstadoOPDto.Continuado:
+                    return new EstadoOPDto[] { EstadoOPDto.Finalizado };
+                case EstadoOPDto.Finalizado:
+                    return new EstadoOPDto[] { };
+                default:
+                    return new EstadoOPDto[] { };
+            }
         }
 
         #endregion

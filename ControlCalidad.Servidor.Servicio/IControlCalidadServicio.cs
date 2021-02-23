@@ -86,10 +86,29 @@ namespace ControlCalidad.Servidor.Servicio
         OrdenProduccionDto[] ObtenerTodasLasOrdenProduccion();
 
         [OperationContract]
+        OrdenProduccionDto ObtenerOpPorId(int id);
+
+        [OperationContract]
         bool AgregarOrdenProduccion(OrdenProduccionDto ordenProduccion, EmpleadoDto empleado);
 
         [OperationContract]
+        bool ModificarOrdenProduccion_Estado(OrdenProduccionDto ordenProduccion, EstadoOPDto nuevoEstadoOPDto);
+
+        [OperationContract]
+        bool ModificarOrdenProduccion_Trabajar(OrdenProduccionDto ordenProduccion, EmpleadoDto empleadoDto);
+
+        [OperationContract]
+        bool ModificarOrdenProduccion_Abandonar(OrdenProduccionDto ordenProduccion);
+
+        [OperationContract]
         int ObtenerUltimoIdOP();
+
+        #endregion
+
+        #region ESTADO_OP
+
+        [OperationContract]
+        EstadoOPDto[] ObtenerNuevosEstadosOp(EstadoOPDto estadoOp);
 
         #endregion
     }
