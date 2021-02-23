@@ -23,8 +23,7 @@ namespace ControlCalidad.Servidor.Servicio
 
             foreach (var item in lineasDom)
             {
-                var lineaDto = new LineaDto();
-                lineaDto = Linea_DeDomADto(item);
+                var lineaDto = Linea_DeDomADto(item);
                 lineasDto.Add(lineaDto);
             }
             return lineasDto.ToArray();
@@ -36,8 +35,7 @@ namespace ControlCalidad.Servidor.Servicio
             var lineasDto = new List<LineaDto>();
             foreach (var item in lineasDom)
             {
-                var lineaDto = new LineaDto();
-                lineaDto = Linea_DeDomADto(item);
+                var lineaDto = Linea_DeDomADto(item);
                 lineasDto.Add(lineaDto);
             }
             return lineasDto.ToArray();
@@ -64,8 +62,7 @@ namespace ControlCalidad.Servidor.Servicio
 
             foreach (var item in listaDom)
             {
-                var colorDto = new ColorDto();
-                colorDto = Color_DeDomADto(item);
+                var colorDto = Color_DeDomADto(item);
                 listaDto.Add(colorDto);
             }
             return listaDto.ToArray();
@@ -75,7 +72,6 @@ namespace ControlCalidad.Servidor.Servicio
         public ColorDto ObtenerColorPorId(int id)
         {
             var color = ColorRepositorio.ObtenerColorPorId(id);
-            var colorDto = new ColorDto();
             return Color_DeDomADto(color);
         }
 
@@ -88,7 +84,6 @@ namespace ControlCalidad.Servidor.Servicio
             ColorRepositorio.AgregarColor(colorDom);
 
             return true;
-
         }
 
         public bool ModificarColor(ColorDto colorDto)
@@ -134,27 +129,18 @@ namespace ControlCalidad.Servidor.Servicio
 
             foreach (var item in listaDom)
             {
-                var modeloDto = new ModeloDto();
-                modeloDto = Modelo_DeDomADto(item);
-
-                var colorDto = new ColorDto();
-                colorDto = Color_DeDomADto(item.ColorModelo);
-
-                modeloDto.ColorModelo = colorDto;
-
+                var modeloDto = Modelo_DeDomADto(item);
                 listaDto.Add(modeloDto);
             }
 
             return listaDto.ToArray();
-
         }
 
         public ModeloDto ObtenerModeloPorSku(int sku)
         {
-            var _modelo = ModeloRepositorio.ObtenerModeloPorSku(sku);
-            var modeloDto = new ModeloDto();
-            return modeloDto = Modelo_DeDomADto(_modelo);
-           
+            var _modeloDom = ModeloRepositorio.ObtenerModeloPorSku(sku);
+            var modeloDto = Modelo_DeDomADto(_modeloDom);
+            return (modeloDto);
         }
 
         public int ObtenerUltimoSku()
@@ -170,8 +156,7 @@ namespace ControlCalidad.Servidor.Servicio
                 {
                     Sku = _modeloDto.Sku,
                     Denominacion = _modeloDto.Denominacion,
-                    Objetivo = _modeloDto.Objetivo,
-                    ColorModelo = ColorRepositorio.ObtenerColorPorId(_modeloDto.ColorModelo.Codigo)
+                    Objetivo = _modeloDto.Objetivo
                 };
 
                 ModeloRepositorio.AgregarModelo(modeloDom);
@@ -191,9 +176,9 @@ namespace ControlCalidad.Servidor.Servicio
 
                 modelo.Denominacion = _modelo.Denominacion;
                 modelo.Objetivo = _modelo.Objetivo;
-                modelo.ColorModelo = ColorRepositorio.ObtenerColorPorId(_modelo.ColorModelo.Codigo);
 
                 ModeloRepositorio.ModificarModelo(modelo);
+
                 return true;
             }
             catch
@@ -254,9 +239,7 @@ namespace ControlCalidad.Servidor.Servicio
             }
 
             return listaDto.ToArray();
-
         }
-
 
         public bool AgregarOrdenProduccion(OrdenProduccionDto ordenProduccionDto, EmpleadoDto empleadoDto)
         {
@@ -281,8 +264,8 @@ namespace ControlCalidad.Servidor.Servicio
                     break;
             }
 
-
             ordenProduccionDom.ModeloOP = ModeloRepositorio.ObtenerModeloPorSku(ordenProduccionDto.ModeloOP.Sku);
+            ordenProduccionDom.ColorCalzado = ColorRepositorio.ObtenerColorPorId(ordenProduccionDto.ColorCalzado.Codigo);
             ordenProduccionDom.LineaTrabajo = LineaRepositorio.ObtenerLineaPorId(ordenProduccionDto.LineaTrabajo.Numero);
 
             ordenProduccionDom.LineaTrabajo.SupervisorLinea = EmpleadoRepositorio.BuscarEmpleadoPorId(empleadoDto.Id);
@@ -300,9 +283,6 @@ namespace ControlCalidad.Servidor.Servicio
         {
             return OrdenProduccionRepositorio.ObtenerUltimoId();
         }
-
-       
-
 
         #endregion
 
@@ -368,8 +348,7 @@ namespace ControlCalidad.Servidor.Servicio
             modeloDto.Sku = modeloDom.Sku;
             modeloDto.Denominacion = modeloDom.Denominacion;
             modeloDto.Objetivo = modeloDom.Objetivo;
-            modeloDto.ColorModelo = Color_DeDomADto(modeloDom.ColorModelo);
-            
+
             return (modeloDto);
         }
 

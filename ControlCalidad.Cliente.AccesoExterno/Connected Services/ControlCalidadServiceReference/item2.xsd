@@ -65,7 +65,6 @@
   <xs:element name="ArrayOfModeloDto" nillable="true" type="tns:ArrayOfModeloDto" />
   <xs:complexType name="ModeloDto">
     <xs:sequence>
-      <xs:element minOccurs="0" name="ColorModelo" nillable="true" type="tns:ColorDto" />
       <xs:element minOccurs="0" name="Denominacion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Objetivo" type="xs:int" />
       <xs:element minOccurs="0" name="Sku" type="xs:int" />

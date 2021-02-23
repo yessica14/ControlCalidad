@@ -60,7 +60,7 @@
                     <th scope="col">#NUMERO</th>
                     <th scope="col">Sup. Linea</th>
                     <th scope="col">Linea</th>
-                    <th scope="col">Modelo</th>
+                    <th scope="col">Modelo / Color</th>
                     <th scope="col">Estado OP</th>
                     <th scope="col">Sup. Calidad</th>
                     <th scope="col">Acciones</th>
@@ -75,7 +75,7 @@
                             <td>@item.LineaTrabajo.SupervisorLinea.Apellido, @item.LineaTrabajo.SupervisorLinea.Nombre</td>
 
                             <td>@item.LineaTrabajo.Descripcion</td>
-                            <td>@item.ModeloOP.Denominacion</td>
+                            <td>SKU: @item.ModeloOP.Sku - @item.ModeloOP.Denominacion (@item.ColorCalzado.Descripcion)</td>
                             <td>@item.EstadoDeOP</td>
 
                             @if (item.SupervisorCalidad != null)

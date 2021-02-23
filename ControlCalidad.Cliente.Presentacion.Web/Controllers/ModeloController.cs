@@ -34,7 +34,6 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
 
             var _model = new GestionABMViewModel()
             {
-                Colores = Adaptador.ObtenerColores().ToList(),
                 TipoGestion = tipoGestion
             };
 
@@ -83,7 +82,6 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
                     break;
             }
 
-            model.Colores = Adaptador.ObtenerColores().ToList();
             model.TipoGestion = collection["nHiddenTipoGestion"].ToString();
 
             if (!ModelState.IsValid)
@@ -91,8 +89,6 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
 
             model.Modelo.Denominacion = model.TxtDenominacion;
             model.Modelo.Objetivo = int.Parse(model.TxtObjetivo);
-            var txtColor = collection["nSelectColor"].ToString();
-            model.Modelo.ColorModelo = Adaptador.ObtenerColorPorId(int.Parse(txtColor));
 
             var respuestaServer = false;
             switch (model.TipoGestion)

@@ -19,8 +19,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 {
                     Sku = 1400,
                     Denominacion = "zapatilla nine",
-                    Objetivo = 30,
-                    ColorModelo = ColorRepositorio.ObtenerColorPorId(800)
+                    Objetivo = 30
                 }
             );
             empresa.ListaDeModelos.Add(
@@ -28,8 +27,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                {
                    Sku = 1401,
                    Denominacion = "zapato nine",
-                   Objetivo = 40,
-                   ColorModelo = ColorRepositorio.ObtenerColorPorId(801)
+                   Objetivo = 40
                }
            );
             empresa.ListaDeModelos.Add(
@@ -37,8 +35,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                {
                    Sku = 1402,
                    Denominacion = "zapatilla adidas",
-                   Objetivo = 50,
-                   ColorModelo = ColorRepositorio.ObtenerColorPorId(802)
+                   Objetivo = 50
                }
            );
             Singleton.getInstancia().AsignarDatosAEmpresa(empresa);

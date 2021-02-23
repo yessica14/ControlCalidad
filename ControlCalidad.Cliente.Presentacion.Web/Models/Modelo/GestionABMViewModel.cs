@@ -11,7 +11,6 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Models.Modelo
     public class GestionABMViewModel
     {
         public ModeloDto Modelo { get; set; }
-        public List<ColorDto> Colores { get; set; }
         public string TipoGestion { get; set; }
 
         [Required]
@@ -24,7 +23,6 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Models.Modelo
         public GestionABMViewModel()
         {
             Modelo = new ModeloDto();
-            Colores = new List<ColorDto>();
         }
     }
 }

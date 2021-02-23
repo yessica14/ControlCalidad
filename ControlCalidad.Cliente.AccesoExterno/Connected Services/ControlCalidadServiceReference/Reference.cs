@@ -415,9 +415,6 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto ColorModeloField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DenominacionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -433,19 +430,6 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.ColorDto ColorModelo {
-            get {
-                return this.ColorModeloField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ColorModeloField, value) != true)) {
-                    this.ColorModeloField = value;
-                    this.RaisePropertyChanged("ColorModelo");
-                }
             }
         }
         
