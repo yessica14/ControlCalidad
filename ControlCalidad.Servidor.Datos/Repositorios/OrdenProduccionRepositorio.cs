@@ -56,6 +56,14 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
             var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
             return empresa.ListaDeOrdenesDeProduccion.OrderByDescending(x => x.Numero).ToList();
         }
+
+        public static OrdenProduccion ObtenerOrderProduccionPorId(int numero)
+        {
+            var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
+            var op = empresa.ListaDeOrdenesDeProduccion.Where(x => x.Numero == numero).FirstOrDefault();
+            return op;
+        }
+
         public static int ObtenerUltimoId()
         {
             var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();

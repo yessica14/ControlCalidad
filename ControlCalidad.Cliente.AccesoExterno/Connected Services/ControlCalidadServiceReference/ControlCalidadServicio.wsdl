@@ -115,17 +115,47 @@
   <wsdl:message name="IControlCalidadServicio_ObtenerTodasLasOrdenProduccion_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerTodasLasOrdenProduccionResponse" />
   </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerOpPorId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerOpPorId" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerOpPorId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerOpPorIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IControlCalidadServicio_AgregarOrdenProduccion_InputMessage">
     <wsdl:part name="parameters" element="tns:AgregarOrdenProduccion" />
   </wsdl:message>
   <wsdl:message name="IControlCalidadServicio_AgregarOrdenProduccion_OutputMessage">
     <wsdl:part name="parameters" element="tns:AgregarOrdenProduccionResponse" />
   </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ModificarOrdenProduccion_Estado_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarOrdenProduccion_Estado" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ModificarOrdenProduccion_Estado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarOrdenProduccion_EstadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ModificarOrdenProduccion_Trabajar_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarOrdenProduccion_Trabajar" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ModificarOrdenProduccion_Trabajar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarOrdenProduccion_TrabajarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ModificarOrdenProduccion_Abandonar_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarOrdenProduccion_Abandonar" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ModificarOrdenProduccion_Abandonar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarOrdenProduccion_AbandonarResponse" />
+  </wsdl:message>
   <wsdl:message name="IControlCalidadServicio_ObtenerUltimoIdOP_InputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerUltimoIdOP" />
   </wsdl:message>
   <wsdl:message name="IControlCalidadServicio_ObtenerUltimoIdOP_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerUltimoIdOPResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerNuevosEstadosOp_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerNuevosEstadosOp" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerNuevosEstadosOp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerNuevosEstadosOpResponse" />
   </wsdl:message>
   <wsdl:portType name="IControlCalidadServicio">
     <wsdl:operation name="ObtenerLineas">
@@ -200,13 +230,33 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerTodasLasOrdenProduccion" message="tns:IControlCalidadServicio_ObtenerTodasLasOrdenProduccion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerTodasLasOrdenProduccionResponse" message="tns:IControlCalidadServicio_ObtenerTodasLasOrdenProduccion_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ObtenerOpPorId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerOpPorId" message="tns:IControlCalidadServicio_ObtenerOpPorId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerOpPorIdResponse" message="tns:IControlCalidadServicio_ObtenerOpPorId_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AgregarOrdenProduccion">
       <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/AgregarOrdenProduccion" message="tns:IControlCalidadServicio_AgregarOrdenProduccion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/AgregarOrdenProduccionResponse" message="tns:IControlCalidadServicio_AgregarOrdenProduccion_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ModificarOrdenProduccion_Estado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_Estado" message="tns:IControlCalidadServicio_ModificarOrdenProduccion_Estado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_EstadoResponse" message="tns:IControlCalidadServicio_ModificarOrdenProduccion_Estado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarOrdenProduccion_Trabajar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_Trabajar" message="tns:IControlCalidadServicio_ModificarOrdenProduccion_Trabajar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_TrabajarResponse" message="tns:IControlCalidadServicio_ModificarOrdenProduccion_Trabajar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarOrdenProduccion_Abandonar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_Abandonar" message="tns:IControlCalidadServicio_ModificarOrdenProduccion_Abandonar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_AbandonarResponse" message="tns:IControlCalidadServicio_ModificarOrdenProduccion_Abandonar_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ObtenerUltimoIdOP">
       <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoIdOP" message="tns:IControlCalidadServicio_ObtenerUltimoIdOP_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoIdOPResponse" message="tns:IControlCalidadServicio_ObtenerUltimoIdOP_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerNuevosEstadosOp">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerNuevosEstadosOp" message="tns:IControlCalidadServicio_ObtenerNuevosEstadosOp_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerNuevosEstadosOpResponse" message="tns:IControlCalidadServicio_ObtenerNuevosEstadosOp_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IControlCalidadServicio" type="tns:IControlCalidadServicio">
@@ -373,6 +423,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ObtenerOpPorId">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ObtenerOpPorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AgregarOrdenProduccion">
       <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/AgregarOrdenProduccion" style="document" />
       <wsdl:input>
@@ -382,8 +441,44 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ModificarOrdenProduccion_Estado">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_Estado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarOrdenProduccion_Trabajar">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_Trabajar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarOrdenProduccion_Abandonar">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_Abandonar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ObtenerUltimoIdOP">
       <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoIdOP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerNuevosEstadosOp">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ObtenerNuevosEstadosOp" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

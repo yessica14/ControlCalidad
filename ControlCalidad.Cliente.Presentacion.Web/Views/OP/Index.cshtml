@@ -89,21 +89,21 @@
                             <td style="width: 120px;">
                                 @if (Model.BotonModificarOp && item.EstadoDeOP != EstadoOPDto.Finalizado)
                                 {
-                                    <a class="btn btn-info" href="#" title="Modificar OP" onclick="return LanzarModalModifcarOP(@item.Numero)">
+                                    <a class="btn btn-info" href="#" title="Modificar OP" onclick="return LanzarModalModifcarOP(@item.Numero, '@item.EstadoDeOP')">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
                                 }
 
                                 @if (Model.BotonTrabarEnOp && item.EstadoDeOP != EstadoOPDto.Finalizado)
                                 {
-                                    <a class="btn btn-success" href="#" title="Trabajar" onclick="return LanzarModalTrabajarOP(@item.Numero)">
+                                    <a class="btn btn-success" href="#" title="Trabajar" onclick="return LanzarModalTrabajarOP(@item.Numero, '@item.EstadoDeOP')">
                                         <i class="fas fa-chalkboard-teacher"></i>
                                     </a>
                                 }
 
                                 @if (Model.BotonAbandonarOp)
                                 {
-                                    <a class="btn btn-danger" href="#" title="Abandonar OP" onclick="return LanzarModalAbandonarOP(@item.Numero)">
+                                    <a class="btn btn-danger" href="#" title="Abandonar OP" onclick="return LanzarModalAbandonarOP(@item.Numero, '@item.EstadoDeOP')">
                                         <i class="fas fa-door-open"></i>
                                     </a>
                                 }
@@ -118,7 +118,7 @@
 
 <div id="divMisModales">
     <div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1" id="modal-modificar">
-        @using (Html.BeginForm("ModificarOP", "OP", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        @using (Html.BeginForm("ModificarEstadoOP", "OP", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -129,11 +129,20 @@
                         </button>
                     </div>
                     <div class="modal-body">
+
                         <p>Confirme si desea Modificar la OP</p>
-                        <p id="idPEliminar"></p>
+                        <p id="idPModificar"></p>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="Modelo">Nuevo Estado</label>
+                            <select name="nSelectModicarOp" id="idSelectModicarOp" class="form-control">
+                                <option>-seleccione-</option>
+                            </select>
+                        </div>
+
                     </div>
                     <div class="modal-footer">
-                        <input type="hidden" name="nHiddenModificar" id="idHiddenModificar" value="" />
+                        <input type="hidden" name="nHiddenModicarIdOp" id="idHiddenModicarIdOp" value="" />
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-primary">Modificar</button>
                     </div>
@@ -143,7 +152,7 @@
     </div>
 
     <div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1" id="modal-trabajar">
-        @using (Html.BeginForm("TrabajarOP", "OP", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        @using (Html.BeginForm("TrabajarEnOP", "OP", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -155,10 +164,10 @@
                     </div>
                     <div class="modal-body">
                         <p>Confirme si desea Trabajar en la OP</p>
-                        <p id="idPEliminar"></p>
+                        <p id="idPTrabajar"></p>
                     </div>
                     <div class="modal-footer">
-                        <input type="hidden" name="nHiddenTrabajar" id="idHiddenTrabajar" value="" />
+                        <input type="hidden" name="nHiddenTrabajarIdOp" id="idHiddenTrabajarIdOp" value="" />
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-primary">Trabajar</button>
                     </div>
@@ -180,10 +189,10 @@
                     </div>
                     <div class="modal-body">
                         <p>Confirme si desea Abandonar la OP</p>
-                        <p id="idPEliminar"></p>
+                        <p id="idPAbandonar"></p>
                     </div>
                     <div class="modal-footer">
-                        <input type="hidden" name="nHiddenAbandonar" id="idHiddenAbandonar" value="" />
+                        <input type="hidden" name="nHiddenAbandonarIdOp" id="idHiddenAbandonarIdOp" value="" />
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-danger">Abandonar</button>
                     </div>
@@ -195,23 +204,52 @@
 
 <script type="text/javascript">
 
-    var LanzarModalModifcarOP = function (id) {
-        $("#idHiddenEliminar").val(id);
-        $("#idPEliminar").html("<b>Id: " + id + "</b>");
+    var LanzarModalModifcarOP = function (id, estado) {
+
+        $("#idHiddenModicarIdOp").val(id);
+        $("#idPModificar").html("<b>Id: " + id + " - Estado: " + estado + "</b>");
+
+        var dato = new Object();
+        dato.id = id;
+        dato.estado = estado;
+
+        $.ajax({
+            url: '/OP/ObtenerEstadosOps',
+            type: 'POST',
+            dataType: 'json',
+            data: dato,
+            success: function (data) {
+
+                var objJson = jQuery.parseJSON(data);
+                console.log(objJson);
+
+                $("#idSelectModicarOp").empty();
+                var options = "";
+                $.each(objJson.nuevosEstadosOp, function (i, elem) {
+                    options = options + "<option value = '" + elem + "'>" + elem + "</option>"
+                });
+                $("#idSelectModicarOp").html(options);
+
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert('Error en Operación');
+            }
+        });
+
         $("#modal-modificar").modal("show");
         return false;
     };
 
-    var LanzarModalTrabajarOP = function (id) {
-        $("#idHiddenEliminar").val(id);
-        $("#idPEliminar").html("<b>Id: " + id + "</b>");
+    var LanzarModalTrabajarOP = function (id, estado) {
+        $("#idHiddenTrabajarIdOp").val(id);
+        $("#idPTrabajar").html("<b>Id: " + id + " - Estado: " + estado + "</b>");
         $("#modal-trabajar").modal("show");
         return false;
     };
 
-    var LanzarModalAbandonarOP = function (id) {
-        $("#idHiddenEliminar").val(id);
-        $("#idPEliminar").html("<b>Id: " + id + "</b>");
+    var LanzarModalAbandonarOP = function (id, estado) {
+        $("#idHiddenAbandonarIdOp").val(id);
+        $("#idPAbandonar").html("<b>Id: " + id + " - Estado: " + estado + "</b>");
         $("#modal-abandonar").modal("show");
         return false;
     };

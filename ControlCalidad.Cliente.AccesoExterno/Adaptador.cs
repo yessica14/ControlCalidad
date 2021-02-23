@@ -169,6 +169,14 @@ namespace ControlCalidad.Cliente.AccesoExterno
             }
         }
 
+        public static OrdenProduccionDto ObtenerOpPorId(int id)
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.ObtenerOpPorId(id);
+            }
+        }
+
         public static bool AgregarOrdenProduccion(OrdenProduccionDto ordenProduccionDto, EmpleadoDto empleado)
         {
             using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
@@ -177,11 +185,47 @@ namespace ControlCalidad.Cliente.AccesoExterno
             }
         }
 
+        public static bool ModificarOrdenProduccion_Estado(OrdenProduccionDto ordenProduccionDto, EstadoOPDto estadoDto)
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.ModificarOrdenProduccion_Estado(ordenProduccionDto, estadoDto);
+            }
+        }
+
+        public static bool ModificarOrdenProduccion_Trabajar(OrdenProduccionDto ordenProduccionDto, EmpleadoDto empleadoDto)
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.ModificarOrdenProduccion_Trabajar(ordenProduccionDto, empleadoDto);
+            }
+        }
+
+        public static bool ModificarOrdenProduccion_Abandonar(OrdenProduccionDto ordenProduccionDto)
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.ModificarOrdenProduccion_Abandonar(ordenProduccionDto);
+            }
+        }
+
         public static int ObtenerUltimoIdOP()
         {
             using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
             {
                 return servidor.ObtenerUltimoIdOP();
+            }
+        }
+
+        #endregion
+
+        #region ESTADO_OP
+
+        public static EstadoOPDto[] ObtenerNuevosEstadosOp(EstadoOPDto estadoActual)
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.ObtenerNuevosEstadosOp(estadoActual);
             }
         }
 

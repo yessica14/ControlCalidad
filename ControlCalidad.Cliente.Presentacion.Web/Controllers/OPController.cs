@@ -120,5 +120,80 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
 
             return RedirectToAction("Index", "OP");
         }
+
+        [HttpPost]
+        public ActionResult ObtenerEstadosOps(FormCollection collection)
+        {
+            var idOP = collection["id"].ToString();
+            var opDto = Adaptador.ObtenerOpPorId(int.Parse(idOP));
+
+            var nuevosEstados = Adaptador.ObtenerNuevosEstadosOp(opDto.EstadoDeOP).ToList();
+
+            string datos = "";
+            foreach (var item in nuevosEstados)
+            {
+                datos = datos + ",\"" + item.ToString() + "\"";
+            }
+            datos = datos.Substring(1);
+            
+            string json = "{\"nuevosEstadosOp\": [" + datos + "]}";
+
+            return Json(json);
+        }
+
+        [HttpPost]
+        public ActionResult ModificarEstadoOP(FormCollection collection)
+        {
+            var idOP = collection["nHiddenModicarIdOp"].ToString();
+            var estadoNuevoOP = collection["nSelectModicarOp"].ToString();
+
+            EstadoOPDto estadoOP = EstadoOPDto.Iniciado;
+            switch (estadoNuevoOP)
+            {
+                case "Iniciado":
+                    estadoOP = EstadoOPDto.Iniciado;
+                    break;
+                case "Pausado":
+                    estadoOP = EstadoOPDto.Pausado;
+                    break;
+                case "Continuado":
+                    estadoOP = EstadoOPDto.Continuado;
+                    break;
+                case "Finalizado":
+                    estadoOP = EstadoOPDto.Finalizado;
+                    break;
+            }
+
+            var opDto = Adaptador.ObtenerOpPorId(int.Parse(idOP));
+
+            Adaptador.ModificarOrdenProduccion_Estado(opDto, estadoOP);
+
+            return RedirectToAction("Index", "OP");
+        }
+
+        [HttpPost]
+        public ActionResult TrabajarEnOP(FormCollection collection)
+        {
+            var idOP = collection["nHiddenTrabajarIdOp"].ToString();
+
+            var opDto = Adaptador.ObtenerOpPorId(int.Parse(idOP));
+
+            //Adaptador.ModificarOrdenProduccion_Trabajar();
+
+            return RedirectToAction("Index", "OP");
+        }
+
+        [HttpPost]
+        public ActionResult AbandonarOP(FormCollection collection)
+        {
+            var idOP = collection["nHiddenAbandonarIdOp"].ToString();
+
+            var opDto = Adaptador.ObtenerOpPorId(int.Parse(idOP));
+
+            Adaptador.ModificarOrdenProduccion_Abandonar(opDto);
+
+            return RedirectToAction("Index", "OP");
+        }
+
     }
 }

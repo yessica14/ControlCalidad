@@ -1204,17 +1204,53 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
             "")]
         System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto[]> ObtenerTodasLasOrdenProduccionAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerOpPorId", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerOpPorIdResponse")]
+        ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ObtenerOpPorId(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerOpPorId", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerOpPorIdResponse")]
+        System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto> ObtenerOpPorIdAsync(int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/AgregarOrdenProduccion", ReplyAction="http://tempuri.org/IControlCalidadServicio/AgregarOrdenProduccionResponse")]
         bool AgregarOrdenProduccion(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleado);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/AgregarOrdenProduccion", ReplyAction="http://tempuri.org/IControlCalidadServicio/AgregarOrdenProduccionResponse")]
         System.Threading.Tasks.Task<bool> AgregarOrdenProduccionAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleado);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_Estado", ReplyAction="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_EstadoRespons" +
+            "e")]
+        bool ModificarOrdenProduccion_Estado(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EstadoOPDto nuevoEstadoOPDto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_Estado", ReplyAction="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_EstadoRespons" +
+            "e")]
+        System.Threading.Tasks.Task<bool> ModificarOrdenProduccion_EstadoAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EstadoOPDto nuevoEstadoOPDto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_Trabajar", ReplyAction="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_TrabajarRespo" +
+            "nse")]
+        bool ModificarOrdenProduccion_Trabajar(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleadoDto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_Trabajar", ReplyAction="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_TrabajarRespo" +
+            "nse")]
+        System.Threading.Tasks.Task<bool> ModificarOrdenProduccion_TrabajarAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleadoDto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_Abandonar", ReplyAction="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_AbandonarResp" +
+            "onse")]
+        bool ModificarOrdenProduccion_Abandonar(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_Abandonar", ReplyAction="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_AbandonarResp" +
+            "onse")]
+        System.Threading.Tasks.Task<bool> ModificarOrdenProduccion_AbandonarAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoIdOP", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoIdOPResponse")]
         int ObtenerUltimoIdOP();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoIdOP", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoIdOPResponse")]
         System.Threading.Tasks.Task<int> ObtenerUltimoIdOPAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerNuevosEstadosOp", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerNuevosEstadosOpResponse")]
+        ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EstadoOPDto[] ObtenerNuevosEstadosOp(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EstadoOPDto estadoOp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerNuevosEstadosOp", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerNuevosEstadosOpResponse")]
+        System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EstadoOPDto[]> ObtenerNuevosEstadosOpAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EstadoOPDto estadoOp);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1388,6 +1424,14 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
             return base.Channel.ObtenerTodasLasOrdenProduccionAsync();
         }
         
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ObtenerOpPorId(int id) {
+            return base.Channel.ObtenerOpPorId(id);
+        }
+        
+        public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto> ObtenerOpPorIdAsync(int id) {
+            return base.Channel.ObtenerOpPorIdAsync(id);
+        }
+        
         public bool AgregarOrdenProduccion(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleado) {
             return base.Channel.AgregarOrdenProduccion(ordenProduccion, empleado);
         }
@@ -1396,12 +1440,44 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
             return base.Channel.AgregarOrdenProduccionAsync(ordenProduccion, empleado);
         }
         
+        public bool ModificarOrdenProduccion_Estado(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EstadoOPDto nuevoEstadoOPDto) {
+            return base.Channel.ModificarOrdenProduccion_Estado(ordenProduccion, nuevoEstadoOPDto);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ModificarOrdenProduccion_EstadoAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EstadoOPDto nuevoEstadoOPDto) {
+            return base.Channel.ModificarOrdenProduccion_EstadoAsync(ordenProduccion, nuevoEstadoOPDto);
+        }
+        
+        public bool ModificarOrdenProduccion_Trabajar(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleadoDto) {
+            return base.Channel.ModificarOrdenProduccion_Trabajar(ordenProduccion, empleadoDto);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ModificarOrdenProduccion_TrabajarAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleadoDto) {
+            return base.Channel.ModificarOrdenProduccion_TrabajarAsync(ordenProduccion, empleadoDto);
+        }
+        
+        public bool ModificarOrdenProduccion_Abandonar(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion) {
+            return base.Channel.ModificarOrdenProduccion_Abandonar(ordenProduccion);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ModificarOrdenProduccion_AbandonarAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion) {
+            return base.Channel.ModificarOrdenProduccion_AbandonarAsync(ordenProduccion);
+        }
+        
         public int ObtenerUltimoIdOP() {
             return base.Channel.ObtenerUltimoIdOP();
         }
         
         public System.Threading.Tasks.Task<int> ObtenerUltimoIdOPAsync() {
             return base.Channel.ObtenerUltimoIdOPAsync();
+        }
+        
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EstadoOPDto[] ObtenerNuevosEstadosOp(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EstadoOPDto estadoOp) {
+            return base.Channel.ObtenerNuevosEstadosOp(estadoOp);
+        }
+        
+        public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EstadoOPDto[]> ObtenerNuevosEstadosOpAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EstadoOPDto estadoOp) {
+            return base.Channel.ObtenerNuevosEstadosOpAsync(estadoOp);
         }
     }
 }
