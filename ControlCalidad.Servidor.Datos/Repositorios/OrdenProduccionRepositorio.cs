@@ -20,10 +20,10 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                {
                    Numero = 499,
                    ModeloOP = ModeloRepositorio.ObtenerModeloPorSku(1401),
+                   ColorCalzado = ColorRepositorio.ObtenerColorPorId(800),
                    EstadoDeOP = EstadoOP.Finalizado,
                    LineaTrabajo = LineaRepositorio.ObtenerLineaPorId(100),
                    SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(2)
-
                }
            );
 
@@ -33,9 +33,9 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 {
                     Numero = 500,
                     ModeloOP = ModeloRepositorio.ObtenerModeloPorSku(1400),
+                    ColorCalzado = ColorRepositorio.ObtenerColorPorId(802),
                     EstadoDeOP = EstadoOP.Iniciado,
-                    LineaTrabajo = LineaRepositorio.ObtenerLineaPorId(100),
-                    //SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(2)
+                    LineaTrabajo = LineaRepositorio.ObtenerLineaPorId(100)
                 }
             );
             empresa.ListaDeOrdenesDeProduccion.Add
@@ -44,9 +44,9 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 {
                     Numero = 501,
                     ModeloOP = ModeloRepositorio.ObtenerModeloPorSku(1401),
+                    ColorCalzado = ColorRepositorio.ObtenerColorPorId(804),
                     EstadoDeOP = EstadoOP.Pausado,
-                    LineaTrabajo = LineaRepositorio.ObtenerLineaPorId(104),
-                    //SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(3)
+                    LineaTrabajo = LineaRepositorio.ObtenerLineaPorId(104)
                 }
             );
 

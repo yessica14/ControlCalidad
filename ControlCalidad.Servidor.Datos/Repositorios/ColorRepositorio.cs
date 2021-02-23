@@ -38,6 +38,22 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     Descripcion = "Verde"
                 }
             );
+            empresa.ListaDeColores.Add
+            (
+                new Color()
+                {
+                    Codigo = 803,
+                    Descripcion = "Gris"
+                }
+            );
+            empresa.ListaDeColores.Add
+            (
+                new Color()
+                {
+                    Codigo = 804,
+                    Descripcion = "Negro"
+                }
+            );
             Singleton.getInstancia().AsignarDatosAEmpresa(empresa);
         }
 

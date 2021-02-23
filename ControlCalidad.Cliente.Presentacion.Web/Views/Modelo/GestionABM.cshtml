@@ -42,17 +42,6 @@
             </div>
 
             <div class="form-group">
-                <label class="col-md-2 control-label" for="Color">Color</label>
-                <select name="nSelectColor" id="idSelectColor" class="form-control">
-                    @foreach (var item in Model.Colores)
-                    {
-                        var txtSelected = Model.Modelo.ColorModelo != null && item.Codigo == Model.Modelo.ColorModelo.Codigo ? "selected" : "";
-                        <option value="@item.Codigo" @txtSelected>@item.Descripcion</option>
-                    }
-                </select>
-            </div>
-
-            <div class="form-group">
                 <input type="hidden" name="nHiddenTipoGestion" value="@Model.TipoGestion" />
                 <input type="hidden" name="nHiddenSku" value="@Model.Modelo.Sku" />
                 <button class="btn btn-primary" type="submit">@txtAccion</button>

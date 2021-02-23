@@ -9,6 +9,7 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Models.OP
     public class AltaViewModel
     {
         public List<ModeloDto> ModelosDtos { get; set; }
+        public List<ColorDto> ColoresDtos { get; set; }
         public List<LineaDto> LineasDtos { get; set; }
         public OrdenProduccionDto OrdenProduccion { get; set; }
 

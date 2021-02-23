@@ -88,6 +88,7 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
             {
                 LineasDtos = Adaptador.ObtenerLineasSinEmpleado().ToList(),
                 ModelosDtos = Adaptador.ObtenerModelos().ToList(),
+                ColoresDtos = Adaptador.ObtenerColores().ToList(),
                 OrdenProduccion = nuevaOP
             };
 
@@ -103,6 +104,7 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
 
             var txtLinea = collection["nSelectLinea"].ToString();
             var txtModelo = collection["nSelectModelo"].ToString();
+            var txtColor = collection["nSelectColor"].ToString();
 
             var ordenProduccion = new OrdenProduccionDto();
             ordenProduccion.Numero = Adaptador.ObtenerUltimoIdOP();
@@ -110,14 +112,13 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
 
             ordenProduccion.ModeloOP = Adaptador.ObtenerModeloPorSku(int.Parse(txtModelo));
             ordenProduccion.LineaTrabajo = Adaptador.ObtenerLineaPorId(int.Parse(txtLinea));
+            ordenProduccion.ColorCalzado = Adaptador.ObtenerColorPorId(int.Parse(txtColor));
 
             var usuarioDto = Adaptador.ObtenerUsuarioPorId(int.Parse(Session["Session_Usuario_Id"].ToString()));
 
             Adaptador.AgregarOrdenProduccion(ordenProduccion, usuarioDto.UsuarioDeEmpleado);
 
             return RedirectToAction("Index", "OP");
-
-
         }
     }
 }

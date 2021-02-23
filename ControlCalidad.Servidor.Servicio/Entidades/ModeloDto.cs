@@ -17,7 +17,5 @@ namespace ControlCalidad.Servidor.Servicio.Entidades
         public string Denominacion { get; set; }
         [DataMember]
         public int Objetivo { get; set; }
-        [DataMember]
-        public ColorDto ColorModelo { get; set; }
     }
 }
