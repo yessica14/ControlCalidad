@@ -33,13 +33,13 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
                     break;
 
                 case TipoUsuarioDto.SupervisorLinea:
-                    if (model.OrdenProduccionDto.Any(x => x.LineaTrabajo.SupervisorLinea.Id == usuario.Id))
+                    if (model.OrdenProduccionDto.Any(x => x.LineaTrabajo.SupervisorLinea.Id == usuario.Id && x.EstadoDeOP != EstadoOPDto.Finalizado ))
                     {
                         model.BotonNuevaOp = false;
                         model.BotonTrabarEnOp = false;
                         model.BotonModificarOp = true;
                         model.BotonAbandonarOp = false;
-                        model.OrdenProduccionDto = model.OrdenProduccionDto.Where(x => x.LineaTrabajo.SupervisorLinea.Id == usuario.Id).ToList();
+                        model.OrdenProduccionDto = model.OrdenProduccionDto.Where(x => x.LineaTrabajo.SupervisorLinea.Id == usuario.Id && x.EstadoDeOP != EstadoOPDto.Finalizado).ToList();
                     }
                     else
                     {
@@ -178,7 +178,11 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
 
             var opDto = Adaptador.ObtenerOpPorId(int.Parse(idOP));
 
-            //Adaptador.ModificarOrdenProduccion_Trabajar();
+            var idUsuario = int.Parse(Session["Session_Usuario_Id"].ToString());
+
+            var usuario = Adaptador.ObtenerUsuarioPorId(idUsuario);
+
+            Adaptador.ModificarOrdenProduccion_Trabajar(opDto, usuario.UsuarioDeEmpleado);
 
             return RedirectToAction("Index", "OP");
         }
