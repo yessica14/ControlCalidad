@@ -288,16 +288,61 @@ namespace ControlCalidad.Servidor.Servicio
 
         public bool ModificarOrdenProduccion_Estado(OrdenProduccionDto ordenProduccionDto, EstadoOPDto nuevoEstadoOPDto)
         {
+            var ordenProduccionDom = OrdenProduccionRepositorio.ObtenerOrderProduccionPorId(ordenProduccionDto.Numero);
+
+            switch (nuevoEstadoOPDto)
+            {
+                case EstadoOPDto.Iniciado:
+                    ordenProduccionDom.EstadoDeOP = EstadoOP.Iniciado;
+                    break;
+                case EstadoOPDto.Pausado:
+                    ordenProduccionDom.EstadoDeOP = EstadoOP.Pausado;
+                    break;
+                case EstadoOPDto.Continuado:
+                    ordenProduccionDom.EstadoDeOP = EstadoOP.Continuado;
+                    break;
+                case EstadoOPDto.Finalizado:
+
+                    var lineaAModif = new Linea()
+                    {
+                        Numero = ordenProduccionDom.LineaTrabajo.Numero,
+                        Descripcion = ordenProduccionDom.LineaTrabajo.Descripcion,
+                        SupervisorLinea = null
+                    };
+                    
+                    LineaRepositorio.ModificarLinea(lineaAModif);
+
+                    ordenProduccionDom.EstadoDeOP = EstadoOP.Finalizado;
+
+                    break;
+                default:
+                    break;
+            }
+            OrdenProduccionRepositorio.ModificarOrdenProduccion(ordenProduccionDom);
+
             return true;
         }
 
         public bool ModificarOrdenProduccion_Trabajar(OrdenProduccionDto ordenProduccionDto, EmpleadoDto empleadoDto)
         {
+            var ordenProduccionDom = OrdenProduccionRepositorio.ObtenerOrderProduccionPorId(ordenProduccionDto.Numero);
+            var empleadoDom = EmpleadoRepositorio.BuscarEmpleadoPorId(empleadoDto.Id);
+            ordenProduccionDom.SupervisorCalidad = empleadoDom;
+            OrdenProduccionRepositorio.ModificarOrdenProduccion(ordenProduccionDom);
+
+            var lista = OrdenProduccionRepositorio.ObtenerTodasLasOrdenProduccion();
+
             return true;
         }
 
         public bool ModificarOrdenProduccion_Abandonar(OrdenProduccionDto ordenProduccionDto)
         {
+            var ordenProduccionDom = OrdenProduccionRepositorio.ObtenerOrderProduccionPorId(ordenProduccionDto.Numero);
+            if (ordenProduccionDom.EstadoDeOP == EstadoOP.Pausado)
+            {
+                ordenProduccionDom.SupervisorCalidad = null;
+                OrdenProduccionRepositorio.ModificarOrdenProduccion(ordenProduccionDom);
+            }
             return true;
         }
 

@@ -85,7 +85,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
         public static List<Linea> ObtenerLineasSinEmpleado()
         {
             var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
-            return empresa.ListaDeLineas.Where(y => y.SupervisorLinea == null).ToList();// no lo hace 
+            return empresa.ListaDeLineas.Where(y => y.SupervisorLinea == null).OrderByDescending(y => y.Numero).ToList();// no lo hace 
 
             //return empresa.ListaDeLineasDeTrabajo.Where(y => y.Empleado == null).OrderBy(x => x.Numero).ToList();
         }

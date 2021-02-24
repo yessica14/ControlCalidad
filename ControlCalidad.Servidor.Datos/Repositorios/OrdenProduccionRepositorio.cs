@@ -14,6 +14,9 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
         public void CargarOrdenesProduccionServicio()
         {
             var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
+
+            var linea = LineaRepositorio.ObtenerLineaPorId(100);
+
             empresa.ListaDeOrdenesDeProduccion.Add
            (
                new OrdenProduccion()
@@ -22,7 +25,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                    ModeloOP = ModeloRepositorio.ObtenerModeloPorSku(1401),
                    ColorCalzado = ColorRepositorio.ObtenerColorPorId(800),
                    EstadoDeOP = EstadoOP.Finalizado,
-                   LineaTrabajo = LineaRepositorio.ObtenerLineaPorId(100),
+                   LineaTrabajo = linea,
                    SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(2)
                }
            );
@@ -35,7 +38,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     ModeloOP = ModeloRepositorio.ObtenerModeloPorSku(1400),
                     ColorCalzado = ColorRepositorio.ObtenerColorPorId(802),
                     EstadoDeOP = EstadoOP.Iniciado,
-                    LineaTrabajo = LineaRepositorio.ObtenerLineaPorId(100)
+                    LineaTrabajo = linea
                 }
             );
             empresa.ListaDeOrdenesDeProduccion.Add
