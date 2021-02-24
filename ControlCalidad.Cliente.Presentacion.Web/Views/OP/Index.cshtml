@@ -101,7 +101,7 @@
                                     </a>
                                 }
 
-                                @if (Model.BotonAbandonarOp)
+                                @if (Model.BotonAbandonarOp && item.EstadoDeOP == EstadoOPDto.Pausado)
                                 {
                                     <a class="btn btn-danger" href="#" title="Abandonar OP" onclick="return LanzarModalAbandonarOP(@item.Numero, '@item.EstadoDeOP')">
                                         <i class="fas fa-door-open"></i>

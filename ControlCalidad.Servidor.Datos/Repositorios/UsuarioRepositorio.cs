@@ -30,7 +30,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 {
                     Id = 2,
                     Nombre = "gramajoj",
-                    Contraseña = "456",
+                    Contraseña = "123",
                     UsuarioDeEmpleado = EmpleadoRepositorio.BuscarEmpleadoPorId(2),
                     TipoDeUsuario = TipoUsuario.SupervisorCalidad
                 }
@@ -41,7 +41,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 {
                     Id = 3,
                     Nombre = "zampa",
-                    Contraseña = "789",
+                    Contraseña = "123",
                     UsuarioDeEmpleado = EmpleadoRepositorio.BuscarEmpleadoPorId(3),
                     TipoDeUsuario = TipoUsuario.Administrador
                 }
@@ -52,7 +52,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 {
                     Id = 4,
                     Nombre = "aguilard",
-                    Contraseña = "587",
+                    Contraseña = "123",
                     UsuarioDeEmpleado = EmpleadoRepositorio.BuscarEmpleadoPorId(4),
                     TipoDeUsuario = TipoUsuario.SupervisorLinea
                 }
@@ -63,7 +63,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 {
                     Id = 5,
                     Nombre = "arcem",
-                    Contraseña = "111",
+                    Contraseña = "123",
                     UsuarioDeEmpleado = EmpleadoRepositorio.BuscarEmpleadoPorId(5),
                     TipoDeUsuario = TipoUsuario.SupervisorLinea
                 }
