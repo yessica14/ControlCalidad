@@ -52,13 +52,14 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
                     break;
 
                 case TipoUsuarioDto.SupervisorCalidad:
+                    var ordenes = model.OrdenProduccionDto;
                     if (model.OrdenProduccionDto.Any(x => x.SupervisorCalidad != null && x.SupervisorCalidad.Id == usuario.Id && x.EstadoDeOP != EstadoOPDto.Finalizado) )
                     {
                         model.BotonNuevaOp = false;
                         model.BotonTrabarEnOp = false;
                         model.BotonModificarOp = false;
                         model.BotonAbandonarOp = true;
-                        model.OrdenProduccionDto = model.OrdenProduccionDto.Where(x => x.SupervisorCalidad != null && x.SupervisorCalidad.Id == usuario.Id).ToList();
+                        model.OrdenProduccionDto = model.OrdenProduccionDto.Where(x => x.SupervisorCalidad != null && x.SupervisorCalidad.Id == usuario.Id && x.EstadoDeOP != EstadoOPDto.Finalizado).ToList();
                     }
                     else
                     {
@@ -66,6 +67,7 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
                         model.BotonTrabarEnOp = true;
                         model.BotonModificarOp = false;
                         model.BotonAbandonarOp = false;
+                        model.OrdenProduccionDto = model.OrdenProduccionDto.Where(x => x.SupervisorCalidad != null && x.SupervisorCalidad.Id == usuario.Id || ( x.EstadoDeOP == EstadoOPDto.Iniciado || x.EstadoDeOP == EstadoOPDto.Continuado)).ToList();
                     }
                     break;
 

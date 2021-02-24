@@ -366,7 +366,7 @@ namespace ControlCalidad.Servidor.Servicio
                 case EstadoOPDto.Pausado:
                     return new EstadoOPDto[] { EstadoOPDto.Continuado, EstadoOPDto.Finalizado };
                 case EstadoOPDto.Continuado:
-                    return new EstadoOPDto[] { EstadoOPDto.Finalizado };
+                    return new EstadoOPDto[] { EstadoOPDto.Pausado, EstadoOPDto.Finalizado };
                 case EstadoOPDto.Finalizado:
                     return new EstadoOPDto[] { };
                 default:
