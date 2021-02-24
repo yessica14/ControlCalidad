@@ -342,8 +342,10 @@ namespace ControlCalidad.Servidor.Servicio
             {
                 ordenProduccionDom.SupervisorCalidad = null;
                 OrdenProduccionRepositorio.ModificarOrdenProduccion(ordenProduccionDom);
+                return true;
             }
-            return true;
+            return false;
+            
         }
 
         public int ObtenerUltimoIdOP() 

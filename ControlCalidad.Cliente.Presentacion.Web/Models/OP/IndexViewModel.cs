@@ -12,6 +12,7 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Models.OP
         public bool BotonTrabarEnOp { get; set; }
         public bool BotonModificarOp { get; set; }
         public bool BotonAbandonarOp { get; set; }
+        public string MensajeError { get; set; }
 
         public List<OrdenProduccionDto> OrdenProduccionDto { get; set; }
     }

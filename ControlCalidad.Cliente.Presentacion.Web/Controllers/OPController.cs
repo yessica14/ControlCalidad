@@ -13,7 +13,7 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
     public class OPController : Controller
     {
         // GET: OP
-        public ActionResult Index()
+        public ActionResult Index(string respuestaServer ="")
         {
             if (Session["Session_Usuario_Id"] == null)
                 return RedirectToAction("Login", "Home");
@@ -21,6 +21,7 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
             var usuario = Adaptador.ObtenerUsuarioPorId(int.Parse(Session["Session_Usuario_Id"].ToString()));
 
             var model = new IndexViewModel();
+            model.MensajeError = respuestaServer;
             model.OrdenProduccionDto = Adaptador.ObtenerTodasLasOrdenProduccion().ToList();
 
             switch (usuario.TipoDeUsuario)
@@ -194,9 +195,16 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
 
             var opDto = Adaptador.ObtenerOpPorId(int.Parse(idOP));
 
-            Adaptador.ModificarOrdenProduccion_Abandonar(opDto);
+            var respuestaServer = Adaptador.ModificarOrdenProduccion_Abandonar(opDto);
+            if (respuestaServer)
+            {
+                return RedirectToAction("Index", "OP");
+            }
+            else
+            {
+                return RedirectToAction("Index", "OP", new { @respuestaServer = "No se puede abandonar la OP" } );
+            }
 
-            return RedirectToAction("Index", "OP");
         }
 
     }
