@@ -18,5 +18,7 @@ namespace ControlCalidad.Servidor.Servicio.Entidades
         public DefectoDto DefectoHallazgo { get; set; }
         [DataMember]
         public PieDto PieHallazgo { get; set; }
+        [DataMember]
+        public EmpleadoDto SupervisorCalidad { get; set; }
     }
 }

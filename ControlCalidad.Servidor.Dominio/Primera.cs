@@ -10,5 +10,6 @@ namespace ControlCalidad.Servidor.Dominio
     {
         public int Hora { get; set; }
         public int Cantidad{ get; set; }
+        public Empleado SupervisorCalidad { get; set; }
     }
 }
