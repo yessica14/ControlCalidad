@@ -119,6 +119,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ColorController.cs" />
     <Compile Include="Controllers\ControlCalidadController.cs" />
+    <Compile Include="Controllers\DefectoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LineaController.cs" />
     <Compile Include="Controllers\ModeloController.cs" />
@@ -129,6 +130,7 @@
     </Compile>
     <Compile Include="Models\Color\GestionAbmViewModel.cs" />
     <Compile Include="Models\Color\IndexViewModel.cs" />
+    <Compile Include="Models\Defecto\InspeccionarViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\Linea\IndexViewModel.cs" />
     <Compile Include="Models\Modelo\GestionABMViewModel.cs" />
@@ -2084,6 +2086,7 @@
     <Content Include="Views\Color\GestionABM.cshtml" />
     <Content Include="Views\OP\Index.cshtml" />
     <Content Include="Views\OP\Alta.cshtml" />
+    <Content Include="Views\Defecto\Inspeccionar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

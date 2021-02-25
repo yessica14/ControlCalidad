@@ -12,6 +12,7 @@ namespace ControlCalidad.Servidor.Dominio
         public TimeSpan HoraHallazgo { get; set; }
         public Defecto DefectoHallazgo { get; set; }
         public Pie PieHallazgo { get; set; }
+        public Empleado SupervisorCalidad { get; set; }
 
     }
 }

@@ -14,5 +14,7 @@ namespace ControlCalidad.Servidor.Servicio.Entidades
         public int Hora { get; set; }
         [DataMember]
         public int Cantidad { get; set; }
+        [DataMember]
+        public EmpleadoDto SupervisorCalidad { get; set; }
     }
 }

@@ -376,6 +376,18 @@ namespace ControlCalidad.Servidor.Servicio
 
         #endregion
 
+        #region DEFECTO
+
+        #endregion
+
+        #region TURNO
+
+        #endregion
+
+        #region HORARIO
+
+        #endregion
+
         #region De_Domino_A_Dto
 
         private EmpleadoDto Empleado_DeDomADto(Empleado empleadoDom)
