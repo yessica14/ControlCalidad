@@ -163,6 +163,12 @@
   <wsdl:message name="IControlCalidadServicio_ObtenerNuevosEstadosOp_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerNuevosEstadosOpResponse" />
   </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_EliminarHallazgo_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarHallazgo" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_EliminarHallazgo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarHallazgoResponse" />
+  </wsdl:message>
   <wsdl:portType name="IControlCalidadServicio">
     <wsdl:operation name="ObtenerLineas">
       <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerLineas" message="tns:IControlCalidadServicio_ObtenerLineas_InputMessage" />
@@ -267,6 +273,10 @@
     <wsdl:operation name="ObtenerNuevosEstadosOp">
       <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerNuevosEstadosOp" message="tns:IControlCalidadServicio_ObtenerNuevosEstadosOp_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerNuevosEstadosOpResponse" message="tns:IControlCalidadServicio_ObtenerNuevosEstadosOp_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarHallazgo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/EliminarHallazgo" message="tns:IControlCalidadServicio_EliminarHallazgo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/EliminarHallazgoResponse" message="tns:IControlCalidadServicio_EliminarHallazgo_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IControlCalidadServicio" type="tns:IControlCalidadServicio">
@@ -498,6 +508,15 @@
     </wsdl:operation>
     <wsdl:operation name="ObtenerNuevosEstadosOp">
       <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ObtenerNuevosEstadosOp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarHallazgo">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/EliminarHallazgo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

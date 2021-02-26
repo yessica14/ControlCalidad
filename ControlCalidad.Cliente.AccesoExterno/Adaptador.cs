@@ -238,5 +238,17 @@ namespace ControlCalidad.Cliente.AccesoExterno
         }
 
         #endregion
+
+        #region HALLAZGO
+
+        public static bool EliminarHallazgo(int idOp, int idHorario, int idHallazgo)
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.EliminarHallazgo(idOp, idHorario, idHallazgo);
+            }
+        }
+
+        #endregion
     }
 }

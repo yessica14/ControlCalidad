@@ -353,4 +353,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="EliminarHallazgo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idOp" type="xs:int" />
+        <xs:element minOccurs="0" name="idHorario" type="xs:int" />
+        <xs:element minOccurs="0" name="idHallazgo" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarHallazgoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EliminarHallazgoResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

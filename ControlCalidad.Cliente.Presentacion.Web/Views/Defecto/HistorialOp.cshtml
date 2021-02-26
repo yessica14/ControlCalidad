@@ -60,7 +60,7 @@
                                 @if (itemHallazgo.DefectoHallazgo == null)
                                 {
                                     txtHallazgo = "De Primera";
-                                    txtTipoDefecto = "-.-";
+                                    txtTipoDefecto = ".";
                                 }
                                 else
                                 {
@@ -71,7 +71,7 @@
                                 <td>@txtTipoDefecto</td>
                                 <td>@itemHallazgo.PieHallazgo.ToString()</td>
                                 <td>
-                                    <a class="btn btn-danger" href="" title="Eliminar" onclick="return LanzarModalEliminar(@itemHallazgo.Id, '@txtHallazgo')">
+                                    <a class="btn btn-danger" href="" title="Eliminar" onclick="return LanzarModalEliminar(@Model.OrdenProduccion.Numero, @itemHorario.Id, @itemHallazgo.Id, '@txtHallazgo - @txtTipoDefecto')">
                                         <i class="fas fa-trash-alt"></i>
                                     </a>
                                 </td>
@@ -103,7 +103,9 @@
                         <p id="idPEliminar"></p>
                     </div>
                     <div class="modal-footer">
-                        <input type="hidden" name="nHiddenEliminar" id="idHiddenEliminar" value="" />
+                        <input type="hidden" name="nHiddenIdOp" id="idHiddenIdOp" value="" />
+                        <input type="hidden" name="nHiddenIdHorario" id="idHiddenIdHorario" value="" />
+                        <input type="hidden" name="nHiddenIdHallazgo" id="idHiddenIdHallazgo" value="" />
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-danger">Eliminar</button>
                     </div>
@@ -122,9 +124,11 @@
 </div>
 
 <script type="text/javascript">
-    var LanzarModalEliminar = function (id, titulo) {
-        $("#idHiddenEliminar").val(id);
-        $("#idPEliminar").html("<b>Id: " + id + "<br>Denominación: " + titulo + "</b>");
+    var LanzarModalEliminar = function (idOp, idHorario, idHallazgo, detalles) {
+        $("#idHiddenIdOp").val(idOp);
+        $("#idHiddenIdHorario").val(idHorario);
+        $("#idHiddenIdHallazgo").val(idHallazgo);
+        $("#idPEliminar").html("<b>N° OP: " + idOp + "<br>Hallazgo: " + detalles + "</b>");
         $("#modal-delete").modal("show");
         return false;
     };
