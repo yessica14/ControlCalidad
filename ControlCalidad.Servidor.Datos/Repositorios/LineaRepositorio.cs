@@ -53,7 +53,6 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 {
                     Numero = 104,
                     Descripcion = "Linea Trabajo 104",
-                    SupervisorLinea = EmpleadoRepositorio.BuscarEmpleadoPorId(4)
                 }
             );
             empresa.ListaDeLineas.Add
@@ -65,6 +64,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     SupervisorLinea = EmpleadoRepositorio.BuscarEmpleadoPorId(4)
                 }
             );
+
             Singleton.getInstancia().AsignarDatosAEmpresa(empresa);
         }
 

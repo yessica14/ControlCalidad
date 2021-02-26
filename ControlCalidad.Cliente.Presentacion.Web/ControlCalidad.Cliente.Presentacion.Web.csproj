@@ -130,6 +130,7 @@
     </Compile>
     <Compile Include="Models\Color\GestionAbmViewModel.cs" />
     <Compile Include="Models\Color\IndexViewModel.cs" />
+    <Compile Include="Models\ControlCalidad\IndexViewModel.cs" />
     <Compile Include="Models\Defecto\InspeccionarViewModel.cs" />
     <Compile Include="Models\Defecto\HistorialOpViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />

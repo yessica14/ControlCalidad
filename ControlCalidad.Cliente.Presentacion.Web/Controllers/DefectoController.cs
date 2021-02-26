@@ -22,7 +22,7 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
 
             if(opDto == null)
             {
-                return RedirectToAction("Index", "ControlCalidad");
+                return RedirectToAction("Index", "ControlCalidad", new { mensaje= "Usted no esta trabajando en ninguna OP."});
             }
 
             var model = new InspeccionarViewModel();

@@ -23,21 +23,29 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 }
             );
             empresa.ListaDeModelos.Add(
-               new Modelo()
-               {
-                   Sku = 1401,
-                   Denominacion = "zapato nine",
-                   Objetivo = 40
-               }
-           );
+                new Modelo()
+                {
+                    Sku = 1401,
+                    Denominacion = "zapato nine",
+                    Objetivo = 40
+                }
+            );
             empresa.ListaDeModelos.Add(
-               new Modelo()
-               {
-                   Sku = 1402,
-                   Denominacion = "zapatilla adidas",
-                   Objetivo = 50
-               }
-           );
+                new Modelo()
+                {
+                    Sku = 1402,
+                    Denominacion = "zapatilla adidas",
+                    Objetivo = 50
+                }
+            );
+            empresa.ListaDeModelos.Add(
+                new Modelo()
+                {
+                    Sku = 1403,
+                    Denominacion = "zapatilla toper",
+                    Objetivo = 50
+                }
+            );
             Singleton.getInstancia().AsignarDatosAEmpresa(empresa);
         }
 

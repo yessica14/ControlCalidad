@@ -68,6 +68,17 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     TipoDeUsuario = TipoUsuario.SupervisorLinea
                 }
             );
+            empresa.ListaDeUsuarios.Add
+            (
+                new Usuario()
+                {
+                    Id = 6,
+                    Nombre = "tofyf",
+                    Contraseña = "123",
+                    UsuarioDeEmpleado = EmpleadoRepositorio.BuscarEmpleadoPorId(6),
+                    TipoDeUsuario = TipoUsuario.SupervisorCalidad
+                }
+            );
             Singleton.getInstancia().AsignarDatosAEmpresa(empresa);
         }
 

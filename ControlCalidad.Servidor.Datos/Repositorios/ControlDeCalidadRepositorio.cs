@@ -16,6 +16,8 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
         private LineaRepositorio lineaServicio = new LineaRepositorio();
         private ColorRepositorio colorServicio = new ColorRepositorio();
         private ModeloRepositorio modeloServicio = new ModeloRepositorio();
+        private TurnoRepositorio turnoServicio = new TurnoRepositorio();
+        private DefectoRepositorio defectoServicio = new DefectoRepositorio();
         private OrdenProduccionRepositorio ordenProduccionServicio = new OrdenProduccionRepositorio();
 
         public void GenerarDatosAutomaticamente()
@@ -25,6 +27,8 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
             lineaServicio.CargarLineas();
             colorServicio.CargarColores();
             modeloServicio.CargarModelos();
+            turnoServicio.CargarTurnos();
+            defectoServicio.CargarDefectos();
             ordenProduccionServicio.CargarOrdenesProduccionServicio();
         }
     }
