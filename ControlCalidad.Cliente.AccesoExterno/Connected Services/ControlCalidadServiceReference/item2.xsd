@@ -128,7 +128,9 @@
       <xs:element minOccurs="0" name="Cantidad" type="xs:int" />
       <xs:element minOccurs="0" name="DefectoHallazgo" nillable="true" type="tns:DefectoDto" />
       <xs:element minOccurs="0" name="HoraHallazgo" type="ser:duration" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="PieHallazgo" type="tns:PieDto" />
+      <xs:element minOccurs="0" name="SupervisorCalidad" nillable="true" type="tns:EmpleadoDto" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="HallazgoDto" nillable="true" type="tns:HallazgoDto" />
