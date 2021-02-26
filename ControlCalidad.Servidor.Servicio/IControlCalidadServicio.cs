@@ -114,6 +114,13 @@ namespace ControlCalidad.Servidor.Servicio
         EstadoOPDto[] ObtenerNuevosEstadosOp(EstadoOPDto estadoOp);
 
         #endregion
+
+        #region HALLAZGO
+
+        [OperationContract]
+        bool EliminarHallazgo(int idOp, int idHorario, int idHallazgo);
+
+        #endregion
     }
 
 

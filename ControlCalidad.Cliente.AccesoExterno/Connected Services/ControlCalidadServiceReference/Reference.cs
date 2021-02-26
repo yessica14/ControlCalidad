@@ -1289,6 +1289,12 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerNuevosEstadosOp", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerNuevosEstadosOpResponse")]
         System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EstadoOPDto[]> ObtenerNuevosEstadosOpAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EstadoOPDto estadoOp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/EliminarHallazgo", ReplyAction="http://tempuri.org/IControlCalidadServicio/EliminarHallazgoResponse")]
+        bool EliminarHallazgo(int idOp, int idHorario, int idHallazgo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/EliminarHallazgo", ReplyAction="http://tempuri.org/IControlCalidadServicio/EliminarHallazgoResponse")]
+        System.Threading.Tasks.Task<bool> EliminarHallazgoAsync(int idOp, int idHorario, int idHallazgo);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1524,6 +1530,14 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         
         public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EstadoOPDto[]> ObtenerNuevosEstadosOpAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EstadoOPDto estadoOp) {
             return base.Channel.ObtenerNuevosEstadosOpAsync(estadoOp);
+        }
+        
+        public bool EliminarHallazgo(int idOp, int idHorario, int idHallazgo) {
+            return base.Channel.EliminarHallazgo(idOp, idHorario, idHallazgo);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EliminarHallazgoAsync(int idOp, int idHorario, int idHallazgo) {
+            return base.Channel.EliminarHallazgoAsync(idOp, idHorario, idHallazgo);
         }
     }
 }

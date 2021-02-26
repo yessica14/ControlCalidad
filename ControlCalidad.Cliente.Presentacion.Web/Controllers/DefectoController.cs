@@ -49,5 +49,16 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
 
             return View(model);
         }
+
+        [HttpPost]
+        public ActionResult EliminarHallazgo(FormCollection collection)
+        {
+            var idOp = int.Parse(collection["nHiddenIdOp"].ToString());
+            var idHorario = int.Parse(collection["nHiddenIdHorario"].ToString());
+            var idHallazgo = int.Parse(collection["nHiddenIdHallazgo"].ToString());
+
+            Adaptador.EliminarHallazgo(idOp, idHorario, idHallazgo);
+            return RedirectToAction("HistorialOp", "Defecto", new { txtOp = idOp.ToString()});
+        }
     }
 }

@@ -404,6 +404,16 @@ namespace ControlCalidad.Servidor.Servicio
 
         #endregion
 
+        #region HALLAZGO
+
+        public bool EliminarHallazgo(int idOp, int idHorario, int idHallazgo)
+        {
+            HallazgoRepositorio.EliminarHallazgo(idOp, idHorario, idHallazgo);
+            return true;
+        }
+
+        #endregion
+
         #region De_Domino_A_Dto
 
         private EmpleadoDto Empleado_DeDomADto(Empleado empleadoDom)

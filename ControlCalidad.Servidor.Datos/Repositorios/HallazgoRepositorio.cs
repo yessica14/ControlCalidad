@@ -14,7 +14,26 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
         {
             var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
             
-            
+        }
+
+        public static void AgregarHallazgo(OrdenProduccion op, Hallazgo hallazgo)
+        {
+        }
+
+        public static void ModificarHallazgo(OrdenProduccion op, Hallazgo hallazgo)
+        {
+        }
+
+        public static void EliminarHallazgo(int idOp, int idHorario, int idHallazgo)
+        {
+            var opDom = OrdenProduccionRepositorio.ObtenerOrderProduccionPorId(idOp);
+            opDom.ListaDeHorario.ForEach(hor =>
+            {
+                if (hor.Id == idHorario)
+                    hor.ListaDeHallazgos.RemoveAll(hal => hal.Id == idHallazgo);
+            });
+
+            OrdenProduccionRepositorio.ModificarOrdenProduccion(opDom);
         }
 
     }
