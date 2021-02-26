@@ -49,7 +49,6 @@
     <Compile Include="Repositorios\DefectoRepositorio.cs" />
     <Compile Include="Repositorios\EmpleadoRepositorio.cs" />
     <Compile Include="Repositorios\HallazgoRepositorio.cs" />
-    <Compile Include="Repositorios\HorarioRepositorio.cs" />
     <Compile Include="Repositorios\LineaRepositorio.cs" />
     <Compile Include="Repositorios\ModeloRepositorio.cs" />
     <Compile Include="Repositorios\OrdenProduccionRepositorio.cs" />

@@ -46,5 +46,11 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
            );
 
         }
+
+        public static Turno ObtenerTurnoPorCodigo(int codigo)
+        {
+            var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
+            return empresa.ListaDeTurnos.Where(x => x.Codigo == codigo).FirstOrDefault();
+        }
     }
 }

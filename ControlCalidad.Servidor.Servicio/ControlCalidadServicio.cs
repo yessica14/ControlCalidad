@@ -524,11 +524,108 @@ namespace ControlCalidad.Servidor.Servicio
             opDto.ModeloOP = Modelo_DeDomADto(opDom.ModeloOP);
             opDto.ColorCalzado = Color_DeDomADto(opDom.ColorCalzado);
             opDto.LineaTrabajo = Linea_DeDomADto(opDom.LineaTrabajo);
-            opDto.ListaDeHorario = null; // falta implementar!
+            if (opDom.ListaDeHorario == null)
+                opDto.ListaDeHorario = null; // falta implementar!
+            else
+            {
+                opDto.ListaDeHorario = new List<HorarioDto>();
+                foreach (var item in opDom.ListaDeHorario)
+                {
+                    var horarioDto = Horario_DeDomADto(item);
+                    opDto.ListaDeHorario.Add(horarioDto);
+                }
+            }
             opDto.SupervisorCalidad = Empleado_DeDomADto(opDom.SupervisorCalidad);
 
             return (opDto);
         }
+
+        private HorarioDto Horario_DeDomADto(Horario horarioDom)
+        {
+            if (horarioDom == null)
+                return null;
+
+            var horarioDto = new HorarioDto();
+            horarioDto.Id = horarioDom.Id;
+            horarioDto.Fecha = horarioDom.Fecha;
+            horarioDto.HoraInicio = horarioDom.HoraInicio;
+            horarioDto.HoraFin = horarioDom.HoraFin;
+            horarioDto.TurnoHorario = Turno_DeDomADto(horarioDom.TurnoHorario);
+
+            if (horarioDom.ListaDeHallazgos == null)
+                horarioDto.ListaDeHallazgos = null;
+            else
+            {
+                horarioDto.ListaDeHallazgos = new List<HallazgoDto>();
+                foreach (var item in horarioDom.ListaDeHallazgos)
+                {
+                    var hallazgoDto = Hallazgo_DeDomADto(item);
+                    horarioDto.ListaDeHallazgos.Add(hallazgoDto);
+                }
+            }
+            return (horarioDto);
+        }
+
+        private TurnoDto Turno_DeDomADto(Turno turnoDom)
+        {
+            if (turnoDom == null)
+                return null;
+
+            var turnoDto = new TurnoDto();
+            turnoDto.Codigo = turnoDom.Codigo;
+            turnoDto.nombre = turnoDom.nombre;
+            turnoDto.HoraInicio = turnoDom.HoraInicio;
+            turnoDto.HoraFin = turnoDom.HoraFin;
+
+            return (turnoDto);
+        }
+
+        private HallazgoDto Hallazgo_DeDomADto(Hallazgo hallazgoDom)
+        {
+            if (hallazgoDom == null)
+                return null;
+
+            var hallazgoDto = new HallazgoDto();
+            hallazgoDto.Id = hallazgoDom.Id;
+            hallazgoDto.Cantidad = hallazgoDom.Cantidad;
+            hallazgoDto.HoraHallazgo = hallazgoDom.HoraHallazgo;
+            hallazgoDto.DefectoHallazgo = Defecto_DeDomADto(hallazgoDom.DefectoHallazgo);
+            switch (hallazgoDom.PieHallazgo)
+            {
+                case Pie.Izquierdo:
+                    hallazgoDto.PieHallazgo = PieDto.Izquierdo;
+                    break;
+                case Pie.Derecho:
+                    hallazgoDto.PieHallazgo = PieDto.Derecho;
+                    break;
+            }
+            hallazgoDto.SupervisorCalidad = Empleado_DeDomADto(hallazgoDom.SupervisorCalidad);
+
+            return (hallazgoDto);
+        }
+
+        private DefectoDto Defecto_DeDomADto(Defecto defectoDom)
+        {
+            if (defectoDom == null)
+                return null;
+
+            var defectoDto = new DefectoDto();
+            defectoDto.Numero = defectoDom.Numero;
+            defectoDto.Descripcion = defectoDom.Descripcion;
+            switch (defectoDom.TipoDeDefecto)
+            {
+                case TipoDefecto.Reproceso:
+                    defectoDto.TipoDeDefecto = TipoDefectoDto.Reproceso;
+                    break;
+                case TipoDefecto.Observado:
+                    defectoDto.TipoDeDefecto = TipoDefectoDto.Observado;
+                    break;
+            }
+
+            return (defectoDto);
+        }
+
+
     }
     
     #endregion

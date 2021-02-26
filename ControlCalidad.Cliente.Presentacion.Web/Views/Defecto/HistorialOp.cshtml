@@ -28,19 +28,23 @@
                     <th scope="col">Turno</th>
                     <th scope="col">Horario</th>
                     <th scope="col">Hora Hallazgo</th>
-                    <th scope="col">Primera/Defecto</th>
+                    <th scope="col">Condición</th>
+                    <th scope="col">Tipo Defecto</th>
                     <th scope="col">Pie</th>
                     <th scope="col">Acciones</th>
                 </thead>
 
                 <tbody>
-                    @foreach (var itemHorario in Model.OrdenProduccion.ListaDeHorario)
+                @{
+                if (Model.OrdenProduccion.ListaDeHorario != null)
+                {
+                    foreach (var itemHorario in Model.OrdenProduccion.ListaDeHorario)
                     {
-                        var txtFecha = itemHorario.Fecha;
+                        var txtFecha = itemHorario.Fecha.ToString("dd/MM/yyyy");
                         var txtTurno = itemHorario.TurnoHorario.nombre;
                         var txtHorario = itemHorario.Id.ToString();
 
-                        @foreach (var itemHallazgo in itemHorario.ListaDeHallazgos)
+                        foreach (var itemHallazgo in itemHorario.ListaDeHallazgos)
                         {
                             <tr>
                                 <td>@txtFecha</td>
@@ -48,18 +52,23 @@
                                 <td>@txtHorario</td>
                                 <td>@itemHallazgo.HoraHallazgo.ToString()</td>
 
-                                @{string txtHallazgo;} 
+                                @{
+                                    string txtHallazgo;
+                                    string txtTipoDefecto;
+                                }
 
                                 @if (itemHallazgo.DefectoHallazgo == null)
                                 {
                                     txtHallazgo = "De Primera";
+                                    txtTipoDefecto = "-.-";
                                 }
                                 else
                                 {
-                                    txtHallazgo = itemHallazgo.DefectoHallazgo.Descripcion + "[" + itemHallazgo.DefectoHallazgo.TipoDeDefecto.ToString() + "]";
-                                    <td>@itemHallazgo.DefectoHallazgo.Descripcion (@itemHallazgo.DefectoHallazgo.TipoDeDefecto.ToString())</td>
+                                    txtHallazgo = itemHallazgo.DefectoHallazgo.Descripcion;
+                                    txtTipoDefecto = itemHallazgo.DefectoHallazgo.TipoDeDefecto.ToString();
                                 }
                                 <td>@txtHallazgo</td>
+                                <td>@txtTipoDefecto</td>
                                 <td>@itemHallazgo.PieHallazgo.ToString()</td>
                                 <td>
                                     <a class="btn btn-danger" href="" title="Eliminar" onclick="return LanzarModalEliminar(@itemHallazgo.Id, '@txtHallazgo')">
@@ -69,6 +78,8 @@
                             </tr>
                         }
                     }
+                }
+                }
                 </tbody>
             </table>
         </div>

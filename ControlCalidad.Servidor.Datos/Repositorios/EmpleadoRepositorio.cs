@@ -63,6 +63,16 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     CorreoElectronico = "ar@gmail.com"
                 }
             );
+            empresa.ListaDeEmpleados.Add(
+                new Empleado()
+                {
+                    Id = 6,
+                    Apellido = "Tofi",
+                    Nombre = "Fernandez",
+                    Documento = 111222333,
+                    CorreoElectronico = "tf@gmail.com"
+                }
+            );
             Singleton.getInstancia().AsignarDatosAEmpresa(empresa);
         }
 
