@@ -1278,6 +1278,12 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoIdOP", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoIdOPResponse")]
         System.Threading.Tasks.Task<int> ObtenerUltimoIdOPAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerOpAsignadoAUnEmpleado", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerOpAsignadoAUnEmpleadoResponse")]
+        ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ObtenerOpAsignadoAUnEmpleado(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleadoDto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerOpAsignadoAUnEmpleado", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerOpAsignadoAUnEmpleadoResponse")]
+        System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto> ObtenerOpAsignadoAUnEmpleadoAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleadoDto);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerNuevosEstadosOp", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerNuevosEstadosOpResponse")]
         ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EstadoOPDto[] ObtenerNuevosEstadosOp(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EstadoOPDto estadoOp);
         
@@ -1502,6 +1508,14 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         
         public System.Threading.Tasks.Task<int> ObtenerUltimoIdOPAsync() {
             return base.Channel.ObtenerUltimoIdOPAsync();
+        }
+        
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ObtenerOpAsignadoAUnEmpleado(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleadoDto) {
+            return base.Channel.ObtenerOpAsignadoAUnEmpleado(empleadoDto);
+        }
+        
+        public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto> ObtenerOpAsignadoAUnEmpleadoAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleadoDto) {
+            return base.Channel.ObtenerOpAsignadoAUnEmpleadoAsync(empleadoDto);
         }
         
         public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EstadoOPDto[] ObtenerNuevosEstadosOp(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EstadoOPDto estadoOp) {

@@ -151,6 +151,12 @@
   <wsdl:message name="IControlCalidadServicio_ObtenerUltimoIdOP_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerUltimoIdOPResponse" />
   </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerOpAsignadoAUnEmpleado_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerOpAsignadoAUnEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerOpAsignadoAUnEmpleado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerOpAsignadoAUnEmpleadoResponse" />
+  </wsdl:message>
   <wsdl:message name="IControlCalidadServicio_ObtenerNuevosEstadosOp_InputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerNuevosEstadosOp" />
   </wsdl:message>
@@ -253,6 +259,10 @@
     <wsdl:operation name="ObtenerUltimoIdOP">
       <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoIdOP" message="tns:IControlCalidadServicio_ObtenerUltimoIdOP_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoIdOPResponse" message="tns:IControlCalidadServicio_ObtenerUltimoIdOP_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerOpAsignadoAUnEmpleado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerOpAsignadoAUnEmpleado" message="tns:IControlCalidadServicio_ObtenerOpAsignadoAUnEmpleado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerOpAsignadoAUnEmpleadoResponse" message="tns:IControlCalidadServicio_ObtenerOpAsignadoAUnEmpleado_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ObtenerNuevosEstadosOp">
       <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerNuevosEstadosOp" message="tns:IControlCalidadServicio_ObtenerNuevosEstadosOp_InputMessage" />
@@ -470,6 +480,15 @@
     </wsdl:operation>
     <wsdl:operation name="ObtenerUltimoIdOP">
       <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ObtenerUltimoIdOP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerOpAsignadoAUnEmpleado">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ObtenerOpAsignadoAUnEmpleado" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

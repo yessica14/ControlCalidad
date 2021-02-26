@@ -103,6 +103,9 @@ namespace ControlCalidad.Servidor.Servicio
         [OperationContract]
         int ObtenerUltimoIdOP();
 
+        [OperationContract]
+        OrdenProduccionDto ObtenerOpAsignadoAUnEmpleado(EmpleadoDto empleadoDto);
+
         #endregion
 
         #region ESTADO_OP

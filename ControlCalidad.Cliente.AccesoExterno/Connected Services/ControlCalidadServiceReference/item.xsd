@@ -325,17 +325,31 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ObtenerOpAsignadoAUnEmpleado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="empleadoDto" nillable="true" type="q25:EmpleadoDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerOpAsignadoAUnEmpleadoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="ObtenerOpAsignadoAUnEmpleadoResult" nillable="true" type="q26:OrdenProduccionDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ObtenerNuevosEstadosOp">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="estadoOp" type="q25:EstadoOPDto" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="estadoOp" type="q27:EstadoOPDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ObtenerNuevosEstadosOpResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="ObtenerNuevosEstadosOpResult" nillable="true" type="q26:ArrayOfEstadoOPDto" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="ObtenerNuevosEstadosOpResult" nillable="true" type="q28:ArrayOfEstadoOPDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

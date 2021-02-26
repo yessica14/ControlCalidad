@@ -1,7 +1,154 @@
-﻿@{
+﻿@using ControlCalidad.Cliente.Presentacion.Web.Models.Defecto
+@model InspeccionarViewModel
+@{
     ViewBag.Title = "Inspeccionar";
     Layout = "~/Views/Shared/_PrincipalSitie.cshtml";
 }
 
-<h2>Inspeccionar</h2>
+<style media="screen">
+    .radioAjustado {
+        padding-right: 12px;
+        padding-left: 12px;
+    }
+</style>
+
+<head>
+    <div class="col-12">
+        <h1>Inspeccion de Calzado</h1>
+    </div>
+</head>
+
+
+<div class="row">
+    
+    <div class="col-8">
+        
+        <div class="form-group">
+            <label class="col-12 control-label" for="LineaTrabajo">N° OP: <b>@Model.OpDto.Numero</b></label>
+            <label class="col-12 control-label" for="LineaTrabajo">Modelo / Color: <b>SKU: @Model.OpDto.ModeloOP.Sku - @Model.OpDto.ColorCalzado.Descripcion</b></label>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="LineaTrabajo">Inspeccionar</label>
+            <div class="radioAjustado">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="nRadioTipoInspeccion" id="Pimera" value="option1" onclick="MostrarPanel('primera');">
+                    <label class="form-check-label" for="inlineRadio1">Primera</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="nRadioTipoInspeccion" id="Defecto" value="option2" onclick="MostrarPanel('defecto');">
+                    <label class="form-check-label" for="inlineRadio2">Defecto</label>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-4">
+        <div class="form-group">
+            <input type="date" value="@Model.Fecha.ToString("yyyy-MM-dd")">
+            <input type="time"  value="@Model.Fecha.ToString("hh:mm")">
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="collapse multi-collapse  bg-secondary text-white" id="idPanelPrimera">
+        <div class="form-group col-12">
+            <label class="col-md-4 control-label">Pie</label>
+            <div class="radioAjustado">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="nRadioPrimeraPie" id="PieDerechoPrimera" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">Izquierdo</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="nRadioPrimeraPie" id="PieIzquierdoPrimera" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">Derecho</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="collapse multi-collapse bg-secondary text-white" id="idPanelDefecto">
+        <div class="form-group col-12">
+            <label class="" for="LineaTrabajo">Pie</label>
+            <div class="radioAjustado">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="nRadioDefectoPie" id="PieIzquierdoDefecto" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">Izquierdo</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="nRadioDefectoPie" id="PieDerechoDefecto" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">Derecho</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-12">
+            <label class="" for="LineaTrabajo">Tipo de Defecto</label>
+            <div class="radioAjustado">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="nRadioTipoDefecto" id="Reproceso" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">Reproceso</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="nRadioTipoDefecto" id="Observado" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">Observado</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-12">
+            <label class="col-12 control-label" for="Color">Lista de Defectos</label>
+            <select name="nSelectColor" id="idSelectColor" class="form-control">
+                @foreach (var item in Model.ListaDefecto)
+                {
+                    <option value="@item.Numero">@item.Descripcion</option>
+                }
+                </select>
+        </div>
+        <div class="col-8">
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+<div class="row">
+
+    <div class="col-8">
+        <div class="form-group">
+            <a class="btn btn-primary" href="/Defecto/ListaDefectos/?txtOp=@Model.OpDto.Numero">Historial de OP</a>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    var MostrarPanel = function (panel) {
+        if (panel == 'primera') {
+            $('#idPanelPrimera').collapse('show'); // MOSTRAR
+            $('#idPanelDefecto').collapse('hide');
+        } else {
+            $('#idPanelPrimera').collapse('hide'); // MOSTRAR
+            $('#idPanelDefecto').collapse('show');
+        }
+    }
+</script>
+
+
+
+
+
+
 
