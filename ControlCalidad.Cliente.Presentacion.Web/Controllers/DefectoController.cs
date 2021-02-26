@@ -1,4 +1,4 @@
-﻿using ControlCalidad.Cliente.AccesoExterno;
+using ControlCalidad.Cliente.AccesoExterno;
 using ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference;
 using ControlCalidad.Cliente.Presentacion.Web.Models.Defecto;
 using System;
@@ -31,6 +31,22 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
             model.ListaDefecto = new List<DefectoDto>();
             model.Fecha = DateTime.Now;
             
+            return View(model);
+        }
+
+        public ActionResult HistorialOp(string txtOp)
+        {
+            if (Session["Session_Usuario_Id"] == null)
+                return RedirectToAction("Login", "Home");
+
+            int idOp = int.Parse(txtOp);
+            var op = Adaptador.ObtenerOpPorId(idOp);
+
+            var model = new HistorialOpViewModel()
+            {
+                OrdenProduccion = op
+            };
+
             return View(model);
         }
     }

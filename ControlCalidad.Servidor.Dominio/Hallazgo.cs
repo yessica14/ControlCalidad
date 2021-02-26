@@ -8,6 +8,7 @@ namespace ControlCalidad.Servidor.Dominio
 {
     public class Hallazgo
     {
+        public int Id { get; set; }
         public int Cantidad { get; set; }
         public TimeSpan HoraHallazgo { get; set; }
         public Defecto DefectoHallazgo { get; set; }

@@ -914,6 +914,9 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         private System.TimeSpan HoraHallazgoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.PieDto PieHallazgoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -964,6 +967,19 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
                 if ((this.HoraHallazgoField.Equals(value) != true)) {
                     this.HoraHallazgoField = value;
                     this.RaisePropertyChanged("HoraHallazgo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
                 }
             }
         }
