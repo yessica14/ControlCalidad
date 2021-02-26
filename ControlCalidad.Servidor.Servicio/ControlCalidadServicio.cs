@@ -353,6 +353,22 @@ namespace ControlCalidad.Servidor.Servicio
             return OrdenProduccionRepositorio.ObtenerUltimoId();
         }
 
+        public OrdenProduccionDto ObtenerOpAsignadoAUnEmpleado(EmpleadoDto empleadoDto)
+        {
+            var listaDom = OrdenProduccionRepositorio.ObtenerTodasLasOrdenProduccion();
+
+            foreach (var item in listaDom)
+            {
+                if (item.SupervisorCalidad != null && item.SupervisorCalidad.Id == empleadoDto.Id && item.EstadoDeOP != EstadoOP.Pausado && item.EstadoDeOP != EstadoOP.Finalizado)
+                {
+                    var ordenProduccionDto = OrdenProduccion_DeDomADto(item);
+                    return ordenProduccionDto;
+                }
+            }
+
+            return null;
+        }
+
         #endregion
 
         #region ESTADO_OP

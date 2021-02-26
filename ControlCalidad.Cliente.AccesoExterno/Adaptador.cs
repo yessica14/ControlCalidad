@@ -217,6 +217,14 @@ namespace ControlCalidad.Cliente.AccesoExterno
             }
         }
 
+        public static OrdenProduccionDto ObtenerOpAsignadoAUnEmpleado(EmpleadoDto empleadoDto)
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.ObtenerOpAsignadoAUnEmpleado(empleadoDto);
+            }
+        }
+
         #endregion
 
         #region ESTADO_OP
