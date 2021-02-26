@@ -914,7 +914,13 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         private System.TimeSpan HoraHallazgoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.PieDto PieHallazgoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto SupervisorCalidadField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -966,6 +972,19 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.PieDto PieHallazgo {
             get {
                 return this.PieHallazgoField;
@@ -974,6 +993,19 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
                 if ((this.PieHallazgoField.Equals(value) != true)) {
                     this.PieHallazgoField = value;
                     this.RaisePropertyChanged("PieHallazgo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto SupervisorCalidad {
+            get {
+                return this.SupervisorCalidadField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupervisorCalidadField, value) != true)) {
+                    this.SupervisorCalidadField = value;
+                    this.RaisePropertyChanged("SupervisorCalidad");
                 }
             }
         }

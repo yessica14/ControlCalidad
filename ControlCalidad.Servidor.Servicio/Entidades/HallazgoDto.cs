@@ -11,6 +11,9 @@ namespace ControlCalidad.Servidor.Servicio.Entidades
     public class HallazgoDto
     {
         [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
         public int Cantidad { get; set; }
         [DataMember]
         public TimeSpan HoraHallazgo { get; set; }
