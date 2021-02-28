@@ -171,4 +171,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfEstadoOPDto" nillable="true" type="tns:ArrayOfEstadoOPDto" />
+  <xs:complexType name="ArrayOfDefectoDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DefectoDto" nillable="true" type="tns:DefectoDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDefectoDto" nillable="true" type="tns:ArrayOfDefectoDto" />
 </xs:schema>

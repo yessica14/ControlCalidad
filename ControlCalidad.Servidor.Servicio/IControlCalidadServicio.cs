@@ -121,6 +121,13 @@ namespace ControlCalidad.Servidor.Servicio
         bool EliminarHallazgo(int idOp, int idHorario, int idHallazgo);
 
         #endregion
+
+        #region TIPODEFECTO
+
+        [OperationContract]
+        DefectoDto[] ObtenerListaDefectos(string tipo);
+
+        #endregion
     }
 
 

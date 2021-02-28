@@ -392,8 +392,32 @@ namespace ControlCalidad.Servidor.Servicio
 
         #endregion
 
-        #region DEFECTO
+        #region TIPODEFECTO
+        public DefectoDto[] ObtenerListaDefectos(string tipo)
+        {
+            var listaDto = new List<DefectoDto>();
+            var listaDom = new List<Defecto>();
+            
+            if(tipo == "reproceso")
+            {
+                var tipoDef = TipoDefecto.Reproceso;
+                listaDom = DefectoRepositorio.ObtenerDefectoPorTipoDefecto(tipoDef); 
 
+            }
+            else
+            {
+                var tipoDef = TipoDefecto.Observado;
+                listaDom = DefectoRepositorio.ObtenerDefectoPorTipoDefecto(tipoDef);
+            }
+
+            foreach (var item in listaDom)
+            {
+                var defecto = Defecto_DeDomADto(item);
+                listaDto.Add(defecto);
+            }
+
+            return listaDto.ToArray();
+        }
         #endregion
 
         #region TURNO

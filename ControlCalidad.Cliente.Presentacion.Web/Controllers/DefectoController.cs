@@ -60,5 +60,23 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
             Adaptador.EliminarHallazgo(idOp, idHorario, idHallazgo);
             return RedirectToAction("HistorialOp", "Defecto", new { txtOp = idOp.ToString()});
         }
+
+        [HttpPost]
+        public ActionResult ObtenerListaDeDefectos(string tipoDefecto)
+        {
+
+            var listaDefecto = Adaptador.ObtenerListaDefectos(tipoDefecto);
+            string datos = "";
+
+            foreach (var item in listaDefecto)
+            {
+                datos = datos + ",{\"id\": \"" + item.Numero.ToString() + "\", \"descripcion\": \"" + item.Descripcion + "\"}";
+            }
+
+            datos = datos.Substring(1);
+            string json = " {\"listaDefectos\":[ " + datos + " ]}";
+
+            return Json(json);
+        }
     }
 }
