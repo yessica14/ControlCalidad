@@ -96,11 +96,11 @@
             <label class="" for="LineaTrabajo">Tipo de Defecto</label>
             <div class="radioAjustado">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="nRadioTipoDefecto" id="Reproceso" value="option1">
+                    <input class="form-check-input" type="radio" name="nRadioTipoDefecto" id="Reproceso" onclick="ObtenerDefecto('reproceso');" value="option1">
                     <label class="form-check-label" for="inlineRadio1">Reproceso</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="nRadioTipoDefecto" id="Observado" value="option2">
+                    <input class="form-check-input" type="radio" name="nRadioTipoDefecto" id="Observado" onclick="ObtenerDefecto('observado');" value="option2">
                     <label class="form-check-label" for="inlineRadio2">Observado</label>
                 </div>
             </div>
@@ -108,12 +108,10 @@
 
         <div class="form-group col-12">
             <label class="col-12 control-label" for="Color">Lista de Defectos</label>
-            <select name="nSelectColor" id="idSelectColor" class="form-control">
-                @foreach (var item in Model.ListaDefecto)
-                {
-                    <option value="@item.Numero">@item.Descripcion</option>
-                }
-                </select>
+            <select name="nSelectDefecto" id="idSelectDefecto" class="form-control">
+               
+            </select>
+         
         </div>
         <div class="col-8">
             <div class="form-group">
@@ -135,6 +133,9 @@
 </div>
 
 <script type="text/javascript">
+
+    var selectObservado = "<select><option></option></select>";
+
     var MostrarPanel = function (panel) {
         if (panel == 'primera') {
             $('#idPanelPrimera').collapse('show'); // MOSTRAR
@@ -143,6 +144,33 @@
             $('#idPanelPrimera').collapse('hide'); // MOSTRAR
             $('#idPanelDefecto').collapse('show');
         }
+    }
+
+    //var ObtenerDefecto = function () {
+
+    function ObtenerDefecto(tipoDefecto) {
+        var parametro = {
+            tipoDefecto : tipoDefecto
+        };
+
+        $.ajax(
+            {
+                url: '/Defecto/ObtenerListaDeDefectos',  // Controller (color) / Funcion(ObtenerMisDatos)
+                type: 'POST',                   // tipo Post
+                dataType: 'json',               // retorna un Json a la vista
+                data: parametro,
+                success: function (dataRetorno) {
+                    console.log(dataRetorno);
+                    var objJson = JSON.parse(dataRetorno);
+                    // console.log(objJson);
+                    $('#idSelectDefecto').empty();
+                    $.each(objJson.listaDefectos, function (i, item) {
+                        console.log(item);
+                        $('#idSelectDefecto').append($('<option>').text(item.descripcion).attr('value', item.id));
+                    });
+                }
+            }
+        );
     }
 </script>
 

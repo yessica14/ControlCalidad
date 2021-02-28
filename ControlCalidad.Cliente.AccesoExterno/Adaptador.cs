@@ -250,5 +250,16 @@ namespace ControlCalidad.Cliente.AccesoExterno
         }
 
         #endregion
+        #region TipoDefecto
+
+        public static DefectoDto[] ObtenerListaDefectos(string tipo)
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.ObtenerListaDefectos(tipo);
+            }
+
+        }
+        #endregion
     }
 }

@@ -369,4 +369,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ObtenerListaDefectos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tipo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerListaDefectosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="ObtenerListaDefectosResult" nillable="true" type="q29:ArrayOfDefectoDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

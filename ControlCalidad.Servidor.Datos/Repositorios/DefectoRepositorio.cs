@@ -84,5 +84,36 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
             var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
             return empresa.ListaDeDefectos.Where(x => x.Numero == numero).FirstOrDefault();
         }
+        
+        public static List<Defecto> ObtenerDefectoPorTipoDefecto(TipoDefecto tipoDefecto)
+        {
+
+            var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
+            var listaDefecto = new List<Defecto>();
+            foreach (var item in empresa.ListaDeDefectos)
+            {
+                if(item.TipoDeDefecto == tipoDefecto)
+                {
+                    listaDefecto.Add(item);
+                }
+            }
+            return listaDefecto;
+        }
+
+        //public static List<Defecto> ObtenerDefectosReproceso()
+        //{
+        //    var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
+        //    var listaDefectoReproceso = new List<Defecto>();
+        //    foreach (var item in empresa.ListaDeDefectos)
+        //    {
+        //        if(item.TipoDeDefecto == TipoDefecto.Reproceso)
+        //        {
+        //            listaDefectoReproceso.Add(item);
+        //        }
+        //    }
+        //    return listaDefectoReproceso;
+        //}
+
+
     }
 }

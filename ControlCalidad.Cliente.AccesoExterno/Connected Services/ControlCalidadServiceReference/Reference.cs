@@ -1295,6 +1295,12 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/EliminarHallazgo", ReplyAction="http://tempuri.org/IControlCalidadServicio/EliminarHallazgoResponse")]
         System.Threading.Tasks.Task<bool> EliminarHallazgoAsync(int idOp, int idHorario, int idHallazgo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerListaDefectos", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerListaDefectosResponse")]
+        ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.DefectoDto[] ObtenerListaDefectos(string tipo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerListaDefectos", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerListaDefectosResponse")]
+        System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.DefectoDto[]> ObtenerListaDefectosAsync(string tipo);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1538,6 +1544,14 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         
         public System.Threading.Tasks.Task<bool> EliminarHallazgoAsync(int idOp, int idHorario, int idHallazgo) {
             return base.Channel.EliminarHallazgoAsync(idOp, idHorario, idHallazgo);
+        }
+        
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.DefectoDto[] ObtenerListaDefectos(string tipo) {
+            return base.Channel.ObtenerListaDefectos(tipo);
+        }
+        
+        public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.DefectoDto[]> ObtenerListaDefectosAsync(string tipo) {
+            return base.Channel.ObtenerListaDefectosAsync(tipo);
         }
     }
 }
