@@ -53,6 +53,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 {
                     Numero = 104,
                     Descripcion = "Linea Trabajo 104",
+                    SupervisorLinea = EmpleadoRepositorio.BuscarEmpleadoPorId(5)
                 }
             );
             empresa.ListaDeLineas.Add
