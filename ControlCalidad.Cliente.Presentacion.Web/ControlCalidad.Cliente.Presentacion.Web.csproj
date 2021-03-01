@@ -131,6 +131,7 @@
     <Compile Include="Models\Color\GestionAbmViewModel.cs" />
     <Compile Include="Models\Color\IndexViewModel.cs" />
     <Compile Include="Models\ControlCalidad\IndexViewModel.cs" />
+    <Compile Include="Models\Defecto\HermanadoViewModel.cs" />
     <Compile Include="Models\Defecto\InspeccionarViewModel.cs" />
     <Compile Include="Models\Defecto\HistorialOpViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
@@ -2090,6 +2091,7 @@
     <Content Include="Views\OP\Alta.cshtml" />
     <Content Include="Views\Defecto\Inspeccionar.cshtml" />
     <Content Include="Views\Defecto\HistorialOp.cshtml" />
+    <Content Include="Views\Defecto\Hermanado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

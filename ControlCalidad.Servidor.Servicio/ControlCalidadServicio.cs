@@ -436,6 +436,13 @@ namespace ControlCalidad.Servidor.Servicio
             return true;
         }
 
+        public bool RealizarHermanado(int idOp, int idSuperivisorLinea)
+        {
+            var empleado = EmpleadoRepositorio.BuscarEmpleadoPorId(idSuperivisorLinea);
+            PrimeraRepositorio.RealizarHermanado(idOp, empleado);
+            return true;
+        }
+
         #endregion
 
         #region De_Domino_A_Dto
@@ -597,6 +604,8 @@ namespace ControlCalidad.Servidor.Servicio
                     horarioDto.ListaDeHallazgos.Add(hallazgoDto);
                 }
             }
+            horarioDto.ParesDePrimera = Primera_DeDomADto(horarioDom.ParesDePrimera);
+
             return (horarioDto);
         }
 
@@ -657,6 +666,19 @@ namespace ControlCalidad.Servidor.Servicio
             }
 
             return (defectoDto);
+        }
+
+        private PrimeraDto Primera_DeDomADto(Primera primeraDom)
+        {
+            if (primeraDom == null)
+                return null;
+
+            var primeraDto = new PrimeraDto();
+            primeraDto.Hora = primeraDom.Hora;
+            primeraDto.Cantidad = primeraDom.Cantidad;
+            primeraDto.SupervisorCalidad = Empleado_DeDomADto(primeraDom.SupervisorCalidad);
+
+            return (primeraDto);
         }
 
 

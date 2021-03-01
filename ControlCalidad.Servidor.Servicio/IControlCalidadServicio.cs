@@ -120,6 +120,9 @@ namespace ControlCalidad.Servidor.Servicio
         [OperationContract]
         bool EliminarHallazgo(int idOp, int idHorario, int idHallazgo);
 
+        [OperationContract]
+        bool RealizarHermanado(int idOp, int idSupervisorCalidad);
+
         #endregion
 
         #region TIPODEFECTO
