@@ -48,7 +48,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     Numero = 501,
                     ModeloOP = ModeloRepositorio.ObtenerModeloPorSku(1401),
                     ColorCalzado = ColorRepositorio.ObtenerColorPorId(804),
-                    EstadoDeOP = EstadoOP.Pausado,
+                    EstadoDeOP = EstadoOP.Finalizado,
                     LineaTrabajo = LineaRepositorio.ObtenerLineaPorId(104)
                 }
             );
