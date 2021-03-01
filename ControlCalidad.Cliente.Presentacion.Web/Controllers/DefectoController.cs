@@ -78,5 +78,27 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
 
             return Json(json);
         }
+
+        public ActionResult Hermanado()
+        {
+            if (Session["Session_Usuario_Id"] == null)
+                return RedirectToAction("Login", "Home");
+
+            int idSuperivisorCalidad = int.Parse(Session["Session_Usuario_Id"].ToString());
+
+            var usuarioDto = Adaptador.ObtenerUsuarioPorId(idSuperivisorCalidad);
+            var opDto = Adaptador.ObtenerOpAsignadoAUnEmpleado(usuarioDto.UsuarioDeEmpleado);
+
+            if (opDto == null)
+                return RedirectToAction("Index", "ControlCalidad", new { mensaje = "Usted no esta trabajando en ninguna OP." });
+
+            Adaptador.RealizarHermanado(opDto.Numero, idSuperivisorCalidad);
+            opDto = Adaptador.ObtenerOpAsignadoAUnEmpleado(usuarioDto.UsuarioDeEmpleado);
+
+            var model = new HermanadoViewModel();
+            model.OpDto = opDto;
+
+            return View(model);
+        }
     }
 }

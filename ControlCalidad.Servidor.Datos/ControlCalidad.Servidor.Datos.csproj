@@ -52,6 +52,7 @@
     <Compile Include="Repositorios\LineaRepositorio.cs" />
     <Compile Include="Repositorios\ModeloRepositorio.cs" />
     <Compile Include="Repositorios\OrdenProduccionRepositorio.cs" />
+    <Compile Include="Repositorios\PrimeraRepositorio.cs" />
     <Compile Include="Repositorios\TurnoRepositorio.cs" />
     <Compile Include="Repositorios\UsuarioRepositorio.cs" />
   </ItemGroup>

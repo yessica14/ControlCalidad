@@ -249,7 +249,16 @@ namespace ControlCalidad.Cliente.AccesoExterno
             }
         }
 
+        public static bool RealizarHermanado(int idOp, int idSupervisorCalidad)
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.RealizarHermanado(idOp, idSupervisorCalidad);
+            }
+        }
+
         #endregion
+
         #region TipoDefecto
 
         public static DefectoDto[] ObtenerListaDefectos(string tipo)

@@ -700,6 +700,9 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         private ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.HallazgoDto[] ListaDeHallazgosField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.PrimeraDto ParesDePrimeraField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.TurnoDto TurnoHorarioField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -778,6 +781,19 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.PrimeraDto ParesDePrimera {
+            get {
+                return this.ParesDePrimeraField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ParesDePrimeraField, value) != true)) {
+                    this.ParesDePrimeraField = value;
+                    this.RaisePropertyChanged("ParesDePrimera");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.TurnoDto TurnoHorario {
             get {
                 return this.TurnoHorarioField;
@@ -786,6 +802,84 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
                 if ((object.ReferenceEquals(this.TurnoHorarioField, value) != true)) {
                     this.TurnoHorarioField = value;
                     this.RaisePropertyChanged("TurnoHorario");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PrimeraDto", Namespace="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidade" +
+        "s")]
+    [System.SerializableAttribute()]
+    public partial class PrimeraDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CantidadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int HoraField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto SupervisorCalidadField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Cantidad {
+            get {
+                return this.CantidadField;
+            }
+            set {
+                if ((this.CantidadField.Equals(value) != true)) {
+                    this.CantidadField = value;
+                    this.RaisePropertyChanged("Cantidad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Hora {
+            get {
+                return this.HoraField;
+            }
+            set {
+                if ((this.HoraField.Equals(value) != true)) {
+                    this.HoraField = value;
+                    this.RaisePropertyChanged("Hora");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto SupervisorCalidad {
+            get {
+                return this.SupervisorCalidadField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupervisorCalidadField, value) != true)) {
+                    this.SupervisorCalidadField = value;
+                    this.RaisePropertyChanged("SupervisorCalidad");
                 }
             }
         }
@@ -1296,6 +1390,12 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/EliminarHallazgo", ReplyAction="http://tempuri.org/IControlCalidadServicio/EliminarHallazgoResponse")]
         System.Threading.Tasks.Task<bool> EliminarHallazgoAsync(int idOp, int idHorario, int idHallazgo);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/RealizarHermanado", ReplyAction="http://tempuri.org/IControlCalidadServicio/RealizarHermanadoResponse")]
+        bool RealizarHermanado(int idOp, int idSupervisorCalidad);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/RealizarHermanado", ReplyAction="http://tempuri.org/IControlCalidadServicio/RealizarHermanadoResponse")]
+        System.Threading.Tasks.Task<bool> RealizarHermanadoAsync(int idOp, int idSupervisorCalidad);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerListaDefectos", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerListaDefectosResponse")]
         ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.DefectoDto[] ObtenerListaDefectos(string tipo);
         
@@ -1544,6 +1644,14 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         
         public System.Threading.Tasks.Task<bool> EliminarHallazgoAsync(int idOp, int idHorario, int idHallazgo) {
             return base.Channel.EliminarHallazgoAsync(idOp, idHorario, idHallazgo);
+        }
+        
+        public bool RealizarHermanado(int idOp, int idSupervisorCalidad) {
+            return base.Channel.RealizarHermanado(idOp, idSupervisorCalidad);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RealizarHermanadoAsync(int idOp, int idSupervisorCalidad) {
+            return base.Channel.RealizarHermanadoAsync(idOp, idSupervisorCalidad);
         }
         
         public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.DefectoDto[] ObtenerListaDefectos(string tipo) {

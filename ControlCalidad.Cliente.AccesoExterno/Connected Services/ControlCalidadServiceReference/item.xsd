@@ -369,6 +369,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="RealizarHermanado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idOp" type="xs:int" />
+        <xs:element minOccurs="0" name="idSupervisorCalidad" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RealizarHermanadoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RealizarHermanadoResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ObtenerListaDefectos">
     <xs:complexType>
       <xs:sequence>

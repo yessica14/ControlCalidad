@@ -14,5 +14,6 @@ namespace ControlCalidad.Servidor.Dominio
         public TimeSpan HoraFin { get; set; }
         public Turno TurnoHorario { get; set; }
         public List<Hallazgo> ListaDeHallazgos { get; set; }
+        public Primera ParesDePrimera { get; set; }
     }
 }
