@@ -18,6 +18,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 int cantIzqBueno = 0;
                 int cantDerBueno = 0;
                 int cantParHorario = 0;
+
                 foreach (var hallazgo in horario.ListaDeHallazgos)
                 {
                     if (hallazgo.DefectoHallazgo == null && hallazgo.PieHallazgo == Pie.Izquierdo)
@@ -40,11 +41,11 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 }
 
                 var primera = new Primera();
-                primera.Hora = horario.Id;
+                primera.Hora = horario.HoraInicio;
                 primera.Cantidad = cantParHorario;
                 primera.SupervisorCalidad = superivisorCalidad;
 
-                horario.ParesDePrimera = primera;
+                //horario.ListaDePrimera = primera;
             }
 
         }

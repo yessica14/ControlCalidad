@@ -113,7 +113,7 @@
       <xs:element minOccurs="0" name="HoraInicio" type="ser:duration" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="ListaDeHallazgos" nillable="true" type="tns:ArrayOfHallazgoDto" />
-      <xs:element minOccurs="0" name="ParesDePrimera" nillable="true" type="tns:PrimeraDto" />
+      <xs:element minOccurs="0" name="ListaDePrimera" nillable="true" type="tns:ArrayOfPrimeraDto" />
       <xs:element minOccurs="0" name="TurnoHorario" nillable="true" type="tns:TurnoDto" />
     </xs:sequence>
   </xs:complexType>
@@ -157,10 +157,16 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="PieDto" nillable="true" type="tns:PieDto" />
+  <xs:complexType name="ArrayOfPrimeraDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PrimeraDto" nillable="true" type="tns:PrimeraDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPrimeraDto" nillable="true" type="tns:ArrayOfPrimeraDto" />
   <xs:complexType name="PrimeraDto">
     <xs:sequence>
       <xs:element minOccurs="0" name="Cantidad" type="xs:int" />
-      <xs:element minOccurs="0" name="Hora" type="xs:int" />
+      <xs:element minOccurs="0" name="Hora" type="ser:duration" />
       <xs:element minOccurs="0" name="SupervisorCalidad" nillable="true" type="tns:EmpleadoDto" />
     </xs:sequence>
   </xs:complexType>

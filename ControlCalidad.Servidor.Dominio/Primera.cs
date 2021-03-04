@@ -8,7 +8,7 @@ namespace ControlCalidad.Servidor.Dominio
 {
     public class Primera
     {
-        public int Hora { get; set; }
+        public TimeSpan Hora { get; set; }
         public int Cantidad{ get; set; }
         public Empleado SupervisorCalidad { get; set; }
     }
