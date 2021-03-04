@@ -210,6 +210,59 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 }
             );
 
+            // lista de Primera de 8 a 9//
+            var listaPrimera8A9 = new List<Primera>();
+            listaPrimera8A9.Add
+            (
+                new Primera()
+                {
+                    Hora = new TimeSpan(8,0,0),
+                    Cantidad = 2,
+                    SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
+                }
+            );
+            listaPrimera8A9.Add
+            (
+                new Primera()
+                {
+                    Hora = new TimeSpan(9, 0, 0),
+                    Cantidad = 3,
+                    SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
+                }
+            );
+
+            // lista de Primera de 15 a 15//
+            var listaPrimera15A15 = new List<Primera>();
+            listaPrimera15A15.Add
+            (
+                new Primera()
+                {
+                    Hora = new TimeSpan(15, 0, 0),
+                    Cantidad = 2,
+                    SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
+                }
+            );
+
+            // lista de Primera de 21 a 22//
+            var listaPrimera21A22 = new List<Primera>();
+            listaPrimera21A22.Add
+            (
+                new Primera()
+                {
+                    Hora = new TimeSpan(21, 0, 0),
+                    Cantidad = 5,
+                    SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
+                }
+            );
+            listaPrimera21A22.Add
+            (
+                new Primera()
+                {
+                    Hora = new TimeSpan(22, 0, 0),
+                    Cantidad = 1,
+                    SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
+                }
+            );
 
             // ** litas de Horarios ** //
 
@@ -223,10 +276,10 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     HoraInicio = new TimeSpan(7, 0, 0),
                     HoraFin = new TimeSpan(10, 59, 59),
                     TurnoHorario = TurnoRepositorio.ObtenerTurnoPorCodigo(100),
-                    ListaDeHallazgos = listaHallazgo_7A10
+                    ListaDeHallazgos = listaHallazgo_7A10,
+                    ListaDePrimera = listaPrimera8A9
                 }
             );
-
 
             listaHorario.Add
             (
@@ -237,7 +290,8 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     HoraInicio = new TimeSpan(15, 0, 0),
                     HoraFin = new TimeSpan(15, 59, 59),
                     TurnoHorario = TurnoRepositorio.ObtenerTurnoPorCodigo(101),
-                    ListaDeHallazgos = listaHallazgo_15A15
+                    ListaDeHallazgos = listaHallazgo_15A15,
+                    ListaDePrimera = listaPrimera15A15
                 }
             );
 
@@ -250,7 +304,8 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     HoraInicio = new TimeSpan(20, 0, 0),
                     HoraFin = new TimeSpan(22, 59, 59),
                     TurnoHorario = TurnoRepositorio.ObtenerTurnoPorCodigo(102),
-                    ListaDeHallazgos = listaHallazgo_20A22
+                    ListaDeHallazgos = listaHallazgo_20A22,
+                    ListaDePrimera = listaPrimera21A22
                 }
             );
 
