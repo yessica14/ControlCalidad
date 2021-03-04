@@ -1,0 +1,80 @@
+﻿@using ControlCalidad.Cliente.Presentacion.Web.Models.Informes
+@model PrimeraViewModel
+@{
+    ViewBag.Title = "Primera";
+    Layout = "~/Views/Shared/_PrincipalSitie.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
+        <h3>Informe de Primera</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="form-group">
+            <label class="col-12 control-label">OP N°: <b>@Model.OpDto.Numero</b></label>
+            <label class="col-12 control-label">Modelo / Color: <b>SKU: @Model.OpDto.ModeloOP.Sku - @Model.OpDto.ColorCalzado.Descripcion</b></label>
+            <label class="col-12 control-label">Estado de OP: <b>@Model.OpDto.EstadoDeOP.ToString().ToUpper()</b></label>
+            <label class="col-12 control-label">Linea: <b>@Model.OpDto.LineaTrabajo.Descripcion</b></label>
+            <label class="col-12 control-label">Supervisor Linea: <b>@Model.OpDto.LineaTrabajo.SupervisorLinea.Apellido, @Model.OpDto.LineaTrabajo.SupervisorLinea.Nombre</b></label>
+            <label class="col-12 control-label">Fecha: <b>@DateTime.Now.ToString("dd/MM/yyyy")</b></label>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-condensed table-hover">
+                <thead class="thead-dark">
+                <th scope="col">Fecha</th>
+                <th scope="col">Horario Desde</th>
+                <th scope="col">Horario Hasta</th>
+                <th scope="col">Turno</th>
+                <th scope="col">Hora Primera</th>
+                <th scope="col">Objetivo</th>
+                <th scope="col">Real</th>
+                <th scope="col">Sup. Calidad</th>
+                </thead>
+
+                <tbody>
+                    @foreach (var horario in Model.OpDto.ListaDeHorario)
+                    {
+                        if (horario.ListaDePrimera == null)
+                        {
+                            <tr></tr>
+                        }
+                        else
+                        {
+                            foreach (var primera in horario.ListaDePrimera)
+                            {
+                                <tr>
+                                    <td>@horario.Fecha.ToString("dd/MM/yyyy")</td>
+                                    <td>@horario.HoraInicio</td>
+                                    <td>@horario.HoraFin</td>
+                                    <td>@horario.TurnoHorario.nombre</td>
+                                    <td>@primera.Hora</td>
+                                    <td>@Model.OpDto.ModeloOP.Objetivo</td>
+                                    <td>@primera.Cantidad</td>
+                                    <td>@primera.SupervisorCalidad.Apellido, @primera.SupervisorCalidad.Nombre</td>
+                                </tr>
+                            }
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="form-group">
+            <label class="col-12 control-label"><b>Total Hermanado: @Model.OpDto.ParesPrimeraParHermanado</b></label>
+        </div>
+    </div>
+</div>

@@ -40,12 +40,6 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     cantParHorario = cantDerBueno;
                 }
 
-                var primera = new Primera();
-                primera.Hora = horario.HoraInicio;
-                primera.Cantidad = cantParHorario;
-                primera.SupervisorCalidad = superivisorCalidad;
-
-                //horario.ListaDePrimera = primera;
             }
 
         }

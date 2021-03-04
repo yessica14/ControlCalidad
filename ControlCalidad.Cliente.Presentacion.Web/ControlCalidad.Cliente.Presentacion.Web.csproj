@@ -121,6 +121,7 @@
     <Compile Include="Controllers\ControlCalidadController.cs" />
     <Compile Include="Controllers\DefectoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InformesController.cs" />
     <Compile Include="Controllers\LineaController.cs" />
     <Compile Include="Controllers\ModeloController.cs" />
     <Compile Include="Controllers\OPController.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="Models\Defecto\InspeccionarViewModel.cs" />
     <Compile Include="Models\Defecto\HistorialOpViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
+    <Compile Include="Models\Informes\PrimeraViewModel.cs" />
     <Compile Include="Models\Linea\IndexViewModel.cs" />
     <Compile Include="Models\Modelo\GestionABMViewModel.cs" />
     <Compile Include="Models\Modelo\IndexViewModel.cs" />
@@ -2092,6 +2094,7 @@
     <Content Include="Views\Defecto\Inspeccionar.cshtml" />
     <Content Include="Views\Defecto\HistorialOp.cshtml" />
     <Content Include="Views\Defecto\Hermanado.cshtml" />
+    <Content Include="Views\Informes\Primera.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
