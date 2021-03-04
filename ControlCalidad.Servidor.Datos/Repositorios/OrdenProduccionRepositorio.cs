@@ -57,20 +57,20 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
 
             // ** litas de hallazgos ** //
 
-            var listaHallazgo_7 = new List<Hallazgo>();
-            listaHallazgo_7.Add
+            var listaHallazgo_7A10 = new List<Hallazgo>();
+            listaHallazgo_7A10.Add
             (
                 new Hallazgo()
                 {
                     Id = 1,
                     Cantidad = 1,
                     HoraHallazgo = new TimeSpan(7, 15, 0),
-                    DefectoHallazgo = null,
+                    DefectoHallazgo = DefectoRepositorio.ObtenerDefectoPorNumero(1004),
                     PieHallazgo = Pie.Izquierdo,
                     SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
                 }
             );
-            listaHallazgo_7.Add
+            listaHallazgo_7A10.Add
             (
                 new Hallazgo()
                 {
@@ -82,7 +82,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
                 }
             );
-            listaHallazgo_7.Add
+            listaHallazgo_7A10.Add
             (
                 new Hallazgo()
                 {
@@ -94,7 +94,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
                 }
             );
-            listaHallazgo_7.Add
+            listaHallazgo_7A10.Add
             (
                 new Hallazgo()
                 {
@@ -107,8 +107,8 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 }
             );
 
-            var listaHallazgo_9 = new List<Hallazgo>();
-            listaHallazgo_9.Add
+            //var listaHallazgo_9 = new List<Hallazgo>();
+            listaHallazgo_7A10.Add
             (
                 new Hallazgo()
                 {
@@ -120,8 +120,8 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
                 }
             );
-            var listaHallazgo_10 = new List<Hallazgo>();
-            listaHallazgo_10.Add
+            //var listaHallazgo_10 = new List<Hallazgo>();
+            listaHallazgo_7A10.Add
             (
                 new Hallazgo()
                 {
@@ -134,8 +134,8 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 }
             );
 
-            var listaHallazgo_15 = new List<Hallazgo>();
-            listaHallazgo_15.Add
+            var listaHallazgo_15A15 = new List<Hallazgo>();
+            listaHallazgo_15A15.Add
             (
                 new Hallazgo()
                 {
@@ -147,7 +147,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
                 }
             );
-            listaHallazgo_15.Add
+            listaHallazgo_15A15.Add
             (
                 new Hallazgo()
                 {
@@ -160,8 +160,8 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 }
             );
 
-            var listaHallazgo_20 = new List<Hallazgo>();
-            listaHallazgo_20.Add
+            var listaHallazgo_20A22 = new List<Hallazgo>();
+            listaHallazgo_20A22.Add
             (
                 new Hallazgo()
                 {
@@ -173,7 +173,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
                 }
             );
-            listaHallazgo_20.Add
+            listaHallazgo_20A22.Add
             (
                 new Hallazgo()
                 {
@@ -185,6 +185,31 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
                 }
             );
+            listaHallazgo_20A22.Add
+            (
+                new Hallazgo()
+                {
+                    Id = 13,
+                    Cantidad = 1,
+                    HoraHallazgo = new TimeSpan(22, 05, 0),
+                    DefectoHallazgo = null,
+                    PieHallazgo = Pie.Izquierdo,
+                    SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
+                }
+            );
+            listaHallazgo_20A22.Add
+            (
+                new Hallazgo()
+                {
+                    Id = 14,
+                    Cantidad = 1,
+                    HoraHallazgo = new TimeSpan(22, 15, 0),
+                    DefectoHallazgo = DefectoRepositorio.ObtenerDefectoPorNumero(1006),
+                    PieHallazgo = Pie.Derecho,
+                    SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
+                }
+            );
+
 
             // ** litas de Horarios ** //
 
@@ -196,35 +221,12 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     Id = 7,
                     Fecha = DateTime.Now,
                     HoraInicio = new TimeSpan(7, 0, 0),
-                    HoraFin = new TimeSpan(7, 59, 59),
-                    TurnoHorario = TurnoRepositorio.ObtenerTurnoPorCodigo(100),
-                    ListaDeHallazgos = listaHallazgo_7
-                }
-            );
-            listaHorario.Add
-            (
-                new Horario()
-                {
-                    Id = 9,
-                    Fecha = DateTime.Now,
-                    HoraInicio = new TimeSpan(9, 0, 0),
-                    HoraFin = new TimeSpan(9, 59, 59),
-                    TurnoHorario = TurnoRepositorio.ObtenerTurnoPorCodigo(100),
-                    ListaDeHallazgos = listaHallazgo_9
-                }
-            );
-            listaHorario.Add
-            (
-                new Horario()
-                {
-                    Id = 10,
-                    Fecha = DateTime.Now,
-                    HoraInicio = new TimeSpan(10, 0, 0),
                     HoraFin = new TimeSpan(10, 59, 59),
                     TurnoHorario = TurnoRepositorio.ObtenerTurnoPorCodigo(100),
-                    ListaDeHallazgos = listaHallazgo_10
+                    ListaDeHallazgos = listaHallazgo_7A10
                 }
             );
+
 
             listaHorario.Add
             (
@@ -235,7 +237,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     HoraInicio = new TimeSpan(15, 0, 0),
                     HoraFin = new TimeSpan(15, 59, 59),
                     TurnoHorario = TurnoRepositorio.ObtenerTurnoPorCodigo(101),
-                    ListaDeHallazgos = listaHallazgo_15
+                    ListaDeHallazgos = listaHallazgo_15A15
                 }
             );
 
@@ -246,9 +248,9 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     Id = 20,
                     Fecha = DateTime.Now,
                     HoraInicio = new TimeSpan(20, 0, 0),
-                    HoraFin = new TimeSpan(20, 59, 59),
+                    HoraFin = new TimeSpan(22, 59, 59),
                     TurnoHorario = TurnoRepositorio.ObtenerTurnoPorCodigo(102),
-                    ListaDeHallazgos = listaHallazgo_20
+                    ListaDeHallazgos = listaHallazgo_20A22
                 }
             );
 

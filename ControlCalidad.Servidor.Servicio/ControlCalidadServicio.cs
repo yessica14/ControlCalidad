@@ -604,7 +604,18 @@ namespace ControlCalidad.Servidor.Servicio
                     horarioDto.ListaDeHallazgos.Add(hallazgoDto);
                 }
             }
-            horarioDto.ParesDePrimera = Primera_DeDomADto(horarioDom.ParesDePrimera);
+
+            if (horarioDom.ListaDePrimera == null)
+                horarioDto.ListaDePrimera = null;
+            else
+            {
+                horarioDto.ListaDePrimera = new List<PrimeraDto>();
+                foreach (var item in horarioDom.ListaDePrimera)
+                {
+                    var primeraDto = Primera_DeDomADto(item);
+                    horarioDto.ListaDePrimera.Add(primeraDto);
+                }
+            }
 
             return (horarioDto);
         }

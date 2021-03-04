@@ -22,6 +22,6 @@ namespace ControlCalidad.Servidor.Servicio.Entidades
         [DataMember]
         public List<HallazgoDto> ListaDeHallazgos { get; set; }
         [DataMember]
-        public PrimeraDto ParesDePrimera { get; set; }
+        public List<PrimeraDto> ListaDePrimera { get; set; }
     }
 }

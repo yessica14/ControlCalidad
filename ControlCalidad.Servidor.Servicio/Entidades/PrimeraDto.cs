@@ -11,7 +11,7 @@ namespace ControlCalidad.Servidor.Servicio.Entidades
     public class PrimeraDto
     {
         [DataMember]
-        public int Hora { get; set; }
+        public TimeSpan Hora { get; set; }
         [DataMember]
         public int Cantidad { get; set; }
         [DataMember]
