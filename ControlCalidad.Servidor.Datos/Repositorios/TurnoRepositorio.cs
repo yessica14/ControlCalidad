@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ControlCalidad.Servidor.Datos.Repositorios
 {
-    class TurnoRepositorio
+    public class TurnoRepositorio
     {
         public void CargarTurnos()
         {
@@ -51,6 +51,12 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
         {
             var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
             return empresa.ListaDeTurnos.Where(x => x.Codigo == codigo).FirstOrDefault();
+        }
+
+        public static List<Turno> ObtenerTurnos()
+        {
+            var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
+            return empresa.ListaDeTurnos;
         }
     }
 }

@@ -28,7 +28,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 new Defecto()
                 {
                     Numero = 1001,
-                    Descripcion = "Altura de Talon",
+                    Descripcion = "Altura Talon",
                     TipoDeDefecto = TipoDefecto.Reproceso
                 }
             );
@@ -37,7 +37,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 new Defecto()
                 {
                     Numero = 1002,
-                    Descripcion = "Falla de Costura",
+                    Descripcion = "Falla Costura",
                     TipoDeDefecto = TipoDefecto.Reproceso
                 }
             );
@@ -73,7 +73,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 new Defecto()
                 {
                     Numero = 1006,
-                    Descripcion = "Sin Protector Interno",
+                    Descripcion = "Sin Protector",
                     TipoDeDefecto = TipoDefecto.Observado
                 }
             );
@@ -87,7 +87,6 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
         
         public static List<Defecto> ObtenerDefectoPorTipoDefecto(TipoDefecto tipoDefecto)
         {
-
             var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
             var listaDefecto = new List<Defecto>();
             foreach (var item in empresa.ListaDeDefectos)
@@ -100,19 +99,16 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
             return listaDefecto;
         }
 
-        //public static List<Defecto> ObtenerDefectosReproceso()
-        //{
-        //    var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
-        //    var listaDefectoReproceso = new List<Defecto>();
-        //    foreach (var item in empresa.ListaDeDefectos)
-        //    {
-        //        if(item.TipoDeDefecto == TipoDefecto.Reproceso)
-        //        {
-        //            listaDefectoReproceso.Add(item);
-        //        }
-        //    }
-        //    return listaDefectoReproceso;
-        //}
+        public static List<Defecto> ObtenerTodosLosDefectos()
+        {
+            var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
+            var listaDefecto = new List<Defecto>();
+            foreach (var item in empresa.ListaDeDefectos)
+            {
+                listaDefecto.Add(item);
+            }
+            return listaDefecto;
+        }
 
 
     }

@@ -392,7 +392,8 @@ namespace ControlCalidad.Servidor.Servicio
 
         #endregion
 
-        #region TIPODEFECTO
+        #region DEFECTO
+
         public DefectoDto[] ObtenerListaDefectos(string tipo)
         {
             var listaDto = new List<DefectoDto>();
@@ -418,9 +419,39 @@ namespace ControlCalidad.Servidor.Servicio
 
             return listaDto.ToArray();
         }
+
+        public DefectoDto[] ObtenerTodosLosDefectos()
+        {
+            var listaDto = new List<DefectoDto>();
+            var listaDom = new List<Defecto>();
+            listaDom = DefectoRepositorio.ObtenerTodosLosDefectos();
+
+            foreach (var item in listaDom)
+            {
+                var defecto = Defecto_DeDomADto(item);
+                listaDto.Add(defecto);
+            }
+
+            return listaDto.ToArray();
+        }
+
         #endregion
 
         #region TURNO
+
+        public TurnoDto[] ObtenerTurnos()
+        {
+            var listaDom = TurnoRepositorio.ObtenerTurnos();
+            var listaDto = new List<TurnoDto>();
+
+            foreach (var item in listaDom)
+            {
+                var turnoDto = Turno_DeDomADto(item);
+                listaDto.Add(turnoDto);
+            }
+            return listaDto.ToArray();
+
+        }
 
         #endregion
 

@@ -1401,6 +1401,18 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerListaDefectos", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerListaDefectosResponse")]
         System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.DefectoDto[]> ObtenerListaDefectosAsync(string tipo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerTodosLosDefectos", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerTodosLosDefectosResponse")]
+        ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.DefectoDto[] ObtenerTodosLosDefectos();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerTodosLosDefectos", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerTodosLosDefectosResponse")]
+        System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.DefectoDto[]> ObtenerTodosLosDefectosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerTurnos", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerTurnosResponse")]
+        ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.TurnoDto[] ObtenerTurnos();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerTurnos", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerTurnosResponse")]
+        System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.TurnoDto[]> ObtenerTurnosAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1660,6 +1672,22 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         
         public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.DefectoDto[]> ObtenerListaDefectosAsync(string tipo) {
             return base.Channel.ObtenerListaDefectosAsync(tipo);
+        }
+        
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.DefectoDto[] ObtenerTodosLosDefectos() {
+            return base.Channel.ObtenerTodosLosDefectos();
+        }
+        
+        public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.DefectoDto[]> ObtenerTodosLosDefectosAsync() {
+            return base.Channel.ObtenerTodosLosDefectosAsync();
+        }
+        
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.TurnoDto[] ObtenerTurnos() {
+            return base.Channel.ObtenerTurnos();
+        }
+        
+        public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.TurnoDto[]> ObtenerTurnosAsync() {
+            return base.Channel.ObtenerTurnosAsync();
         }
     }
 }

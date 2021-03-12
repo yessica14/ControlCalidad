@@ -74,6 +74,9 @@
     <None Include="Connected Services\ControlCalidadServiceReference\ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ControlCalidadServiceReference\ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.TurnoDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ControlCalidadServiceReference\ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.UsuarioDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
