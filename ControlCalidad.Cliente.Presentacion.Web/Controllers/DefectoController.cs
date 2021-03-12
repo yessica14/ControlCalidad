@@ -12,7 +12,7 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
     public class DefectoController : Controller
     {
         // GET: Defecto
-        public ActionResult Inspeccionar()
+        public ActionResult Inspeccionar(string txtHorario = "6", string txtTurno = "100") // txtTurno (100-mñn, 101-tarde, 102-noche)
         {
             if (Session["Session_Usuario_Id"] == null)
                 return RedirectToAction("Login", "Home");
@@ -20,15 +20,41 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
             var usuarioDto = Adaptador.ObtenerUsuarioPorId(int.Parse(Session["Session_Usuario_Id"].ToString()));
             var opDto = Adaptador.ObtenerOpAsignadoAUnEmpleado(usuarioDto.UsuarioDeEmpleado);
 
-            if(opDto == null)
+            if (opDto == null)
             {
-                return RedirectToAction("Index", "ControlCalidad", new { mensaje= "Usted no esta trabajando en ninguna OP."});
+                return RedirectToAction("Index", "ControlCalidad", new { mensaje = "Usted no esta trabajando en ninguna OP." });
             }
 
             var model = new InspeccionarViewModel();
 
             model.OpDto = opDto;
-            model.ListaDefecto = new List<DefectoDto>();
+            model.ListaTurnos = Adaptador.ObtenerTurnos().ToList();
+
+            var idTurno = int.Parse(txtTurno);
+
+            var listaHora = new List<TimeSpan>();
+
+            DateTime datum = new DateTime();
+
+            foreach (var item in model.ListaTurnos)
+            {
+                int interval = 1;
+                if (item.Codigo == idTurno)
+                {
+                    TimeSpan horaInicio = item.HoraInicio;
+                    TimeSpan horafin = item.HoraFin;
+                    for(var hora = horaInicio ; horaInicio <= horafin; hora = datum.AddHours(interval) - datum)
+                    {
+                        listaHora.Add(hora);
+                    }
+                }
+      
+            }
+            model.listaHora = listaHora;
+
+            model.ListaDefectosObservados = Adaptador.ObtenerDefectosObservados().ToList();
+            model.ListaDefectosReproceso = Adaptador.ObtenerDefectosReproceso().ToList();
+
             model.Fecha = DateTime.Now;
             
             return View(model);
@@ -61,23 +87,23 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
             return RedirectToAction("HistorialOp", "Defecto", new { txtOp = idOp.ToString()});
         }
 
-        [HttpPost]
-        public ActionResult ObtenerListaDeDefectos(string tipoDefecto)
-        {
+        //[HttpPost]
+        //public ActionResult ObtenerListaDeDefectos(string tipoDefecto)
+        //{
 
-            var listaDefecto = Adaptador.ObtenerListaDefectos(tipoDefecto);
-            string datos = "";
+        //    var listaDefecto = Adaptador.ObtenerListaDefectos(tipoDefecto);
+        //    string datos = "";
 
-            foreach (var item in listaDefecto)
-            {
-                datos = datos + ",{\"id\": \"" + item.Numero.ToString() + "\", \"descripcion\": \"" + item.Descripcion + "\"}";
-            }
+        //    foreach (var item in listaDefecto)
+        //    {
+        //        datos = datos + ",{\"id\": \"" + item.Numero.ToString() + "\", \"descripcion\": \"" + item.Descripcion + "\"}";
+        //    }
 
-            datos = datos.Substring(1);
-            string json = " {\"listaDefectos\":[ " + datos + " ]}";
+        //    datos = datos.Substring(1);
+        //    string json = " {\"listaDefectos\":[ " + datos + " ]}";
 
-            return Json(json);
-        }
+        //    return Json(json);
+        //}
 
         public ActionResult Hermanado()
         {

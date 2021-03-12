@@ -192,4 +192,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfDefectoDto" nillable="true" type="tns:ArrayOfDefectoDto" />
+  <xs:complexType name="ArrayOfTurnoDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TurnoDto" nillable="true" type="tns:TurnoDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTurnoDto" nillable="true" type="tns:ArrayOfTurnoDto" />
 </xs:schema>

@@ -261,14 +261,35 @@ namespace ControlCalidad.Cliente.AccesoExterno
 
         #region TipoDefecto
 
-        public static DefectoDto[] ObtenerListaDefectos(string tipo)
+        public static DefectoDto[] ObtenerDefectosObservados()
         {
             using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
             {
-                return servidor.ObtenerListaDefectos(tipo);
+                return servidor.ObtenerTodosLosDefectos().Where(x => x.TipoDeDefecto == TipoDefectoDto.Observado).ToArray();
             }
 
         }
+
+        public static DefectoDto[] ObtenerDefectosReproceso()
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.ObtenerTodosLosDefectos().Where(x => x.TipoDeDefecto == TipoDefectoDto.Reproceso).ToArray();
+            }
+
+        }
+        #endregion
+
+        #region TURNO
+
+        public static TurnoDto[] ObtenerTurnos()
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.ObtenerTurnos();
+            }
+        }
+
         #endregion
     }
 }

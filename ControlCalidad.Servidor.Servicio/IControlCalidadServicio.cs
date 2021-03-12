@@ -130,7 +130,19 @@ namespace ControlCalidad.Servidor.Servicio
         [OperationContract]
         DefectoDto[] ObtenerListaDefectos(string tipo);
 
+        [OperationContract]
+        DefectoDto[] ObtenerTodosLosDefectos();
+
         #endregion
+
+        #region Turno
+
+        [OperationContract]
+
+        TurnoDto[] ObtenerTurnos();
+
+        #endregion
+
     }
 
 
