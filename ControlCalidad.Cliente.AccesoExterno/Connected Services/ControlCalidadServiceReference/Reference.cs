@@ -1413,6 +1413,12 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerTurnos", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerTurnosResponse")]
         System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.TurnoDto[]> ObtenerTurnosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerTurnoPorCodigo", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerTurnoPorCodigoResponse")]
+        ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.TurnoDto ObtenerTurnoPorCodigo(int codigo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerTurnoPorCodigo", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerTurnoPorCodigoResponse")]
+        System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.TurnoDto> ObtenerTurnoPorCodigoAsync(int codigo);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1688,6 +1694,14 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         
         public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.TurnoDto[]> ObtenerTurnosAsync() {
             return base.Channel.ObtenerTurnosAsync();
+        }
+        
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.TurnoDto ObtenerTurnoPorCodigo(int codigo) {
+            return base.Channel.ObtenerTurnoPorCodigo(codigo);
+        }
+        
+        public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.TurnoDto> ObtenerTurnoPorCodigoAsync(int codigo) {
+            return base.Channel.ObtenerTurnoPorCodigoAsync(codigo);
         }
     }
 }

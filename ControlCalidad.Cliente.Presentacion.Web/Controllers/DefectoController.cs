@@ -30,12 +30,13 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
             model.OpDto = opDto;
             model.ListaTurnos = Adaptador.ObtenerTurnos().ToList();
 
-            var idTurno = int.Parse(txtTurno);
+            
 
             var listaHora = new List<string>();
 
             int i = 0;
-           
+
+            var idTurno = int.Parse(txtTurno);
             foreach (var item in model.ListaTurnos)
             {
                 if(item.Codigo == idTurno) { 
@@ -53,7 +54,8 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
             model.listaHora = listaHora.ToList();
             model.ListaDefectosObservados = Adaptador.ObtenerDefectosObservados().ToList();
             model.ListaDefectosReproceso = Adaptador.ObtenerDefectosReproceso().ToList();
-            model.IdTurnoSeleccionado = int.Parse(txtTurno);
+            
+            model.TurnoSeleccionado = Adaptador.ObtenerTurnoPorCodigo(idTurno);
             model.Fecha = DateTime.Now;
             
             return View(model);

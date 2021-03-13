@@ -138,8 +138,11 @@ namespace ControlCalidad.Servidor.Servicio
         #region Turno
 
         [OperationContract]
-
         TurnoDto[] ObtenerTurnos();
+
+        [OperationContract]
+        TurnoDto ObtenerTurnoPorCodigo(int codigo);
+
 
         #endregion
 

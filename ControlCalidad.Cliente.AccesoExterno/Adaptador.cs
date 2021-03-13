@@ -290,6 +290,14 @@ namespace ControlCalidad.Cliente.AccesoExterno
             }
         }
 
+        public static TurnoDto ObtenerTurnoPorCodigo(int codigo)
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.ObtenerTurnoPorCodigo(codigo);
+            }
+        }
+
         #endregion
     }
 }

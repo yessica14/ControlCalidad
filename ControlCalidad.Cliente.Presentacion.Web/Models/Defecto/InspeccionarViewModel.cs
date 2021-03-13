@@ -14,6 +14,6 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Models.Defecto
         public List<DefectoDto> ListaDefectosReproceso { get; set; }
         public List<string> listaHora { get; set; }
         public DateTime Fecha { get; set; }
-        public int IdTurnoSeleccionado { get; set; }
+        public TurnoDto TurnoSeleccionado { get; set; }
     }
 }

@@ -37,7 +37,7 @@
             <select name="nSelectTurno" id="idSelectTurno" onchange="RegargarVista();">
                 @foreach (var turno in Model.ListaTurnos)
                 {
-                    if (turno.Codigo == Model.IdTurnoSeleccionado)
+                    if (turno.Codigo == Model.TurnoSeleccionado.Codigo)
                     {
                         <option selected value="@turno.Codigo">@turno.nombre</option>
                     }
@@ -67,7 +67,7 @@
 </div>
 
 @{
-    var horario = Model.OpDto.ListaDeHorario.Where(x => 9 >= x.HoraInicio.Hours && 9 <= x.HoraFin.Hours).FirstOrDefault();
+    var horario = Model.OpDto.ListaDeHorario.Where(x => x.HoraInicio.Hours >= Model.TurnoSeleccionado.HoraInicio.Hours && x.HoraFin.Hours <= Model.TurnoSeleccionado.HoraFin.Hours).FirstOrDefault();
 }
 <div class="border border-primary rounded">
     <div class="row m-0">
@@ -98,7 +98,14 @@
                                         {
                                             if (h.PieHallazgo == PieDto.Izquierdo && h.DefectoHallazgo != null && h.DefectoHallazgo.Numero == defecto.Numero)
                                             {
-                                                cantidad = cantidad + 1;
+                                                if (h.Cantidad > 0)
+                                                {
+                                                    cantidad = cantidad + 1;
+                                                }
+                                                else
+                                                {
+                                                    cantidad = cantidad - 1;
+                                                }
                                             }
                                         }
                                     }
@@ -109,7 +116,7 @@
                                 </div>
                             </div>
                         </div>
-                    }
+                                        }
                 </div>
                 <div class="col-6 border border-primary rounded">
                     <div class="row justify-content-center">
@@ -132,7 +139,14 @@
                                         {
                                             if (h.PieHallazgo == PieDto.Derecho && h.DefectoHallazgo != null && h.DefectoHallazgo.Numero == defecto.Numero)
                                             {
-                                                cantidad = cantidad + 1;
+                                                if (h.Cantidad > 0)
+                                                {
+                                                    cantidad = cantidad + 1;
+                                                }
+                                                else
+                                                {
+                                                    cantidad = cantidad - 1;
+                                                }
                                             }
                                         }
                                     }
@@ -143,7 +157,7 @@
                                 </div>
                             </div>
                         </div>
-                    }
+                                        }
                 </div>
             </div>
         </div>
@@ -175,7 +189,14 @@
                                         {
                                             if (h.PieHallazgo == PieDto.Izquierdo && h.DefectoHallazgo != null && h.DefectoHallazgo.Numero == defecto.Numero)
                                             {
-                                                cantidad = cantidad + 1;
+                                                if (h.Cantidad > 0)
+                                                {
+                                                    cantidad = cantidad + 1;
+                                                }
+                                                else
+                                                {
+                                                    cantidad = cantidad - 1;
+                                                }
                                             }
                                         }
                                     }
@@ -186,7 +207,7 @@
                                 </div>
                             </div>
                         </div>
-                    }
+                                        }
                 </div>
                 <div class="col-6 border border-primary rounded">
                     <div class="row justify-content-center">
@@ -209,7 +230,14 @@
                                         {
                                             if (h.PieHallazgo == PieDto.Derecho && h.DefectoHallazgo != null && h.DefectoHallazgo.Numero == defecto.Numero)
                                             {
-                                                cantidad = cantidad + 1;
+                                                if (h.Cantidad > 0)
+                                                {
+                                                    cantidad = cantidad + 1;
+                                                }
+                                                else
+                                                {
+                                                    cantidad = cantidad - 1;
+                                                }
                                             }
                                         }
                                     }
@@ -238,7 +266,22 @@
                             <button class="btn btn-danger" type="button">-</button>
                         </div>
                         <label class="form-control pl-0 pr-0 h-100" style="text-align:center">
-                            <b>11</b>
+                            @{
+                                var cantidadPrimera = 0;
+                                foreach (var prim in horario.ListaDePrimera)
+                                {
+                                    if (prim.Cantidad > 0)
+                                    {
+                                        cantidadPrimera = cantidadPrimera + 1;
+                                    }
+                                    else
+                                    {
+                                        cantidadPrimera = cantidadPrimera - 1;
+                                    }
+
+                                }
+                            }
+                            <b>@cantidadPrimera</b>
                         </label>
                         <div class="input-group-append">
                             <button class="btn btn-success" type="button" onclick="sumarParPrimera();">+</button>
