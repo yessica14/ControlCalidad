@@ -89,7 +89,19 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     Id = 3,
                     Cantidad = 1,
                     HoraHallazgo = new TimeSpan(7, 49, 0),
-                    DefectoHallazgo = DefectoRepositorio.ObtenerDefectoPorNumero(1005),
+                    DefectoHallazgo = DefectoRepositorio.ObtenerDefectoPorNumero(1004),
+                    PieHallazgo = Pie.Izquierdo,
+                    SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
+                }
+            );
+            listaHallazgo_7A10.Add
+            (
+                new Hallazgo()
+                {
+                    Id = 3,
+                    Cantidad = -1,
+                    HoraHallazgo = new TimeSpan(7, 51, 0),
+                    DefectoHallazgo = DefectoRepositorio.ObtenerDefectoPorNumero(1004),
                     PieHallazgo = Pie.Izquierdo,
                     SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
                 }

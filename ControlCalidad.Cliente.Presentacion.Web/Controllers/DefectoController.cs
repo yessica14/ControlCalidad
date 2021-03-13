@@ -11,7 +11,7 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
 {
     public class DefectoController : Controller
     {
-        // GET: Defecto
+        // GET: Defecto0
         public ActionResult Inspeccionar(string txtHorario = "6", string txtTurno = "100") // txtTurno (100-mñn, 101-tarde, 102-noche)
         {
             if (Session["Session_Usuario_Id"] == null)
@@ -32,29 +32,28 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
 
             var idTurno = int.Parse(txtTurno);
 
-            var listaHora = new List<TimeSpan>();
+            var listaHora = new List<string>();
 
-            DateTime datum = new DateTime();
-
+            int i = 0;
+           
             foreach (var item in model.ListaTurnos)
             {
-                int interval = 1;
-                if (item.Codigo == idTurno)
-                {
-                    TimeSpan horaInicio = item.HoraInicio;
-                    TimeSpan horafin = item.HoraFin;
-                    for(var hora = horaInicio ; horaInicio <= horafin; hora = datum.AddHours(interval) - datum)
+                if(item.Codigo == idTurno) { 
+                    for (int k = item.HoraInicio.Hours; k <= item.HoraFin.Hours; k++)
                     {
+                        var horas = item.HoraInicio.Hours;
+                        var suma = horas + i;
+                        var hora = suma.ToString() + ":00" + " hs";
                         listaHora.Add(hora);
+                        i++;
                     }
                 }
-      
             }
-            model.listaHora = listaHora;
 
+            model.listaHora = listaHora.ToList();
             model.ListaDefectosObservados = Adaptador.ObtenerDefectosObservados().ToList();
             model.ListaDefectosReproceso = Adaptador.ObtenerDefectosReproceso().ToList();
-
+            model.IdTurnoSeleccionado = int.Parse(txtTurno);
             model.Fecha = DateTime.Now;
             
             return View(model);

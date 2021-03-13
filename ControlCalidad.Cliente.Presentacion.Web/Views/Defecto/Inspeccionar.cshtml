@@ -20,6 +20,7 @@
 </head>
 
 
+
 <div class="row">
     <div class="col-7">
         <div class="form-group">
@@ -33,10 +34,17 @@
         <div class="form-group">
             <input type="date" value="@Model.Fecha.ToString("yyyy-MM-dd")">
             <input type="time" value="@Model.Fecha.ToString("hh:mm")">
-            <select name="nSelectTurno" id="idSelectTurno">
+            <select name="nSelectTurno" id="idSelectTurno" onchange="RegargarVista();">
                 @foreach (var turno in Model.ListaTurnos)
                 {
-                    <option>@turno.nombre</option>
+                    if (turno.Codigo == Model.IdTurnoSeleccionado)
+                    {
+                        <option selected value="@turno.Codigo">@turno.nombre</option>
+                    }
+                    else
+                    {
+                        <option value="@turno.Codigo">@turno.nombre</option>
+                    }
                 }
             </select>
         </div>
@@ -81,7 +89,7 @@
                             </label>
                             <div class="input-group mb-1 p-0 col-4">
                                 <div class="input-group-prepend">
-                                    <button class="btn btn-danger px-2" type="button">-</button>
+                                    <button class="btn btn-danger px-2" type="button" onclick="DescontarDefectoObservadoPieIzquierdo();">-</button>
                                 </div>
                                 <label class="form-control pl-0 pr-0 h-100" style="text-align:center">
                                     @{
@@ -97,7 +105,7 @@
                                     <b>@cantidad</b>
                                 </label>
                                 <div class="input-group-append">
-                                    <button class="btn btn-success px-2" type="button">+</button>
+                                    <button class="btn btn-success px-2" type="button" onclick="sumarDefectoObservadoPieIzquierdo();">+</button>
                                 </div>
                             </div>
                         </div>
@@ -115,7 +123,7 @@
                             </label>
                             <div class="input-group mb-1 p-0 col-4">
                                 <div class="input-group-prepend">
-                                    <button class="btn btn-danger px-2" type="button">-</button>
+                                    <button class="btn btn-danger px-2" type="button" onclick="DescontarDefectoObservadoPieDerecho()">-</button>
                                 </div>
                                 <label class="form-control pl-0 pr-0 h-100" style="text-align:center">
                                     @{
@@ -131,7 +139,7 @@
                                     <b>@cantidad</b>
                                 </label>
                                 <div class="input-group-append">
-                                    <button class="btn btn-success px-2" type="button">+</button>
+                                    <button class="btn btn-success px-2" type="button" onclick="sumarDefectoObservadoPieDerecho()">+</button>
                                 </div>
                             </div>
                         </div>
@@ -158,7 +166,7 @@
                             </label>
                             <div class="input-group mb-1 p-0 col-4">
                                 <div class="input-group-prepend">
-                                    <button class="btn btn-danger px-2" type="button">-</button>
+                                    <button class="btn btn-danger px-2" type="button" onclick="DescontarDefectoReprocesoPieIzquierdo">-</button>
                                 </div>
                                 <label class="form-control pl-0 pr-0 h-100" style="text-align:center">
                                     @{
@@ -174,7 +182,7 @@
                                     <b>@cantidad</b>
                                 </label>
                                 <div class="input-group-append">
-                                    <button class="btn btn-success px-2" type="button">+</button>
+                                    <button class="btn btn-success px-2" type="button" onclick="sumarDefectoReprocesoPieIzquierdo();">+</button>
                                 </div>
                             </div>
                         </div>
@@ -192,7 +200,7 @@
                             </label>
                             <div class="input-group mb-1 p-0 col-4">
                                 <div class="input-group-prepend">
-                                    <button class="btn btn-danger px-2" type="button">-</button>
+                                    <button class="btn btn-danger px-2" type="button" onclick="DescontarDefectoReprocesoPieDerecho();" >-</button>
                                 </div>
                                 <label class="form-control pl-0 pr-0 h-100" style="text-align:center">
                                     @{
@@ -208,7 +216,7 @@
                                     <b>@cantidad</b>
                                 </label>
                                 <div class="input-group-append">
-                                    <button class="btn btn-success px-2" type="button">+</button>
+                                    <button class="btn btn-success px-2" type="button" onclick="sumarDefectoReprocesoPieDerecho();">+</button>
                                 </div>
                             </div>
                         </div>
@@ -233,7 +241,7 @@
                             <b>11</b>
                         </label>
                         <div class="input-group-append">
-                            <button class="btn btn-success" type="button">+</button>
+                            <button class="btn btn-success" type="button" onclick="sumarParPrimera();">+</button>
                         </div>
                     </div>
                 </div>
@@ -267,7 +275,12 @@
         }
     }
 
-    //var ObtenerDefecto = function () {
+    var RegargarVista = function () {
+        var idTurno = $("#idSelectTurno").val();
+        var url = "/Defecto/Inspeccionar/?txtTurno=" + idTurno;
+        $(location).attr('href', url);
+
+    }
 
     function ObtenerDefecto(tipoDefecto) {
         var parametro = {
