@@ -109,7 +109,7 @@
   <xs:complexType name="HorarioDto">
     <xs:sequence>
       <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="HoraFin" type="ser:duration" />
+      <xs:element minOccurs="0" name="HoraFin" nillable="true" type="ser:duration" />
       <xs:element minOccurs="0" name="HoraInicio" type="ser:duration" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="ListaDeHallazgos" nillable="true" type="tns:ArrayOfHallazgoDto" />

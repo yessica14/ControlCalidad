@@ -16,7 +16,7 @@ namespace ControlCalidad.Servidor.Servicio.Entidades
         [DataMember]
         public TimeSpan HoraInicio { get; set; }
         [DataMember]
-        public TimeSpan HoraFin { get; set; }
+        public TimeSpan? HoraFin { get; set; }
         [DataMember]
         public TurnoDto TurnoHorario { get; set; }
         [DataMember]

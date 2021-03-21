@@ -27,20 +27,22 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                    EstadoDeOP = EstadoOP.Finalizado,
                    LineaTrabajo = linea,
                    SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(2)
+                   
+                   
                }
            );
 
-            empresa.ListaDeOrdenesDeProduccion.Add
-            (
-                new OrdenProduccion()
-                {
-                    Numero = 500,
-                    ModeloOP = ModeloRepositorio.ObtenerModeloPorSku(1400),
-                    ColorCalzado = ColorRepositorio.ObtenerColorPorId(802),
-                    EstadoDeOP = EstadoOP.Iniciado,
-                    LineaTrabajo = linea
-                }
-            );
+            //empresa.ListaDeOrdenesDeProduccion.Add
+            //(
+            //    new OrdenProduccion()
+            //    {
+            //        Numero = 500,
+            //        ModeloOP = ModeloRepositorio.ObtenerModeloPorSku(1400),
+            //        ColorCalzado = ColorRepositorio.ObtenerColorPorId(802),
+            //        EstadoDeOP = EstadoOP.Iniciado,
+            //        LineaTrabajo = linea
+            //    }
+            //);
             empresa.ListaDeOrdenesDeProduccion.Add
             (
                 new OrdenProduccion()
@@ -132,6 +134,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
                 }
             );
+           
             //var listaHallazgo_10 = new List<Hallazgo>();
             listaHallazgo_7A10.Add
             (
@@ -145,6 +148,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
                 }
             );
+           
 
             var listaHallazgo_15A15 = new List<Hallazgo>();
             listaHallazgo_15A15.Add
@@ -300,7 +304,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                     Id = 15,
                     Fecha = DateTime.Now,
                     HoraInicio = new TimeSpan(15, 0, 0),
-                    HoraFin = new TimeSpan(15, 59, 59),
+                    HoraFin = null,
                     TurnoHorario = TurnoRepositorio.ObtenerTurnoPorCodigo(101),
                     ListaDeHallazgos = listaHallazgo_15A15,
                     ListaDePrimera = listaPrimera15A15

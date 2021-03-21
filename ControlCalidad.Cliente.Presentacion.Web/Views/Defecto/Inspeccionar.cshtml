@@ -21,292 +21,338 @@
 
 
 
-<div class="row">
-    <div class="col-7">
-        <div class="form-group">
-            <label class="col-12 control-label"><u>N° OP:</u> <b>@Model.OpDto.Numero</b></label>
-            <label class="col-12 control-label"><u>Modelo:</u> <b>SKU[@Model.OpDto.ModeloOP.Sku] @Model.OpDto.ModeloOP.Denominacion</b> - <u>Color</u>: <b>@Model.OpDto.ColorCalzado.Descripcion</b></label>
-            <label class="col-12 control-label"><u>Turno:</u> <b>NN</b> - <u>Linea Trabajo:</u> <b>@Model.OpDto.LineaTrabajo.Numero</b></label>
-        </div>
-    </div>
-
-    <div class="col-5">
-        <div class="form-group">
-            <input type="date" value="@Model.Fecha.ToString("yyyy-MM-dd")">
-            <input type="time" value="@Model.Fecha.ToString("hh:mm")">
-            <select name="nSelectTurno" id="idSelectTurno" onchange="RegargarVista();">
-                @foreach (var turno in Model.ListaTurnos)
-                {
-                    if (turno.Codigo == Model.IdTurnoSeleccionado)
-                    {
-                        <option selected value="@turno.Codigo">@turno.nombre</option>
-                    }
-                    else
-                    {
-                        <option value="@turno.Codigo">@turno.nombre</option>
-                    }
-                }
-            </select>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-12">
-        <div class="form-group col-2">
-            <label class="control-label" for="Color">Horario:</label>
-            <select name="nSelectHorario" id="idSelectHorario" class="form-control">
-                @foreach (var item in Model.listaHora)
-                {
-                    <option>@item</option>
-                }
-
-            </select>
-        </div>
-    </div>
-</div>
-
-@{
-    var horario = Model.OpDto.ListaDeHorario.Where(x => 9 >= x.HoraInicio.Hours && 9 <= x.HoraFin.Hours).FirstOrDefault();
-}
-<div class="border border-primary rounded">
-    <div class="row m-0">
-        <div class="col mr-2">
-            <div class="row justify-content-center">
-                <p>Defectos Observados</p>
-            </div>
-
-            <div class="row">
-                <div class="col-6 border border-primary rounded">
-                    <div class="row justify-content-center">
-                        <p>Pie Izquierdo</p>
-                    </div>
-                    @foreach (var defecto in Model.ListaDefectosObservados)
-                    {
-                        <div class="row">
-                            <label class="form-control col-8 px-0 mb-n4" style="text-align:center">
-                                <b class="pr-3">@defecto.Descripcion</b>
-                            </label>
-                            <div class="input-group mb-1 p-0 col-4">
-                                <div class="input-group-prepend">
-                                    <button class="btn btn-danger px-2" type="button" onclick="DescontarDefectoObservadoPieIzquierdo();">-</button>
-                                </div>
-                                <label class="form-control pl-0 pr-0 h-100" style="text-align:center">
-                                    @{
-                                        int cantidad = 0;
-                                        foreach (var h in horario.ListaDeHallazgos)
-                                        {
-                                            if (h.PieHallazgo == PieDto.Izquierdo && h.DefectoHallazgo != null && h.DefectoHallazgo.Numero == defecto.Numero)
-                                            {
-                                                cantidad = cantidad + 1;
-                                            }
-                                        }
-                                    }
-                                    <b>@cantidad</b>
-                                </label>
-                                <div class="input-group-append">
-                                    <button class="btn btn-success px-2" type="button" onclick="sumarDefectoObservadoPieIzquierdo();">+</button>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
-                <div class="col-6 border border-primary rounded">
-                    <div class="row justify-content-center">
-                        <p>Pie Derecho</p>
-                    </div>
-                    @foreach (var defecto in Model.ListaDefectosObservados)
-                    {
-                        <div class="row">
-                            <label class="form-control col-8 px-0 mb-n4" style="text-align:center">
-                                <b class="pr-3">@defecto.Descripcion</b>
-                            </label>
-                            <div class="input-group mb-1 p-0 col-4">
-                                <div class="input-group-prepend">
-                                    <button class="btn btn-danger px-2" type="button" onclick="DescontarDefectoObservadoPieDerecho()">-</button>
-                                </div>
-                                <label class="form-control pl-0 pr-0 h-100" style="text-align:center">
-                                    @{
-                                        int cantidad = 0;
-                                        foreach (var h in horario.ListaDeHallazgos)
-                                        {
-                                            if (h.PieHallazgo == PieDto.Derecho && h.DefectoHallazgo != null && h.DefectoHallazgo.Numero == defecto.Numero)
-                                            {
-                                                cantidad = cantidad + 1;
-                                            }
-                                        }
-                                    }
-                                    <b>@cantidad</b>
-                                </label>
-                                <div class="input-group-append">
-                                    <button class="btn btn-success px-2" type="button" onclick="sumarDefectoObservadoPieDerecho()">+</button>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
+    <div class="row">
+        <div class="col-7">
+            <div class="form-group">
+                <label class="col-12 control-label"><u>N° OP:</u> <b>@Model.OpDto.Numero</b></label>
+                <label class="col-12 control-label"><u>Modelo:</u> <b>SKU[@Model.OpDto.ModeloOP.Sku] @Model.OpDto.ModeloOP.Denominacion</b> - <u>Color</u>: <b>@Model.OpDto.ColorCalzado.Descripcion</b></label>
+                <label class="col-12 control-label"><u>Turno:</u> <b>NN</b> - <u>Linea Trabajo:</u> <b>@Model.OpDto.LineaTrabajo.Numero</b></label>
             </div>
         </div>
 
-        <div class="col">
-            <div class="row justify-content-center">
-                <p>Defectos de Reproceso</p>
-            </div>
-
-            <div class="row">
-                <div class="col-6 border border-primary rounded">
-                    <div class="row justify-content-center">
-                        <p>Pie Izquierdo</p>
-                    </div>
-                    @foreach (var defecto in Model.ListaDefectosReproceso)
+        <div class="col-5">
+            <div class="form-group">
+                <input type="date" value="@Model.Fecha.ToString("yyyy-MM-dd")">
+                <input type="time" value="@Model.Fecha.ToString("hh:mm")">
+                <select name="nSelectTurno" id="idSelectTurno" onchange="RegargarVista();">
+                    @foreach (var turno in Model.ListaTurnos)
                     {
-                        <div class="row">
-                            <label class="form-control col-8 px-0 mb-n4" style="text-align:center">
-                                <b class="pr-3">@defecto.Descripcion</b>
-                            </label>
-                            <div class="input-group mb-1 p-0 col-4">
-                                <div class="input-group-prepend">
-                                    <button class="btn btn-danger px-2" type="button" onclick="DescontarDefectoReprocesoPieIzquierdo">-</button>
-                                </div>
-                                <label class="form-control pl-0 pr-0 h-100" style="text-align:center">
-                                    @{
-                                        int cantidad = 0;
-                                        foreach (var h in horario.ListaDeHallazgos)
-                                        {
-                                            if (h.PieHallazgo == PieDto.Izquierdo && h.DefectoHallazgo != null && h.DefectoHallazgo.Numero == defecto.Numero)
-                                            {
-                                                cantidad = cantidad + 1;
-                                            }
-                                        }
-                                    }
-                                    <b>@cantidad</b>
-                                </label>
-                                <div class="input-group-append">
-                                    <button class="btn btn-success px-2" type="button" onclick="sumarDefectoReprocesoPieIzquierdo();">+</button>
-                                </div>
-                            </div>
-                        </div>
+                        if (turno.Codigo == Model.IdTurnoSeleccionado)
+                        {
+                            <option selected value="@turno.Codigo">@turno.nombre</option>
+                        }
+                        else
+                        {
+                            <option value="@turno.Codigo">@turno.nombre</option>
+                        }
                     }
-                </div>
-                <div class="col-6 border border-primary rounded">
-                    <div class="row justify-content-center">
-                        <p>Pie Derecho</p>
-                    </div>
-                    @foreach (var defecto in Model.ListaDefectosReproceso)
-                    {
-                        <div class="row">
-                            <label class="form-control col-8 px-0 mb-n4" style="text-align:center">
-                                <b class="pr-3">@defecto.Descripcion</b>
-                            </label>
-                            <div class="input-group mb-1 p-0 col-4">
-                                <div class="input-group-prepend">
-                                    <button class="btn btn-danger px-2" type="button" onclick="DescontarDefectoReprocesoPieDerecho();" >-</button>
-                                </div>
-                                <label class="form-control pl-0 pr-0 h-100" style="text-align:center">
-                                    @{
-                                        int cantidad = 0;
-                                        foreach (var h in horario.ListaDeHallazgos)
-                                        {
-                                            if (h.PieHallazgo == PieDto.Derecho && h.DefectoHallazgo != null && h.DefectoHallazgo.Numero == defecto.Numero)
-                                            {
-                                                cantidad = cantidad + 1;
-                                            }
-                                        }
-                                    }
-                                    <b>@cantidad</b>
-                                </label>
-                                <div class="input-group-append">
-                                    <button class="btn btn-success px-2" type="button" onclick="sumarDefectoReprocesoPieDerecho();">+</button>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
+                </select>
             </div>
         </div>
     </div>
 
-    <div class="row mt-3 ml-0 mr-0 justify-content-center">
-        <div class="col-4">
-            <div class="row">
-                <div class="input-group mb-1">
-                    <label class="form-control col-8 px-0 mb-n4" style="text-align:center">
-                        <b class="pr-3">Pares de Primera Calidad</b>
-                    </label>
-                    <div class="input-group mb-1 p-0 col-4">
-                        <div class="input-group-prepend">
-                            <button class="btn btn-danger" type="button">-</button>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group col-2">
+                <label class="control-label" for="Color">Horario:</label>
+                <select name="nSelectHorario" id="idSelectHorario" class="form-control">
+                    @foreach (var item in Model.listaHora)
+                    {
+                        <option value="@item">@item:00 Hs.</option>
+                    }
+
+                </select>
+            </div>
+        </div>
+    </div>
+
+   
+    <div class="border border-primary rounded">
+        <div class="row m-0">
+            <div class="col mr-2">
+                <div class="row justify-content-center">
+                    <p>Defectos Observados</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-6 border border-primary rounded">
+                        <div class="row justify-content-center">
+                            <p >Pie Izquierdo</p>
                         </div>
-                        <label class="form-control pl-0 pr-0 h-100" style="text-align:center">
-                            <b>11</b>
+                        @foreach (var defecto in Model.ListaDefectosObservados)
+                        {
+                            <div class="row">
+                                <label class="form-control col-8 px-0 mb-n4" style="text-align:center">
+                                    <b class="pr-3">@defecto.Descripcion</b>
+                                </label>
+                                <div class="input-group mb-1 p-0 col-4">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-danger px-2" type="button" onclick="AñadirDefecto('@defecto.Numero', 'izquierdo',-1);">-</button>
+                                    </div>
+                                    <label class="form-control pl-0 pr-0 h-100" style="text-align:center">
+                                        @{
+                                            int cantidad = 0;
+                                            foreach (var item in Model.OpDto.ListaDeHorario)
+                                            {
+                                                foreach(var hal in item.ListaDeHallazgos)
+                                                {
+                                                    if (hal.PieHallazgo == PieDto.Izquierdo && hal.DefectoHallazgo != null && hal.DefectoHallazgo.Numero == defecto.Numero)
+                                                    {
+                                                        cantidad = cantidad + 1;
+                                                    }
+                                                }
+
+                                            }
+                                        }
+                                        <b>@cantidad</b>
+
+                                    </label>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-success px-2" type="button" onclick="AñadirDefecto('@defecto.Numero', 'izquierdo',1);">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="col-6 border border-primary rounded">
+                        <div class="row justify-content-center">
+                            <p>Pie Derecho</p>
+                        </div>
+                        @foreach (var defecto in Model.ListaDefectosObservados)
+                        {
+                            <div class="row">
+                                <label class="form-control col-8 px-0 mb-n4" style="text-align:center">
+                                    <b class="pr-3">@defecto.Descripcion</b>
+                                    
+                                </label>
+                                <div class="input-group mb-1 p-0 col-4">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-danger px-2" type="button" onclick="AñadirDefecto('@defecto.Numero', 'derecho',-1);">-</button>
+                                    </div>
+                                   
+                                    <label class="form-control pl-0 pr-0 h-100" style="text-align:center">
+                                        @{
+                                            int cantidad = 0;
+                                            foreach (var item in Model.OpDto.ListaDeHorario)
+                                            {
+                                                foreach (var hal in item.ListaDeHallazgos)
+                                                {
+                                                    if (hal.PieHallazgo == PieDto.Derecho && hal.DefectoHallazgo != null && hal.DefectoHallazgo.Numero == defecto.Numero)
+                                                    {
+                                                        cantidad = cantidad + 1;
+                                                    }
+                                                }
+
+                                            }
+                                        }
+                                        <b>@cantidad</b>
+                                    </label>
+
+                                    <div class="input-group-append">
+                                        <button class="btn btn-success px-2" type="button" onclick="AñadirDefecto('@defecto.Numero','derecho',1);">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                         }
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="row justify-content-center">
+                    <p>Defectos de Reproceso</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-6 border border-primary rounded">
+                        <div class="row justify-content-center">
+                            <p>Pie Izquierdo</p>
+                        </div>
+                        @foreach (var defecto in Model.ListaDefectosReproceso)
+                        {
+                            <div class="row">
+                                <label class="form-control col-8 px-0 mb-n4" style="text-align:center">
+                                    <b class="pr-3">@defecto.Descripcion</b>
+                                </label>
+                                <div class="input-group mb-1 p-0 col-4">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-danger px-2" type="button" onclick="AñadirDefecto('@defecto.Numero', 'izquierdo',-1);">-</button>
+                                    </div>
+                                    <label class="form-control pl-0 pr-0 h-100" style="text-align:center">
+
+                                        @{
+                                            int cantidad = 0;
+                                            foreach (var item in Model.OpDto.ListaDeHorario)
+                                            {
+                                                foreach (var hal in item.ListaDeHallazgos)
+                                                {
+                                                    if (hal.PieHallazgo == PieDto.Izquierdo && hal.DefectoHallazgo != null && hal.DefectoHallazgo.Numero == defecto.Numero)
+                                                    {
+                                                        cantidad = cantidad + 1;
+                                                    }
+                                                }
+
+                                            }
+                                        }
+                                        <b>@cantidad</b>
+                                    </label>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-success px-2" type="button" onclick="AñadirDefecto('@defecto.Numero','izquierdo',1);">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                         }
+                    </div>
+                    <div class="col-6 border border-primary rounded">
+                        <div class="row justify-content-center">
+                            <p>Pie Derecho</p>
+                        </div>
+                        @foreach (var defecto in Model.ListaDefectosReproceso)
+                        {
+                            <div class="row">
+                                <label class="form-control col-8 px-0 mb-n4" style="text-align:center">
+                                    <b class="pr-3">@defecto.Descripcion</b>
+                                </label>
+                                <div class="input-group mb-1 p-0 col-4">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-danger px-2" type="button" onclick="AñadirDefecto('@defecto.Numero', 'derecho',-1);">-</button>
+                                    </div>
+                                    <label class="form-control pl-0 pr-0 h-100" style="text-align:center">
+                                        @{
+                                            int cantidad = 0;
+                                            foreach (var item in Model.OpDto.ListaDeHorario)
+                                            {
+                                                foreach (var hal in item.ListaDeHallazgos)
+                                                {
+                                                    if (hal.PieHallazgo == PieDto.Derecho && hal.DefectoHallazgo != null && hal.DefectoHallazgo.Numero == defecto.Numero)
+                                                    {
+                                                        cantidad = cantidad + 1;
+                                                    }
+                                                }
+
+                                            }
+                                        }
+                                        <b>@cantidad</b>
+                                    </label>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-success px-2" type="button" onclick="AñadirDefecto(@defecto.Numero,'derecho',1);">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3 ml-0 mr-0 justify-content-center">
+            <div class="col-4">
+                <div class="row">
+                    <div class="input-group mb-1">
+                        <label class="form-control col-8 px-0 mb-n4" style="text-align:center">
+                            <b class="pr-3">Pares de Primera Calidad</b>
                         </label>
-                        <div class="input-group-append">
-                            <button class="btn btn-success" type="button" onclick="sumarParPrimera();">+</button>
+                        <div class="input-group mb-1 p-0 col-4">
+                            <div class="input-group-prepend">
+                                <button class="btn btn-danger" type="button" onclick="DescontarParPrimera();">-</button>
+                            </div>
+                            <label class="form-control pl-0 pr-0 h-100" style="text-align:center">
+                                <b>11</b>
+                            </label>
+                            <div class="input-group-append">
+                                <button class="btn btn-success" type="button" onclick="AñadirParPrimera();">+</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+ 
+    <br />
+    <div class="row">
 
-<br />
-<div class="row">
-
-    <div class="col-8">
-        <div class="form-group">
-            <a class="btn btn-primary" href="/Defecto/HistorialOp/?txtOp=@Model.OpDto.Numero">Historial de OP</a>
+        <div class="col-8">
+            <div class="form-group">
+                <a class="btn btn-primary" href="/Defecto/HistorialOp/?txtOp=@Model.OpDto.Numero">Historial de OP</a>
+            </div>
         </div>
+
     </div>
 
-</div>
+    <script type="text/javascript">
 
-<script type="text/javascript">
+        var selectObservado = "<select><option></option></select>";
 
-    var selectObservado = "<select><option></option></select>";
-
-    var MostrarPanel = function (panel) {
-        if (panel == 'primera') {
-            $('#idPanelPrimera').collapse('show'); // MOSTRAR
-            $('#idPanelDefecto').collapse('hide');
-        } else {
-            $('#idPanelPrimera').collapse('hide'); // MOSTRAR
-            $('#idPanelDefecto').collapse('show');
-        }
-    }
-
-    var RegargarVista = function () {
-        var idTurno = $("#idSelectTurno").val();
-        var url = "/Defecto/Inspeccionar/?txtTurno=" + idTurno;
-        $(location).attr('href', url);
-
-    }
-
-    function ObtenerDefecto(tipoDefecto) {
-        var parametro = {
-            tipoDefecto: tipoDefecto
-        };
-
-        $.ajax(
-            {
-                url: '/Defecto/ObtenerListaDeDefectos',  // Controller (color) / Funcion(ObtenerMisDatos)
-                type: 'POST',                   // tipo Post
-                dataType: 'json',               // retorna un Json a la vista
-                data: parametro,
-                success: function (dataRetorno) {
-                    console.log(dataRetorno);
-                    var objJson = JSON.parse(dataRetorno);
-                    // console.log(objJson);
-                    $('#idSelectDefecto').empty();
-                    $.each(objJson.listaDefectos, function (i, item) {
-                        console.log(item);
-                        $('#idSelectDefecto').append($('<option>').text(item.descripcion).attr('value', item.id));
-                    });
-                }
+        var MostrarPanel = function (panel) {
+            if (panel == 'primera') {
+                $('#idPanelPrimera').collapse('show'); // MOSTRAR
+                $('#idPanelDefecto').collapse('hide');
+            } else {
+                $('#idPanelPrimera').collapse('hide'); // MOSTRAR
+                $('#idPanelDefecto').collapse('show');
             }
-        );
-    }
-</script>
+        }
+
+        var RegargarVista = function () {
+            var idTurno = $("#idSelectTurno").val();
+            var url = "/Defecto/Inspeccionar/?txtTurno=" + idTurno;
+            $(location).attr('href', url);
+
+        }
+
+        function ObtenerListaDeDefectos(tipoDefecto) {
+            var parametro = {
+                tipoDefecto: tipoDefecto
+            };
+
+            $.ajax(
+                {
+                    url: '/Defecto/ObtenerListaDeDefectos',  // Controller (color) / Funcion(ObtenerMisDatos)
+                    type: 'POST',                   // tipo Post
+                    dataType: 'json',               // retorna un Json a la vista
+                    data: parametro,
+                    success: function (dataRetorno) {
+                        console.log(dataRetorno);
+                        var objJson = JSON.parse(dataRetorno);
+                        // console.log(objJson);
+                        $('#idSelectDefecto').empty();
+                        $.each(objJson.listaDefectos, function (i, item) {
+                            console.log(item);
+                            $('#idSelectDefecto').append($('<option>').text(item.descripcion).attr('value', item.id));
+                        });
+                    }
+                }
+            );
+        }
+
+        var AñadirDefecto = function (defecto, TipoPie, operacion) {
+
+            var parametro = {
+                DefectoNro: defecto,
+                TipoDePie: TipoPie,
+                Operacion: operacion,
+                op: @Model.OpDto.Numero,
+                hora: $('#idSelectHorario').val()
+               
+
+            };
+
+            $.ajax(
+                {
+                    url: '/Defecto/AñadirDefecto',  // Controller (color) / Funcion(ObtenerMisDatos)
+                    type: 'POST',                   // tipo Post
+                    dataType: 'json',               // retorna un Json a la vista
+                    data: parametro,
+                    success: function () {
+                        
+                    }
+                }
+            );
+
+            location.href = "/Defecto/Inspeccionar";
+        }
+    </script>
 
 
 

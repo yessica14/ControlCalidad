@@ -43,7 +43,7 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
                     {
                         var horas = item.HoraInicio.Hours;
                         var suma = horas + i;
-                        var hora = suma.ToString() + ":00" + " hs";
+                        var hora = suma.ToString();
                         listaHora.Add(hora);
                         i++;
                     }
@@ -84,6 +84,54 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
 
             Adaptador.EliminarHallazgo(idOp, idHorario, idHallazgo);
             return RedirectToAction("HistorialOp", "Defecto", new { txtOp = idOp.ToString()});
+        }
+
+        [HttpPost]
+
+        public ActionResult AñadirDefecto(string op, string hora, string DefectoNro, string TipoDePie, int Operacion)
+        {
+            TimeSpan _hora = new TimeSpan(int.Parse(hora), 00, 00);
+
+            var numeroOP = int.Parse(op);
+
+            var Op = Adaptador.ObtenerOpPorId(numeroOP);
+
+            foreach (var item in Op.ListaDeHorario) 
+            {
+                if(item.HoraFin == null)
+                {
+                    var hallazgo = new HallazgoDto();
+
+                    hallazgo.HoraHallazgo = _hora;
+
+                    hallazgo.Cantidad = Operacion;
+
+                    var NumeroDef = int.Parse(DefectoNro);
+                    var Defecto = Adaptador.ObtenerDefectoPorNumero(NumeroDef);
+
+                    hallazgo.DefectoHallazgo = Defecto;
+
+                    if (TipoDePie == "derecho")
+                    {
+                        hallazgo.PieHallazgo = PieDto.Derecho;
+                    }
+                    else
+                    {
+                        hallazgo.PieHallazgo = PieDto.Izquierdo;
+                    }
+
+                    int idSuperivisorCalidad = int.Parse(Session["Session_Usuario_Id"].ToString());
+
+                    var usuarioDto = Adaptador.ObtenerUsuarioPorId(idSuperivisorCalidad);
+                    hallazgo.SupervisorCalidad = usuarioDto.UsuarioDeEmpleado;
+                    Adaptador.AgregarHallazgo(numeroOP, hallazgo, NumeroDef);
+
+                    var opX = Adaptador.ObtenerOpPorId(numeroOP);
+                }
+                
+            }
+
+            return RedirectToAction("Inspeccionar", "Defecto");
         }
 
         //[HttpPost]

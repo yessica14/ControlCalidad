@@ -259,6 +259,8 @@
       <xs:sequence>
         <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="ordenProduccion" nillable="true" type="q18:OrdenProduccionDto" />
         <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="empleado" nillable="true" type="q19:EmpleadoDto" />
+        <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="hora" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -384,6 +386,22 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="AgregarHallazgo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="NumeroOp" type="xs:int" />
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="hallazgo" nillable="true" type="q29:HallazgoDto" />
+        <xs:element minOccurs="0" name="NumeroDef" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarHallazgoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AgregarHallazgoResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ObtenerListaDefectos">
     <xs:complexType>
       <xs:sequence>
@@ -394,7 +412,7 @@
   <xs:element name="ObtenerListaDefectosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="ObtenerListaDefectosResult" nillable="true" type="q29:ArrayOfDefectoDto" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="ObtenerListaDefectosResult" nillable="true" type="q30:ArrayOfDefectoDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -406,7 +424,7 @@
   <xs:element name="ObtenerTodosLosDefectosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="ObtenerTodosLosDefectosResult" nillable="true" type="q30:ArrayOfDefectoDto" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="ObtenerTodosLosDefectosResult" nillable="true" type="q31:ArrayOfDefectoDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -418,7 +436,67 @@
   <xs:element name="ObtenerTurnosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="ObtenerTurnosResult" nillable="true" type="q31:ArrayOfTurnoDto" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="ObtenerTurnosResult" nillable="true" type="q32:ArrayOfTurnoDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ComprobarTurno">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="hora" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ComprobarTurnoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ComprobarTurnoResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerDefectoPorNumero">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="numero" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerDefectoPorNumeroResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/ControlCalidad.Servidor.Servicio.Entidades" minOccurs="0" name="ObtenerDefectoPorNumeroResult" nillable="true" type="q33:DefectoDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CerrarHorario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="numeroOP" type="xs:int" />
+        <xs:element minOccurs="0" name="hora" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CerrarHorarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CerrarHorarioResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarNuevoHorario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="numeroOP" type="xs:int" />
+        <xs:element minOccurs="0" name="hora" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarNuevoHorarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AgregarNuevoHorarioResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

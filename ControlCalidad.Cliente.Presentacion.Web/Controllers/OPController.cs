@@ -119,8 +119,17 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
 
             var usuarioDto = Adaptador.ObtenerUsuarioPorId(int.Parse(Session["Session_Usuario_Id"].ToString()));
 
-            Adaptador.AgregarOrdenProduccion(ordenProduccion, usuarioDto.UsuarioDeEmpleado);
+            DateTime fecha = DateTime.Now.Date;
+            DateTime dt = DateTime.Now;
+            //var hora = dt.ToLongTimeString();
+            var hora = "8:30";
 
+            bool b = Adaptador.ComprobarTurno(hora);
+            if(b)
+            {
+                Adaptador.AgregarOrdenProduccion(ordenProduccion, usuarioDto.UsuarioDeEmpleado, fecha, hora);
+            }
+            
             return RedirectToAction("Index", "OP");
         }
 
@@ -150,26 +159,37 @@ namespace ControlCalidad.Cliente.Presentacion.Web.Controllers
             var idOP = collection["nHiddenModicarIdOp"].ToString();
             var estadoNuevoOP = collection["nSelectModicarOp"].ToString();
 
-            EstadoOPDto estadoOP = EstadoOPDto.Iniciado;
+            var numeroOP = int.Parse(idOP);
+            EstadoOPDto nuevoEstadoOP;
+            DateTime fecha = DateTime.Now.Date;
+            DateTime dt = DateTime.Now;
+            var hora = dt.ToLongTimeString();
+
             switch (estadoNuevoOP)
             {
                 case "Iniciado":
-                    estadoOP = EstadoOPDto.Iniciado;
+                default:
+                    nuevoEstadoOP = EstadoOPDto.Iniciado;
                     break;
                 case "Pausado":
-                    estadoOP = EstadoOPDto.Pausado;
+                    nuevoEstadoOP = EstadoOPDto.Pausado;
+                    Adaptador.CerrarHorario(numeroOP,hora, fecha);
                     break;
                 case "Continuado":
-                    estadoOP = EstadoOPDto.Continuado;
+                    nuevoEstadoOP = EstadoOPDto.Continuado;
+                    Adaptador.AgregarNuevoHorario(numeroOP,hora, fecha);
                     break;
                 case "Finalizado":
-                    estadoOP = EstadoOPDto.Finalizado;
+                    nuevoEstadoOP = EstadoOPDto.Finalizado;
+                    Adaptador.CerrarHorario(numeroOP,hora, fecha);
                     break;
             }
 
             var opDto = Adaptador.ObtenerOpPorId(int.Parse(idOP));
 
-            Adaptador.ModificarOrdenProduccion_Estado(opDto, estadoOP);
+           
+            
+            Adaptador.ModificarOrdenProduccion_Estado(opDto, nuevoEstadoOP);
 
             return RedirectToAction("Index", "OP");
         }

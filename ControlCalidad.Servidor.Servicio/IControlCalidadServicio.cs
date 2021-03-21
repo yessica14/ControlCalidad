@@ -89,7 +89,7 @@ namespace ControlCalidad.Servidor.Servicio
         OrdenProduccionDto ObtenerOpPorId(int id);
 
         [OperationContract]
-        bool AgregarOrdenProduccion(OrdenProduccionDto ordenProduccion, EmpleadoDto empleado);
+        bool AgregarOrdenProduccion(OrdenProduccionDto ordenProduccion, EmpleadoDto empleado, DateTime fecha, string hora);
 
         [OperationContract]
         bool ModificarOrdenProduccion_Estado(OrdenProduccionDto ordenProduccion, EstadoOPDto nuevoEstadoOPDto);
@@ -123,6 +123,9 @@ namespace ControlCalidad.Servidor.Servicio
         [OperationContract]
         bool RealizarHermanado(int idOp, int idSupervisorCalidad);
 
+        [OperationContract]
+        bool AgregarHallazgo(int NumeroOp, HallazgoDto hallazgo, int NumeroDef);
+
         #endregion
 
         #region TIPODEFECTO
@@ -141,6 +144,26 @@ namespace ControlCalidad.Servidor.Servicio
 
         TurnoDto[] ObtenerTurnos();
 
+        [OperationContract]
+
+        bool ComprobarTurno(string hora);
+
+        #endregion
+
+        #region DEFECTO
+        [OperationContract]
+        DefectoDto ObtenerDefectoPorNumero(int numero);
+        #endregion
+
+        #region HORARIO
+
+        [OperationContract]
+
+        bool CerrarHorario(int numeroOP, string hora, DateTime fecha);
+
+        [OperationContract]
+        bool AgregarNuevoHorario(int numeroOP, string hora, DateTime fecha);
+       
         #endregion
 
     }

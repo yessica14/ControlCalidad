@@ -248,7 +248,7 @@ namespace ControlCalidad.Servidor.Servicio
             return (opDto);
         }
 
-        public bool AgregarOrdenProduccion(OrdenProduccionDto ordenProduccionDto, EmpleadoDto empleadoDto)
+        public bool AgregarOrdenProduccion(OrdenProduccionDto ordenProduccionDto, EmpleadoDto empleadoDto, DateTime fecha, string hora)
         {
             var ordenProduccionDom = new OrdenProduccion();
 
@@ -278,6 +278,16 @@ namespace ControlCalidad.Servidor.Servicio
             ordenProduccionDom.LineaTrabajo.SupervisorLinea = EmpleadoRepositorio.BuscarEmpleadoPorId(empleadoDto.Id);
 
             LineaRepositorio.ModificarLinea(ordenProduccionDom.LineaTrabajo);
+
+            TimeSpan time = TimeSpan.Parse(hora);
+            var listaHorario = new List<Horario>();
+
+            var horario = new Horario();
+
+            horario.Fecha = fecha;
+            horario.HoraInicio = time;
+            listaHorario.Add(horario);
+            ordenProduccionDom.ListaDeHorario = listaHorario;
 
             OrdenProduccionRepositorio.AgregarOrdenproduccion(ordenProduccionDom);
 
@@ -435,6 +445,13 @@ namespace ControlCalidad.Servidor.Servicio
             return listaDto.ToArray();
         }
 
+        public DefectoDto ObtenerDefectoPorNumero(int numero)
+        {
+             var defectoDom = DefectoRepositorio.ObtenerDefectoPorNumero(numero);
+             var defectoDto = Defecto_DeDomADto(defectoDom);
+
+             return defectoDto;
+        }
         #endregion
 
         #region TURNO
@@ -451,6 +468,12 @@ namespace ControlCalidad.Servidor.Servicio
             }
             return listaDto.ToArray();
 
+        }
+
+        public bool ComprobarTurno(string hora)
+        {
+            bool b = TurnoRepositorio.ComprobarTurno(hora);
+            return b;
         }
 
         #endregion
@@ -474,6 +497,77 @@ namespace ControlCalidad.Servidor.Servicio
             return true;
         }
 
+        public bool AgregarHallazgo(int NumeroOp, HallazgoDto hallazgo, int NumeroDef)
+        {
+            var Op = OrdenProduccionRepositorio.ObtenerOrderProduccionPorId(NumeroOp);
+            var hallazgoDom = new Hallazgo();
+            hallazgoDom.Cantidad= hallazgo.Cantidad;
+            hallazgoDom.HoraHallazgo = hallazgo.HoraHallazgo;
+            
+            if(PieDto.Derecho == hallazgo.PieHallazgo)
+            {
+                hallazgoDom.PieHallazgo = Pie.Derecho;
+            }
+            else
+            {
+                hallazgoDom.PieHallazgo = Pie.Izquierdo;
+            }
+            hallazgoDom.DefectoHallazgo = DefectoRepositorio.ObtenerDefectoPorNumero(NumeroDef);
+
+            
+            //hallazgoDom.SupervisorCalidad.Documento = hallazgo.SupervisorCalidad.Documento;
+            //hallazgoDom.SupervisorCalidad.Nombre = hallazgo.SupervisorCalidad.Nombre;
+            //hallazgoDom.SupervisorCalidad.Apellido = hallazgo.SupervisorCalidad.Apellido;
+            //hallazgoDom.SupervisorCalidad.CorreoElectronico = hallazgo.SupervisorCalidad.CorreoElectronico;
+
+            foreach (var item in Op.ListaDeHorario)
+            {
+                if(item.HoraFin == null)
+                {
+                    item.ListaDeHallazgos.Add(hallazgoDom);
+                }
+            }
+
+            OrdenProduccionRepositorio.ModificarOrdenProduccion(Op);
+            
+            return true;
+        }
+
+        #endregion
+
+        #region HORARIO
+
+        public bool CerrarHorario(int numeroOP, string hora, DateTime fecha)
+        {
+            var ordenProduccionDom = OrdenProduccionRepositorio.ObtenerOrderProduccionPorId(numeroOP);
+            TimeSpan horaActual = TimeSpan.Parse(hora);
+            var hora_ = horaActual.Hours;
+
+            foreach (var item in ordenProduccionDom.ListaDeHorario)  // 9- 23   13 - 23    22 - 23
+            {
+                if (item.HoraFin == null)
+                { 
+                    item.HoraFin = horaActual;
+                    item.Fecha = fecha;
+                }
+            }
+            OrdenProduccionRepositorio.ModificarOrdenProduccion(ordenProduccionDom);
+            return true;
+        }
+        public bool AgregarNuevoHorario(int numeroOP, string hora, DateTime fecha)
+        {
+            var ordenProduccionDom = OrdenProduccionRepositorio.ObtenerOrderProduccionPorId(numeroOP);
+
+            TimeSpan horaActual = TimeSpan.Parse(hora);
+           
+            var horario = new Horario();
+            horario.HoraInicio = horaActual; 
+            horario.Fecha = fecha;
+            ordenProduccionDom.ListaDeHorario.Add(horario);
+
+            OrdenProduccionRepositorio.ModificarOrdenProduccion(ordenProduccionDom);
+            return true;
+        }
         #endregion
 
         #region De_Domino_A_Dto
@@ -621,7 +715,7 @@ namespace ControlCalidad.Servidor.Servicio
             horarioDto.Id = horarioDom.Id;
             horarioDto.Fecha = horarioDom.Fecha;
             horarioDto.HoraInicio = horarioDom.HoraInicio;
-            horarioDto.HoraFin = horarioDom.HoraFin;
+            horarioDto.HoraFin = horarioDom.HoraFin == null ? (TimeSpan?)null : horarioDom.HoraFin.Value;
             horarioDto.TurnoHorario = Turno_DeDomADto(horarioDom.TurnoHorario);
 
             if (horarioDom.ListaDeHallazgos == null)

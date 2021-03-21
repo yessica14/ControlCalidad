@@ -177,11 +177,11 @@ namespace ControlCalidad.Cliente.AccesoExterno
             }
         }
 
-        public static bool AgregarOrdenProduccion(OrdenProduccionDto ordenProduccionDto, EmpleadoDto empleado)
+        public static bool AgregarOrdenProduccion(OrdenProduccionDto ordenProduccionDto, EmpleadoDto empleado, DateTime fecha, string hora)
         {
             using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
             {
-                return servidor.AgregarOrdenProduccion(ordenProduccionDto, empleado);
+                return servidor.AgregarOrdenProduccion(ordenProduccionDto, empleado, fecha, hora);
             }
         }
 
@@ -257,6 +257,14 @@ namespace ControlCalidad.Cliente.AccesoExterno
             }
         }
 
+        public static bool AgregarHallazgo(int NumeroOp, HallazgoDto hallazgo, int NumeroDef)
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.AgregarHallazgo(NumeroOp, hallazgo, NumeroDef);
+            }
+        }
+
         #endregion
 
         #region TipoDefecto
@@ -289,7 +297,47 @@ namespace ControlCalidad.Cliente.AccesoExterno
                 return servidor.ObtenerTurnos();
             }
         }
+        
+        public static bool ComprobarTurno(string hora)
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.ComprobarTurno(hora);
+            }
+        }
 
+        #endregion
+
+        #region DEFECTO
+
+        public static DefectoDto ObtenerDefectoPorNumero(int numero)
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.ObtenerDefectoPorNumero(numero);
+            }
+        }
+
+        #endregion
+
+        #region HORARIO
+
+        public static bool CerrarHorario(int numeroOP, string hora, DateTime fecha)
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.CerrarHorario(numeroOP, hora, fecha);
+            }
+        }
+        public static bool AgregarNuevoHorario(int numeroOP,string hora, DateTime fecha)
+        {
+            using (var servidor = new ControlCalidadServiceReference.ControlCalidadServicioClient())
+            {
+                return servidor.AgregarNuevoHorario(numeroOP, hora, fecha);
+            }
+        }
+    
+       
         #endregion
     }
 }

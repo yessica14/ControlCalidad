@@ -688,7 +688,7 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         private System.DateTime FechaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.TimeSpan HoraFinField;
+        private System.Nullable<System.TimeSpan> HoraFinField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.TimeSpan HoraInicioField;
@@ -729,7 +729,7 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.TimeSpan HoraFin {
+        public System.Nullable<System.TimeSpan> HoraFin {
             get {
                 return this.HoraFinField;
             }
@@ -1337,10 +1337,10 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto> ObtenerOpPorIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/AgregarOrdenProduccion", ReplyAction="http://tempuri.org/IControlCalidadServicio/AgregarOrdenProduccionResponse")]
-        bool AgregarOrdenProduccion(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleado);
+        bool AgregarOrdenProduccion(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleado, System.DateTime fecha, string hora);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/AgregarOrdenProduccion", ReplyAction="http://tempuri.org/IControlCalidadServicio/AgregarOrdenProduccionResponse")]
-        System.Threading.Tasks.Task<bool> AgregarOrdenProduccionAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleado);
+        System.Threading.Tasks.Task<bool> AgregarOrdenProduccionAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleado, System.DateTime fecha, string hora);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_Estado", ReplyAction="http://tempuri.org/IControlCalidadServicio/ModificarOrdenProduccion_EstadoRespons" +
             "e")]
@@ -1396,6 +1396,12 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/RealizarHermanado", ReplyAction="http://tempuri.org/IControlCalidadServicio/RealizarHermanadoResponse")]
         System.Threading.Tasks.Task<bool> RealizarHermanadoAsync(int idOp, int idSupervisorCalidad);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/AgregarHallazgo", ReplyAction="http://tempuri.org/IControlCalidadServicio/AgregarHallazgoResponse")]
+        bool AgregarHallazgo(int NumeroOp, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.HallazgoDto hallazgo, int NumeroDef);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/AgregarHallazgo", ReplyAction="http://tempuri.org/IControlCalidadServicio/AgregarHallazgoResponse")]
+        System.Threading.Tasks.Task<bool> AgregarHallazgoAsync(int NumeroOp, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.HallazgoDto hallazgo, int NumeroDef);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerListaDefectos", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerListaDefectosResponse")]
         ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.DefectoDto[] ObtenerListaDefectos(string tipo);
         
@@ -1413,6 +1419,30 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerTurnos", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerTurnosResponse")]
         System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.TurnoDto[]> ObtenerTurnosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ComprobarTurno", ReplyAction="http://tempuri.org/IControlCalidadServicio/ComprobarTurnoResponse")]
+        bool ComprobarTurno(string hora);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ComprobarTurno", ReplyAction="http://tempuri.org/IControlCalidadServicio/ComprobarTurnoResponse")]
+        System.Threading.Tasks.Task<bool> ComprobarTurnoAsync(string hora);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerDefectoPorNumero", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerDefectoPorNumeroResponse")]
+        ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.DefectoDto ObtenerDefectoPorNumero(int numero);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/ObtenerDefectoPorNumero", ReplyAction="http://tempuri.org/IControlCalidadServicio/ObtenerDefectoPorNumeroResponse")]
+        System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.DefectoDto> ObtenerDefectoPorNumeroAsync(int numero);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/CerrarHorario", ReplyAction="http://tempuri.org/IControlCalidadServicio/CerrarHorarioResponse")]
+        bool CerrarHorario(int numeroOP, string hora, System.DateTime fecha);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/CerrarHorario", ReplyAction="http://tempuri.org/IControlCalidadServicio/CerrarHorarioResponse")]
+        System.Threading.Tasks.Task<bool> CerrarHorarioAsync(int numeroOP, string hora, System.DateTime fecha);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/AgregarNuevoHorario", ReplyAction="http://tempuri.org/IControlCalidadServicio/AgregarNuevoHorarioResponse")]
+        bool AgregarNuevoHorario(int numeroOP, string hora, System.DateTime fecha);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControlCalidadServicio/AgregarNuevoHorario", ReplyAction="http://tempuri.org/IControlCalidadServicio/AgregarNuevoHorarioResponse")]
+        System.Threading.Tasks.Task<bool> AgregarNuevoHorarioAsync(int numeroOP, string hora, System.DateTime fecha);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1594,12 +1624,12 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
             return base.Channel.ObtenerOpPorIdAsync(id);
         }
         
-        public bool AgregarOrdenProduccion(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleado) {
-            return base.Channel.AgregarOrdenProduccion(ordenProduccion, empleado);
+        public bool AgregarOrdenProduccion(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleado, System.DateTime fecha, string hora) {
+            return base.Channel.AgregarOrdenProduccion(ordenProduccion, empleado, fecha, hora);
         }
         
-        public System.Threading.Tasks.Task<bool> AgregarOrdenProduccionAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleado) {
-            return base.Channel.AgregarOrdenProduccionAsync(ordenProduccion, empleado);
+        public System.Threading.Tasks.Task<bool> AgregarOrdenProduccionAsync(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EmpleadoDto empleado, System.DateTime fecha, string hora) {
+            return base.Channel.AgregarOrdenProduccionAsync(ordenProduccion, empleado, fecha, hora);
         }
         
         public bool ModificarOrdenProduccion_Estado(ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.OrdenProduccionDto ordenProduccion, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.EstadoOPDto nuevoEstadoOPDto) {
@@ -1666,6 +1696,14 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
             return base.Channel.RealizarHermanadoAsync(idOp, idSupervisorCalidad);
         }
         
+        public bool AgregarHallazgo(int NumeroOp, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.HallazgoDto hallazgo, int NumeroDef) {
+            return base.Channel.AgregarHallazgo(NumeroOp, hallazgo, NumeroDef);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AgregarHallazgoAsync(int NumeroOp, ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.HallazgoDto hallazgo, int NumeroDef) {
+            return base.Channel.AgregarHallazgoAsync(NumeroOp, hallazgo, NumeroDef);
+        }
+        
         public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.DefectoDto[] ObtenerListaDefectos(string tipo) {
             return base.Channel.ObtenerListaDefectos(tipo);
         }
@@ -1688,6 +1726,38 @@ namespace ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference {
         
         public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.TurnoDto[]> ObtenerTurnosAsync() {
             return base.Channel.ObtenerTurnosAsync();
+        }
+        
+        public bool ComprobarTurno(string hora) {
+            return base.Channel.ComprobarTurno(hora);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ComprobarTurnoAsync(string hora) {
+            return base.Channel.ComprobarTurnoAsync(hora);
+        }
+        
+        public ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.DefectoDto ObtenerDefectoPorNumero(int numero) {
+            return base.Channel.ObtenerDefectoPorNumero(numero);
+        }
+        
+        public System.Threading.Tasks.Task<ControlCalidad.Cliente.AccesoExterno.ControlCalidadServiceReference.DefectoDto> ObtenerDefectoPorNumeroAsync(int numero) {
+            return base.Channel.ObtenerDefectoPorNumeroAsync(numero);
+        }
+        
+        public bool CerrarHorario(int numeroOP, string hora, System.DateTime fecha) {
+            return base.Channel.CerrarHorario(numeroOP, hora, fecha);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CerrarHorarioAsync(int numeroOP, string hora, System.DateTime fecha) {
+            return base.Channel.CerrarHorarioAsync(numeroOP, hora, fecha);
+        }
+        
+        public bool AgregarNuevoHorario(int numeroOP, string hora, System.DateTime fecha) {
+            return base.Channel.AgregarNuevoHorario(numeroOP, hora, fecha);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AgregarNuevoHorarioAsync(int numeroOP, string hora, System.DateTime fecha) {
+            return base.Channel.AgregarNuevoHorarioAsync(numeroOP, hora, fecha);
         }
     }
 }

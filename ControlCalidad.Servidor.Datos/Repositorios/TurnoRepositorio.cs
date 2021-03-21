@@ -58,5 +58,20 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
             var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
             return empresa.ListaDeTurnos;
         }
+
+        public static bool ComprobarTurno(string hora)
+        {
+            bool b = false;
+            TimeSpan time = TimeSpan.Parse(hora);
+            var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
+            foreach (var item in empresa.ListaDeTurnos)
+            {
+                if (item.HoraInicio <= time && time <= item.HoraFin)
+                {
+                    b = true;
+                }
+            }
+            return b;
+        }
     }
 }

@@ -175,6 +175,12 @@
   <wsdl:message name="IControlCalidadServicio_RealizarHermanado_OutputMessage">
     <wsdl:part name="parameters" element="tns:RealizarHermanadoResponse" />
   </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_AgregarHallazgo_InputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarHallazgo" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_AgregarHallazgo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarHallazgoResponse" />
+  </wsdl:message>
   <wsdl:message name="IControlCalidadServicio_ObtenerListaDefectos_InputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerListaDefectos" />
   </wsdl:message>
@@ -192,6 +198,30 @@
   </wsdl:message>
   <wsdl:message name="IControlCalidadServicio_ObtenerTurnos_OutputMessage">
     <wsdl:part name="parameters" element="tns:ObtenerTurnosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ComprobarTurno_InputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobarTurno" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ComprobarTurno_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobarTurnoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerDefectoPorNumero_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerDefectoPorNumero" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_ObtenerDefectoPorNumero_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerDefectoPorNumeroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_CerrarHorario_InputMessage">
+    <wsdl:part name="parameters" element="tns:CerrarHorario" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_CerrarHorario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CerrarHorarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_AgregarNuevoHorario_InputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarNuevoHorario" />
+  </wsdl:message>
+  <wsdl:message name="IControlCalidadServicio_AgregarNuevoHorario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarNuevoHorarioResponse" />
   </wsdl:message>
   <wsdl:portType name="IControlCalidadServicio">
     <wsdl:operation name="ObtenerLineas">
@@ -306,6 +336,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/RealizarHermanado" message="tns:IControlCalidadServicio_RealizarHermanado_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/RealizarHermanadoResponse" message="tns:IControlCalidadServicio_RealizarHermanado_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="AgregarHallazgo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/AgregarHallazgo" message="tns:IControlCalidadServicio_AgregarHallazgo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/AgregarHallazgoResponse" message="tns:IControlCalidadServicio_AgregarHallazgo_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ObtenerListaDefectos">
       <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerListaDefectos" message="tns:IControlCalidadServicio_ObtenerListaDefectos_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerListaDefectosResponse" message="tns:IControlCalidadServicio_ObtenerListaDefectos_OutputMessage" />
@@ -317,6 +351,22 @@
     <wsdl:operation name="ObtenerTurnos">
       <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerTurnos" message="tns:IControlCalidadServicio_ObtenerTurnos_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerTurnosResponse" message="tns:IControlCalidadServicio_ObtenerTurnos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ComprobarTurno">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ComprobarTurno" message="tns:IControlCalidadServicio_ComprobarTurno_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ComprobarTurnoResponse" message="tns:IControlCalidadServicio_ComprobarTurno_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDefectoPorNumero">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerDefectoPorNumero" message="tns:IControlCalidadServicio_ObtenerDefectoPorNumero_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/ObtenerDefectoPorNumeroResponse" message="tns:IControlCalidadServicio_ObtenerDefectoPorNumero_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CerrarHorario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/CerrarHorario" message="tns:IControlCalidadServicio_CerrarHorario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/CerrarHorarioResponse" message="tns:IControlCalidadServicio_CerrarHorario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AgregarNuevoHorario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControlCalidadServicio/AgregarNuevoHorario" message="tns:IControlCalidadServicio_AgregarNuevoHorario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControlCalidadServicio/AgregarNuevoHorarioResponse" message="tns:IControlCalidadServicio_AgregarNuevoHorario_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IControlCalidadServicio" type="tns:IControlCalidadServicio">
@@ -573,6 +623,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AgregarHallazgo">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/AgregarHallazgo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ObtenerListaDefectos">
       <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ObtenerListaDefectos" style="document" />
       <wsdl:input>
@@ -593,6 +652,42 @@
     </wsdl:operation>
     <wsdl:operation name="ObtenerTurnos">
       <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ObtenerTurnos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComprobarTurno">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ComprobarTurno" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDefectoPorNumero">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/ObtenerDefectoPorNumero" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CerrarHorario">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/CerrarHorario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarNuevoHorario">
+      <soap:operation soapAction="http://tempuri.org/IControlCalidadServicio/AgregarNuevoHorario" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

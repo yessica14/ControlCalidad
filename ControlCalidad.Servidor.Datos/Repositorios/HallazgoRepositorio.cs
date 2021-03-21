@@ -16,8 +16,12 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
             
         }
 
-        public static void AgregarHallazgo(OrdenProduccion op, Hallazgo hallazgo)
+        public static void AgregarHallazgo(int NumeroOp, Hallazgo hallazgo)
         {
+            var empresa = Singleton.getInstancia().ObtenerDatosDeEmpresa();
+           
+            Singleton.getInstancia().AsignarDatosAEmpresa(empresa);
+
         }
 
         public static void ModificarHallazgo(OrdenProduccion op, Hallazgo hallazgo)
