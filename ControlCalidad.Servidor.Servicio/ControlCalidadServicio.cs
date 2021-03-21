@@ -453,6 +453,15 @@ namespace ControlCalidad.Servidor.Servicio
 
         }
 
+        public TurnoDto ObtenerTurnoPorCodigo(int codigo)
+        {
+            var turnoDom = TurnoRepositorio.ObtenerTurnoPorCodigo(codigo);
+            var turnoDto = Turno_DeDomADto(turnoDom);
+
+            return turnoDto;
+
+        }
+
         #endregion
 
         #region HORARIO

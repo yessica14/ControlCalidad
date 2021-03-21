@@ -229,7 +229,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 new Primera()
                 {
                     Hora = new TimeSpan(8,0,0),
-                    Cantidad = 2,
+                    Cantidad = 1,
                     SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
                 }
             );
@@ -238,7 +238,25 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 new Primera()
                 {
                     Hora = new TimeSpan(9, 0, 0),
-                    Cantidad = 3,
+                    Cantidad = 1,
+                    SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
+                }
+            );
+            listaPrimera8A9.Add
+            (
+                new Primera()
+                {
+                    Hora = new TimeSpan(9, 0, 0),
+                    Cantidad = 1,
+                    SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
+                }
+            );
+            listaPrimera8A9.Add
+            (
+                new Primera()
+                {
+                    Hora = new TimeSpan(9, 0, 0),
+                    Cantidad = -1,
                     SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
                 }
             );
@@ -250,7 +268,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 new Primera()
                 {
                     Hora = new TimeSpan(15, 0, 0),
-                    Cantidad = 2,
+                    Cantidad = 1,
                     SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
                 }
             );
@@ -262,7 +280,7 @@ namespace ControlCalidad.Servidor.Datos.Repositorios
                 new Primera()
                 {
                     Hora = new TimeSpan(21, 0, 0),
-                    Cantidad = 5,
+                    Cantidad = 1,
                     SupervisorCalidad = EmpleadoRepositorio.BuscarEmpleadoPorId(6)
                 }
             );
